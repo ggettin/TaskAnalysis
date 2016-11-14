@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="-217" y="220"/>
         </scene>
-        <!--Choose a Step-->
+        <!--Clean Dishes-->
         <scene sceneID="sjD-YF-p7v">
             <objects>
-                <viewController title="Choose a Step" id="qwS-8f-E2J" customClass="PicturesTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Clean Dishes" id="qwS-8f-E2J" customClass="PicturesTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DM4-m4-NS7"/>
                         <viewControllerLayoutGuide type="bottom" id="HID-0B-l1s"/>
@@ -183,33 +183,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-tF-giX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-tF-giX">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StepCell" rowHeight="106" id="qJe-Sn-uKG" customClass="StepCell" customModule="TaskAnalysis" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StepCell" editingAccessoryType="disclosureIndicator" rowHeight="106" id="qJe-Sn-uKG" customClass="StepCell" customModule="TaskAnalysis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qJe-Sn-uKG" id="rhm-YE-1Wy">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Step " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1v-qE-IGc">
-                                                    <rect key="frame" x="115" y="8" width="145" height="41"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96p-Xf-Xmf">
+                                                    <rect key="frame" x="115" y="44" width="444" height="58"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="REo-oS-v5G">
+                                                    <rect key="frame" x="8" y="3" width="99" height="99"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="99" id="5es-ua-n11"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1v-qE-IGc">
+                                                    <rect key="frame" x="115" y="3" width="145" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="41" id="YQS-rR-vVz"/>
+                                                        <constraint firstAttribute="width" constant="145" id="kn7-Fd-L3e"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Separate by color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96p-Xf-Xmf">
-                                                    <rect key="frame" x="115" y="47" width="462" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="REo-oS-v5G">
-                                                    <rect key="frame" x="8" y="3" width="99" height="99"/>
-                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="REo-oS-v5G" firstAttribute="top" secondItem="M1v-qE-IGc" secondAttribute="top" id="12O-me-bA9"/>
+                                                <constraint firstItem="REo-oS-v5G" firstAttribute="bottom" secondItem="96p-Xf-Xmf" secondAttribute="bottom" id="5Vv-Sf-3rt"/>
+                                                <constraint firstItem="96p-Xf-Xmf" firstAttribute="trailing" secondItem="rhm-YE-1Wy" secondAttribute="trailingMargin" id="EdX-5x-QFw"/>
+                                                <constraint firstItem="96p-Xf-Xmf" firstAttribute="top" secondItem="M1v-qE-IGc" secondAttribute="bottom" id="IXU-XK-oyE"/>
+                                                <constraint firstItem="REo-oS-v5G" firstAttribute="leading" secondItem="rhm-YE-1Wy" secondAttribute="leadingMargin" id="Kcd-Li-WGn"/>
+                                                <constraint firstItem="M1v-qE-IGc" firstAttribute="leading" secondItem="REo-oS-v5G" secondAttribute="trailing" constant="8" symbolic="YES" id="TLv-zk-ACT"/>
+                                                <constraint firstItem="REo-oS-v5G" firstAttribute="top" secondItem="rhm-YE-1Wy" secondAttribute="topMargin" constant="-5" id="eKk-JY-FPB"/>
+                                                <constraint firstItem="M1v-qE-IGc" firstAttribute="leading" secondItem="96p-Xf-Xmf" secondAttribute="leading" id="hVO-KT-Kbd"/>
+                                                <constraint firstItem="REo-oS-v5G" firstAttribute="centerY" secondItem="rhm-YE-1Wy" secondAttribute="centerY" id="waS-dt-Iz0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="stepCount" destination="M1v-qE-IGc" id="Vai-xz-fuc"/>
@@ -225,6 +242,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cvS-tF-giX" firstAttribute="top" secondItem="FWO-W8-zIX" secondAttribute="top" id="GCD-M8-Uyb"/>
+                            <constraint firstItem="cvS-tF-giX" firstAttribute="bottom" secondItem="HID-0B-l1s" secondAttribute="top" id="LO6-39-fD8"/>
+                            <constraint firstAttribute="trailing" secondItem="cvS-tF-giX" secondAttribute="trailing" id="e6T-HX-sUO"/>
+                            <constraint firstItem="cvS-tF-giX" firstAttribute="leading" secondItem="FWO-W8-zIX" secondAttribute="leading" id="tdx-oR-XzV"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pictures and Audio" image="pictuesAudio" id="nRN-Kk-ml8"/>
                     <connections>
@@ -235,10 +258,10 @@
             </objects>
             <point key="canvasLocation" x="1666" y="-155"/>
         </scene>
-        <!--Video-->
+        <!--Clean Dishes-->
         <scene sceneID="ZEG-an-jqk">
             <objects>
-                <viewController id="Gjz-sB-Rwc" customClass="PicturesTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Clean Dishes" id="Gjz-sB-Rwc" customClass="VideoTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QkU-tS-oRc"/>
                         <viewControllerLayoutGuide type="bottom" id="szh-SP-iEg"/>
@@ -246,9 +269,34 @@
                     <view key="view" contentMode="scaleToFill" id="m3y-8t-gQa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsw-VC-wby">
+                                <rect key="frame" x="202" y="366" width="197" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="197" id="HSI-7o-8aE"/>
+                                    <constraint firstAttribute="height" constant="111" id="ncg-2I-Q9i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" title="Play Video"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cleanDishes" translatesAutoresizingMaskIntoConstraints="NO" id="vyY-Ta-ugT">
+                                <rect key="frame" x="20" y="84" width="560" height="266"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="centerX" secondItem="rsw-VC-wby" secondAttribute="centerX" id="6vo-Zv-tp3"/>
+                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="trailing" secondItem="m3y-8t-gQa" secondAttribute="trailingMargin" id="BcP-Nx-sVu"/>
+                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="leading" secondItem="m3y-8t-gQa" secondAttribute="leadingMargin" id="Hlh-Kr-E85"/>
+                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="top" secondItem="QkU-tS-oRc" secondAttribute="bottom" constant="20" id="RFh-dr-4YW"/>
+                            <constraint firstItem="szh-SP-iEg" firstAttribute="top" secondItem="rsw-VC-wby" secondAttribute="bottom" constant="74" id="XgP-Dy-Foe"/>
+                            <constraint firstItem="rsw-VC-wby" firstAttribute="top" secondItem="vyY-Ta-ugT" secondAttribute="bottom" constant="16" id="h3p-pW-A8N"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="video" selectedImage="video" id="qOz-Ug-sgE"/>
+                    <connections>
+                        <outlet property="videoThumbnail" destination="vyY-Ta-ugT" id="caV-rc-a4X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iem-bB-CTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,6 +322,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cleanDishes" width="887" height="665"/>
         <image name="locationIcon" width="45" height="45"/>
         <image name="options_icon.png" width="30" height="30"/>
         <image name="pictuesAudio" width="34" height="38"/>

@@ -22,7 +22,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         cell.stepImage.image = UIImage(named: "cleanDishes")
         cell.stepCount.text = "Step " + String(indexPath.row + 1) + ":"
-        cell.stepDescription.text = "Rinse the dish in hot water"
+        cell.stepDescription.text = "Rinse the dish in hot water the dish in hot water Rinse the dish in hot water"
         
         return cell
     }
