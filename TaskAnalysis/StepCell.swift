@@ -14,7 +14,6 @@ class StepCell: UITableViewCell {
     
     @IBOutlet var stepCount: UILabel!
     
-    
     @IBOutlet var stepDescription: UILabel!
     
     
