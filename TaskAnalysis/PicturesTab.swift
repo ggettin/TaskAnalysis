@@ -26,6 +26,18 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         return cell
     }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("stepDetails", sender: self)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "stepDetails" {
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
