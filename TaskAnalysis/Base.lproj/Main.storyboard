@@ -35,35 +35,38 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XxQ-RM-qvL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="547"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NoX-SO-2k1">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="15"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="CM8-Ce-9Q7" customClass="CustomCollectionViewCell" customModule="TaskAnalysis" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="79" width="150" height="150"/>
+                                        <rect key="frame" x="20" y="84" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sg1-ED-Fm2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vsU-D5-LxI">
-                                                    <rect key="frame" x="105" y="0.0" width="45" height="45"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sg1-ED-Fm2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1w-Ed-9rK">
-                                                    <rect key="frame" x="0.0" y="121" width="150" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="118" width="150" height="32"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vsU-D5-LxI">
+                                                    <rect key="frame" x="105" y="0.0" width="45" height="45"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="completionImage" destination="vsU-D5-LxI" id="3o9-8y-Ucc"/>
                                             <outlet property="taskImage" destination="sg1-ED-Fm2" id="u8s-zU-GS4"/>
@@ -90,7 +93,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="XxQ-RM-qvL" id="wb7-2Z-eAL"/>
-                        <segue destination="v7k-lZ-gDh" kind="show" id="I6U-Av-oTs"/>
+                        <segue destination="v7k-lZ-gDh" kind="show" identifier="showSteps" id="I6U-Av-oTs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

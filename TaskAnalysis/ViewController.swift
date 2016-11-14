@@ -28,7 +28,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.taskImage.image = self.taskImages[indexPath.row]
         cell.completionImage.image = UIImage(named: "completed")
         
+        
+        
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("showSteps", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSteps" {
+            
+        }
     }
     
     override func viewDidLoad() {
