@@ -12,6 +12,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var locationImage: UIImageView!
+    
     let taskTitles = ["Sweeping", "Laundry", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
     
     let taskImages = [UIImage(named: "sweeping"), UIImage(named: "laundry"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
@@ -46,6 +48,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.locationImage.layer.cornerRadius = 20.0
+        self.locationImage.layer.borderWidth = 10.0
+        self.locationImage.layer.borderColor = UIColor.clearColor().CGColor
+        self.locationImage.layer.masksToBounds = true;
+
     }
 
     override func didReceiveMemoryWarning() {
