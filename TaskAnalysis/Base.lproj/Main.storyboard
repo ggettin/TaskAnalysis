@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="-217" y="220"/>
         </scene>
-        <!--Item 2-->
+        <!--Item-->
         <scene sceneID="sjD-YF-p7v">
             <objects>
-                <viewController id="qwS-8f-E2J" sceneMemberID="viewController">
+                <viewController id="qwS-8f-E2J" customClass="VideoTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DM4-m4-NS7"/>
                         <viewControllerLayoutGuide type="bottom" id="HID-0B-l1s"/>
@@ -184,16 +184,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="q7c-In-R2e"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="nRN-Kk-ml8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3J-ye-act" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1489" y="550"/>
         </scene>
-        <!--Item 1-->
+        <!--Video-->
         <scene sceneID="ZEG-an-jqk">
             <objects>
-                <viewController id="Gjz-sB-Rwc" sceneMemberID="viewController">
+                <viewController id="Gjz-sB-Rwc" customClass="PicturesTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QkU-tS-oRc"/>
                         <viewControllerLayoutGuide type="bottom" id="szh-SP-iEg"/>
@@ -203,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="y0A-6q-ORV"/>
+                    <tabBarItem key="tabBarItem" title="Video" image="video" selectedImage="video" id="qOz-Ug-sgE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iem-bB-CTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -232,5 +232,6 @@
         <image name="locationIcon" width="45" height="45"/>
         <image name="options_icon.png" width="30" height="30"/>
         <image name="room" width="10556" height="3036"/>
+        <image name="video" width="40" height="40"/>
     </resources>
 </document>
