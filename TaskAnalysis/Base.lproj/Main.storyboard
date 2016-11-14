@@ -164,113 +164,73 @@
                     <connections>
                         <outlet property="collectionView" destination="XxQ-RM-qvL" id="wb7-2Z-eAL"/>
                         <outlet property="locationImage" destination="99t-2w-TKM" id="0tO-wz-Yp0"/>
-                        <segue destination="ltn-Vf-eiy" kind="show" identifier="chooseFormat" id="1bs-Ab-2ST"/>
+                        <segue destination="WwJ-3c-nQA" kind="show" identifier="showSteps" id="eEu-TQ-4nJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-217" y="220"/>
         </scene>
-        <!--What Format?-->
-        <scene sceneID="RhK-gZ-KFc">
+        <!--Item 2-->
+        <scene sceneID="sjD-YF-p7v">
             <objects>
-                <tableViewController title="What Format?" clearsSelectionOnViewWillAppear="NO" id="ltn-Vf-eiy" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="209" sectionHeaderHeight="28" sectionFooterHeight="28" id="ml5-ka-pJ1">
+                <viewController id="qwS-8f-E2J" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DM4-m4-NS7"/>
+                        <viewControllerLayoutGuide type="bottom" id="HID-0B-l1s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FWO-W8-zIX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                        <sections>
-                            <tableViewSection id="if7-5Y-fIi">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="formatCell" rowHeight="254" id="sWN-zx-Xtd">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="254"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sWN-zx-Xtd" id="Frl-q9-mGp">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="253"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pictures and Audio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bL-Sc-tax">
-                                                    <rect key="frame" x="180" y="8" width="240" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="240" id="VyE-s6-O00"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pictures:audio" translatesAutoresizingMaskIntoConstraints="NO" id="eTv-CF-E4s">
-                                                    <rect key="frame" x="189" y="48" width="223" height="157"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="223" id="86Y-co-VDP"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="6bL-Sc-tax" firstAttribute="leading" secondItem="Frl-q9-mGp" secondAttribute="leading" constant="180" id="4fK-uM-dxF"/>
-                                                <constraint firstItem="6bL-Sc-tax" firstAttribute="centerX" secondItem="eTv-CF-E4s" secondAttribute="centerX" id="HEX-xE-kOX"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="eTv-CF-E4s" secondAttribute="bottom" constant="40" id="d5g-00-UiU"/>
-                                                <constraint firstItem="eTv-CF-E4s" firstAttribute="centerY" secondItem="Frl-q9-mGp" secondAttribute="centerY" id="gl0-cf-C7I"/>
-                                                <constraint firstItem="6bL-Sc-tax" firstAttribute="top" secondItem="Frl-q9-mGp" secondAttribute="topMargin" id="iIG-s5-007"/>
-                                                <constraint firstItem="eTv-CF-E4s" firstAttribute="top" secondItem="6bL-Sc-tax" secondAttribute="bottom" constant="10" id="lLz-IL-5mv"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="formatCell" rowHeight="274" id="PjR-WX-jUl">
-                                        <rect key="frame" x="0.0" y="318" width="600" height="274"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PjR-WX-jUl" id="m58-ZW-UH0">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="273"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sw6-8D-70R">
-                                                    <rect key="frame" x="180" y="8" width="240" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="240" id="nEG-b3-7U4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="JzF-jO-TeS">
-                                                    <rect key="frame" x="177" y="48" width="247" height="178"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="247" id="GCv-8P-cXk"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="JzF-jO-TeS" firstAttribute="top" secondItem="sw6-8D-70R" secondAttribute="bottom" constant="10" id="3sY-42-gQm"/>
-                                                <constraint firstItem="sw6-8D-70R" firstAttribute="top" secondItem="m58-ZW-UH0" secondAttribute="topMargin" id="8dt-se-RH4"/>
-                                                <constraint firstItem="JzF-jO-TeS" firstAttribute="leading" secondItem="m58-ZW-UH0" secondAttribute="leading" constant="177" id="B9T-cg-BKk"/>
-                                                <constraint firstItem="JzF-jO-TeS" firstAttribute="centerY" secondItem="m58-ZW-UH0" secondAttribute="centerY" id="URc-QO-xLG"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="JzF-jO-TeS" secondAttribute="bottom" constant="39" id="gsg-kb-9lm"/>
-                                                <constraint firstItem="sw6-8D-70R" firstAttribute="centerX" secondItem="JzF-jO-TeS" secondAttribute="centerX" id="lmV-18-rEm"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" image="YES"/>
-                                        </accessibility>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="ltn-Vf-eiy" id="zRg-bP-2nh"/>
-                            <outlet property="delegate" destination="ltn-Vf-eiy" id="ePJ-pW-YCh"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qn8-GP-Dh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="q7c-In-R2e"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I3J-ye-act" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484" y="220"/>
+            <point key="canvasLocation" x="1489" y="550"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="ZEG-an-jqk">
+            <objects>
+                <viewController id="Gjz-sB-Rwc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QkU-tS-oRc"/>
+                        <viewControllerLayoutGuide type="bottom" id="szh-SP-iEg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m3y-8t-gQa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="y0A-6q-ORV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iem-bB-CTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1489" y="-111"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="cPF-6l-5Sr">
+            <objects>
+                <tabBarController id="WwJ-3c-nQA" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="aiO-Eq-UNu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Gjz-sB-Rwc" kind="relationship" relationship="viewControllers" id="bQO-qm-Sah"/>
+                        <segue destination="qwS-8f-E2J" kind="relationship" relationship="viewControllers" id="i67-nR-FbN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aAX-We-Jej" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669" y="220"/>
         </scene>
     </scenes>
     <resources>
         <image name="locationIcon" width="45" height="45"/>
         <image name="options_icon.png" width="30" height="30"/>
-        <image name="pictures:audio" width="3200" height="2600"/>
         <image name="room" width="10556" height="3036"/>
-        <image name="video" width="512" height="512"/>
     </resources>
 </document>

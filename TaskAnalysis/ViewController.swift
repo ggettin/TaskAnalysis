@@ -44,11 +44,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("chooseFormat", sender: self)
+        self.performSegueWithIdentifier("showSteps", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "chooseFormat" {
+        if segue.identifier == "showSteps" {
             
         }
     }
