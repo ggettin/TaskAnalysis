@@ -14,14 +14,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet var locationImage: UIImageView!
     
+    
+    
     let taskTitles = ["Sweeping", "Laundry", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
     
     let taskImages = [UIImage(named: "sweeping"), UIImage(named: "laundry"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
     
     
+    
+    
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.taskTitles.count
     }
+    
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
@@ -31,9 +38,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.completionImage.image = UIImage(named: "completed")
         
         
-        
         return cell
     }
+    
+    
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("chooseFormat", sender: self)
@@ -49,6 +57,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        //puts a mask on the location image
         self.locationImage.layer.cornerRadius = 20.0
         self.locationImage.layer.borderWidth = 10.0
         self.locationImage.layer.borderColor = UIColor.clearColor().CGColor

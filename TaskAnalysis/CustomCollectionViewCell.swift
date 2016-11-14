@@ -19,11 +19,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        //sets a mask for the task collection item
         self.contentView.layer.cornerRadius = 20.0
         self.contentView.layer.borderWidth = 10.0
         self.contentView.layer.borderColor = UIColor.clearColor().CGColor
         self.contentView.layer.masksToBounds = true;
         
+        //puts a shadow behind the collection item
         self.layer.shadowColor = UIColor.blackColor().CGColor
         self.layer.shadowOffset = CGSize(width:0,height: 2.0)
         self.layer.shadowRadius = 2.0
