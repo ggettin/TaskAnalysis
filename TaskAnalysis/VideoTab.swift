@@ -7,16 +7,41 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class VideoTab: UIViewController {
+    
+    var playerViewController = AVPlayerViewController()
+    var playerView = AVPlayer()
+    
+    @IBAction func playButton(sender: AnyObject) {
+        
+        self.presentViewController(playerViewController, animated: true){
+            self.playerViewController.player?.play()
+        }
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let fileURL = NSURL(fileURLWithPath: "/Users/Greg/Documents/School/4820/TaskAnalysis/TaskAnalysis/test.m4v")
+        
+        playerView = AVPlayer(URL: fileURL)
+        
+        playerViewController.player = playerView
+        
 
-    @IBOutlet var videoThumbnail: UIImageView!
+        
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-                
+        
+        
+        
+        
         
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2553a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tKD-48-i1J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16C41b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tKD-48-i1J">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -159,7 +159,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tasks" id="7xe-t9-BDt">
-                        <barButtonItem key="leftBarButtonItem" image="options_icon.png" id="sqY-nx-3dD"/>
+                        <barButtonItem key="leftBarButtonItem" image="settings" id="sqY-nx-3dD"/>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="XxQ-RM-qvL" id="wb7-2Z-eAL"/>
@@ -293,50 +293,29 @@
                         <viewControllerLayoutGuide type="top" id="QkU-tS-oRc"/>
                         <viewControllerLayoutGuide type="bottom" id="szh-SP-iEg"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="m3y-8t-gQa">
+                    <view key="view" contentMode="scaleAspectFit" id="m3y-8t-gQa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsw-VC-wby">
-                                <rect key="frame" x="202" y="366" width="197" height="111"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="197" id="HSI-7o-8aE"/>
-                                    <constraint firstAttribute="height" constant="111" id="ncg-2I-Q9i"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <state key="normal" title="Play Video"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPd-Jn-Fge">
+                                <rect key="frame" x="172" y="172" width="256" height="256"/>
+                                <state key="normal" image="play"/>
+                                <connections>
+                                    <action selector="playButton:" destination="Gjz-sB-Rwc" eventType="touchUpInside" id="Usa-T9-BCl"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cleanDishes" translatesAutoresizingMaskIntoConstraints="NO" id="vyY-Ta-ugT">
-                                <rect key="frame" x="20" y="84" width="560" height="266"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="centerX" secondItem="rsw-VC-wby" secondAttribute="centerX" id="6vo-Zv-tp3"/>
-                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="trailing" secondItem="m3y-8t-gQa" secondAttribute="trailingMargin" id="BcP-Nx-sVu"/>
-                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="leading" secondItem="m3y-8t-gQa" secondAttribute="leadingMargin" id="Hlh-Kr-E85"/>
-                            <constraint firstItem="vyY-Ta-ugT" firstAttribute="top" secondItem="QkU-tS-oRc" secondAttribute="bottom" constant="20" id="RFh-dr-4YW"/>
-                            <constraint firstItem="szh-SP-iEg" firstAttribute="top" secondItem="rsw-VC-wby" secondAttribute="bottom" constant="74" id="XgP-Dy-Foe"/>
-                            <constraint firstItem="rsw-VC-wby" firstAttribute="top" secondItem="vyY-Ta-ugT" secondAttribute="bottom" constant="16" id="h3p-pW-A8N"/>
+                            <constraint firstItem="SPd-Jn-Fge" firstAttribute="centerY" secondItem="m3y-8t-gQa" secondAttribute="centerY" id="44z-uJ-Vxq"/>
+                            <constraint firstItem="SPd-Jn-Fge" firstAttribute="centerX" secondItem="m3y-8t-gQa" secondAttribute="centerX" id="4pQ-Io-UDK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="video" selectedImage="video" id="qOz-Ug-sgE"/>
-                    <connections>
-                        <outlet property="videoThumbnail" destination="vyY-Ta-ugT" id="caV-rc-a4X"/>
-                        <segue destination="ngk-aw-plx" kind="show" id="Wfd-nm-WfP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iem-bB-CTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1666" y="606"/>
-        </scene>
-        <!--AV Player View Controller-->
-        <scene sceneID="BKY-fx-ofA">
-            <objects>
-                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="ngk-aw-plx" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V6m-gc-94J" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2368" y="606"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cPF-6l-5Sr">
@@ -358,11 +337,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cleanDishes" width="887" height="665"/>
         <image name="locationIcon" width="45" height="45"/>
-        <image name="options_icon.png" width="30" height="30"/>
         <image name="pictuesAudio" width="34" height="38"/>
+        <image name="play" width="256" height="256"/>
         <image name="room" width="10556" height="3036"/>
+        <image name="settings" width="30" height="30"/>
         <image name="video" width="40" height="40"/>
     </resources>
 </document>
