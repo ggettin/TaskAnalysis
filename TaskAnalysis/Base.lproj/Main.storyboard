@@ -304,14 +304,25 @@
                                     <action selector="playButton:" destination="Gjz-sB-Rwc" eventType="touchUpInside" id="Usa-T9-BCl"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-Pd-7fS">
+                                <rect key="frame" x="20" y="72" width="560" height="471"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SPd-Jn-Fge" firstAttribute="centerY" secondItem="m3y-8t-gQa" secondAttribute="centerY" id="44z-uJ-Vxq"/>
-                            <constraint firstItem="SPd-Jn-Fge" firstAttribute="centerX" secondItem="m3y-8t-gQa" secondAttribute="centerX" id="4pQ-Io-UDK"/>
+                            <constraint firstItem="k3o-Pd-7fS" firstAttribute="leading" secondItem="m3y-8t-gQa" secondAttribute="leadingMargin" id="CxU-J3-Juc"/>
+                            <constraint firstItem="k3o-Pd-7fS" firstAttribute="centerX" secondItem="SPd-Jn-Fge" secondAttribute="centerX" id="H79-qk-gTx"/>
+                            <constraint firstItem="k3o-Pd-7fS" firstAttribute="trailing" secondItem="m3y-8t-gQa" secondAttribute="trailingMargin" id="WKq-sd-V1W"/>
+                            <constraint firstItem="SPd-Jn-Fge" firstAttribute="centerY" secondItem="m3y-8t-gQa" secondAttribute="centerY" id="diM-vH-56Y"/>
+                            <constraint firstItem="szh-SP-iEg" firstAttribute="top" secondItem="k3o-Pd-7fS" secondAttribute="bottom" constant="8" symbolic="YES" id="mrx-iA-wh8"/>
+                            <constraint firstItem="k3o-Pd-7fS" firstAttribute="top" secondItem="QkU-tS-oRc" secondAttribute="bottom" constant="8" symbolic="YES" id="wej-ER-aO1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Video" image="video" selectedImage="video" id="qOz-Ug-sgE"/>
+                    <connections>
+                        <outlet property="button" destination="SPd-Jn-Fge" id="d7P-ap-fnJ"/>
+                        <outlet property="imageView" destination="k3o-Pd-7fS" id="9UL-53-43W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iem-bB-CTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
