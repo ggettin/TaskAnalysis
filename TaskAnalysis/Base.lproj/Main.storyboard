@@ -252,11 +252,38 @@
                     <tabBarItem key="tabBarItem" title="Pictures and Audio" image="pictuesAudio" id="nRN-Kk-ml8"/>
                     <connections>
                         <outlet property="tableView" destination="cvS-tF-giX" id="2qe-zs-gfo"/>
+                        <segue destination="h24-Fx-Miv" kind="show" identifier="stepDetails" id="xb1-SB-j0T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3J-ye-act" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1666" y="-155"/>
+        </scene>
+        <!--Picture Audio View-->
+        <scene sceneID="ndJ-JY-9K9">
+            <objects>
+                <viewController id="h24-Fx-Miv" customClass="PictureAudioView" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hrI-ml-YaZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="WeF-KN-E1f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lWH-Cw-jBi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zYk-rU-LVw">
+                                <rect key="frame" x="70" y="72" width="460" height="229"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlA-36-72a">
+                                <rect key="frame" x="285" y="330" width="30" height="30"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYR-2Y-cQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="-155"/>
         </scene>
         <!--Clean Dishes-->
         <scene sceneID="ZEG-an-jqk">
@@ -296,11 +323,20 @@
                     <tabBarItem key="tabBarItem" title="Video" image="video" selectedImage="video" id="qOz-Ug-sgE"/>
                     <connections>
                         <outlet property="videoThumbnail" destination="vyY-Ta-ugT" id="caV-rc-a4X"/>
+                        <segue destination="ngk-aw-plx" kind="show" id="Wfd-nm-WfP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iem-bB-CTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1666" y="606"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="BKY-fx-ofA">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="ngk-aw-plx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V6m-gc-94J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2368" y="606"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cPF-6l-5Sr">

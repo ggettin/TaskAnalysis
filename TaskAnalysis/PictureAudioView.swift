@@ -1,5 +1,5 @@
 //
-//  VideoTab.swift
+//  PictureAudioView.swift
 //  TaskAnalysis
 //
 //  Created by Greg Gettings on 11/14/16.
@@ -8,16 +8,12 @@
 
 import UIKit
 
-class VideoTab: UIViewController {
+class PictureAudioView: UIViewController {
 
-    @IBOutlet var videoThumbnail: UIImageView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-                
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,5 +22,4 @@ class VideoTab: UIViewController {
     }
     
 
-    
 }
