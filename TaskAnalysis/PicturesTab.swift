@@ -16,10 +16,13 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         return 1
     }
     
+    
+    // creates cell for steps table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("StepCell", forIndexPath: indexPath) as! StepCell
         
+        //cell data is hardcoded for now
         cell.stepImage.image = UIImage(named: "cleanDishes")
         cell.stepCount.text = "Step " + String(indexPath.row + 1) + ":"
         cell.stepDescription.text = "Rinse the dish in hot water the dish in hot water Rinse the dish in hot water"
@@ -27,12 +30,12 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    
+    //performs segue when a step is selected
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("stepDetails", sender: self)
     }
     
-    
+    //Passes data to next view during segue. (Not yet used)
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "stepDetails" {
             
