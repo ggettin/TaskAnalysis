@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="16B2553a" minimumToolsVersion="Automatic">
-    <entity name="ApartmentInfoTable" syncable="YES">
-        <attribute name="apartment_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="apartment_Latitude" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="apartment_Longitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="apartment_name" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+    <entity name="LocationsTable" syncable="YES">
+        <attribute name="deleted_id" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="location_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="location_latitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="location_longitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="location_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location_photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="location_radius" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="ApartmentTaskTable" syncable="YES">
-        <attribute name="apartment_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="apartment_task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="LoginTable" syncable="YES">
+        <attribute name="delete_id" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="student_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="student_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="student_phone_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="StepsTable" syncable="YES">
+        <attribute name="delete_id" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="step_audio" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="step_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="step_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="step_number" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="step_photo" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="FavoritesApartmentTable" syncable="YES">
-        <attribute name="apartment_task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="favorites_apartment_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-    </entity>
-    <entity name="FavoritesWorkTable" syncable="YES">
-        <attribute name="favorites_work_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="work_task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    <entity name="StudentLocationTable" syncable="YES">
+        <attribute name="student_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="student_location_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="TaskTable" syncable="YES">
+        <attribute name="deleted_id" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="location_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="task_step" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="task_step_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="task_title" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="WorkPlaceInfo" syncable="YES">
-        <attribute name="workPlace_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="workPlace_latitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="workPlace_longitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="workPlace_name" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="WorkTaskTable" syncable="YES">
-        <attribute name="task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="work_task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="workPlace_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="task_video" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ApartmentInfoTable" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="ApartmentTaskTable" positionX="-54" positionY="18" width="128" height="90"/>
-        <element name="TaskTable" positionX="-36" positionY="45" width="128" height="90"/>
-        <element name="WorkPlaceInfo" positionX="0" positionY="81" width="128" height="105"/>
-        <element name="WorkTaskTable" positionX="18" positionY="54" width="128" height="90"/>
-        <element name="FavoritesApartmentTable" positionX="36" positionY="117" width="128" height="75"/>
-        <element name="FavoritesWorkTable" positionX="-9" positionY="63" width="128" height="75"/>
+        <element name="TaskTable" positionX="81" positionY="-15" width="128" height="148"/>
+        <element name="LocationsTable" positionX="-101" positionY="-9" width="128" height="163"/>
+        <element name="LoginTable" positionX="-47" positionY="216" width="128" height="118"/>
+        <element name="StudentLocationTable" positionX="160" positionY="213" width="128" height="73"/>
+        <element name="StepsTable" positionX="252" positionY="-15" width="128" height="163"/>
     </elements>
 </model>
