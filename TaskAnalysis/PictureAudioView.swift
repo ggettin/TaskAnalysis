@@ -29,7 +29,7 @@ class PictureAudioView: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water water hot under plate run"
+        stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
     }
 
