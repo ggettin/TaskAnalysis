@@ -22,6 +22,32 @@
             </objects>
             <point key="canvasLocation" x="-1112" y="169"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="wTo-gS-cMz">
+            <objects>
+                <viewController id="fPH-4y-QCm" customClass="MapViewController" customModule="TaskAnalysis" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eVa-cC-8WY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cjh-4J-4uW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8yi-Gu-Pxy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Iae-nQ-RMR">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Iae-nQ-RMR" id="Q32-b3-FbK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nq8-rx-LcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-217" y="930"/>
+        </scene>
         <!--Tasks-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -124,6 +150,9 @@
                                 <state key="normal" title="Change your location">
                                     <color key="titleColor" red="0.86147684010152281" green="0.078635503628738876" blue="0.15462955400632583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="fPH-4y-QCm" kind="show" id="JCS-fn-IsO"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMd-Yn-0pJ">
                                 <rect key="frame" x="66" y="521" width="397" height="22"/>
