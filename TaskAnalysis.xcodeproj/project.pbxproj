@@ -18,6 +18,8 @@
 		37A17B171DDA1E6B00F3FF04 /* VideoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A17B161DDA1E6B00F3FF04 /* VideoTab.swift */; };
 		37D9C0781DD93CE500EAAA4B /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9C0771DD93CE500EAAA4B /* CustomCollectionViewCell.swift */; };
 		37FC93811DDACF0D0067AC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FC93801DDACF0D0067AC77 /* Assets.xcassets */; };
+		382BD0731DDDFA9000986339 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382BD0721DDDFA9000986339 /* MapViewController.swift */; };
+		38E8AA491DDE3ED000404274 /* Test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 38E8AA481DDE3ECF00404274 /* Test.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		37D9C0771DD93CE500EAAA4B /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		37FC937D1DDABD010067AC77 /* test.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4v; sourceTree = "<group>"; };
 		37FC93801DDACF0D0067AC77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		382BD0721DDDFA9000986339 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		38E8AA481DDE3ECF00404274 /* Test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +78,12 @@
 				37A17B161DDA1E6B00F3FF04 /* VideoTab.swift */,
 				374FE9E41DDA542F000312C4 /* PictureAudioView.swift */,
 				374FE9E21DDA3C7B000312C4 /* StepCell.swift */,
+				382BD0721DDDFA9000986339 /* MapViewController.swift */,
 				3729C76A1DD394D500A920DC /* Main.storyboard */,
 				37FC93801DDACF0D0067AC77 /* Assets.xcassets */,
 				3729C7721DD394D600A920DC /* LaunchScreen.storyboard */,
 				3729C7751DD394D600A920DC /* Info.plist */,
+				38E8AA481DDE3ECF00404274 /* Test.gpx */,
 				3729C76D1DD394D600A920DC /* TaskAnalysis.xcdatamodeld */,
 				37FC937D1DDABD010067AC77 /* test.m4v */,
 			);
@@ -144,6 +150,7 @@
 			files = (
 				37FC93811DDACF0D0067AC77 /* Assets.xcassets in Resources */,
 				3729C7741DD394D600A920DC /* LaunchScreen.storyboard in Resources */,
+				38E8AA491DDE3ED000404274 /* Test.gpx in Resources */,
 				3729C76C1DD394D500A920DC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +166,7 @@
 				374FE9E31DDA3C7B000312C4 /* StepCell.swift in Sources */,
 				374FE9E51DDA542F000312C4 /* PictureAudioView.swift in Sources */,
 				3729C76F1DD394D600A920DC /* TaskAnalysis.xcdatamodeld in Sources */,
+				382BD0731DDDFA9000986339 /* MapViewController.swift in Sources */,
 				3729C7691DD394D500A920DC /* ViewController.swift in Sources */,
 				37A17B171DDA1E6B00F3FF04 /* VideoTab.swift in Sources */,
 				3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */,
