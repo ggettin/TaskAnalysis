@@ -38,7 +38,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.taskImage.image = self.taskImages[indexPath.row]
         cell.completionImage.image = UIImage(named: "completed")
         
-        
         return cell
     }
     
