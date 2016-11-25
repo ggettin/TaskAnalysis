@@ -74,26 +74,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             //region data need to put in its own class to read multiple regions
             let title = "Test"
-            let coordinate = CLLocationCoordinate2DMake(37.703026, -121.759735)
             let regionRadius = 300.0
+            let address = "2900 Las Positas Rd, Livermore"
+            
+            //takes in the address of a location and converts it into 2d coordinates (lat/long)
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(address) { (placemarks, error) in
+                if let placemarks = placemarks {
+                    if placemarks.count != 0 {
+                        let coordinates = placemarks.first!.location
+                        let coordinate = coordinates?.coordinate
             
             //setup region this will read an object with a saved coordinate and name
-            let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate.latitude,
-                longitude: coordinate.longitude), radius: regionRadius, identifier: title)
-            locationManager.startMonitoringForRegion(region)
+            let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate!.latitude,
+                longitude: coordinate!.longitude), radius: regionRadius, identifier: title)
+            self.locationManager.startMonitoringForRegion(region)
             
             //setup annotation
             let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate;
+            annotation.coordinate = coordinate!;
             annotation.title = "\(title)";
-            mapView.addAnnotation(annotation)
+            self.mapView.addAnnotation(annotation)
             
             //setup circle
-            let circle = MKCircle(centerCoordinate: coordinate, radius: regionRadius)
-            mapView.addOverlay(circle)
+            let circle = MKCircle(centerCoordinate: coordinate!, radius: regionRadius)
+            self.mapView.addOverlay(circle)
         }
         else {
             print("System can't track regions")
+        }
+                }
+            }
         }
     }
     
