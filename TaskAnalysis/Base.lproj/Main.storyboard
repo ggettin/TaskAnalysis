@@ -161,7 +161,9 @@
                                     <color key="textColor" red="0.58077365159988403" green="0.044086284935474396" blue="0.91287195682525635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Your Daily Tasks" id="usr-Nn-WZD"/>
+                                    <navigationItem title="Your Daily Tasks" id="usr-Nn-WZD">
+                                        <barButtonItem key="leftBarButtonItem" image="settings" id="PhS-XD-9ri"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="room" translatesAutoresizingMaskIntoConstraints="NO" id="99t-2w-TKM">
