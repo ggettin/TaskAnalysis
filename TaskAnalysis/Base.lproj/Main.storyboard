@@ -337,7 +337,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlA-36-72a">
                                 <rect key="frame" x="285" y="330" width="30" height="30"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ki-y0-Qwf">
+                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ki-y0-Qwf">
                                 <rect key="frame" x="499" y="345" width="81" height="81"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="lD3-yG-0Ns"/>
@@ -347,7 +347,7 @@
                                     <action selector="nextStep:" destination="h24-Fx-Miv" eventType="touchUpInside" id="y80-qM-TWo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzU-uE-XaU">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzU-uE-XaU">
                                 <rect key="frame" x="20" y="345" width="81" height="81"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="M3T-1b-uwD"/>
@@ -355,7 +355,7 @@
                                 </constraints>
                                 <state key="normal" image="leftArrow"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usT-qO-WPV">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usT-qO-WPV">
                                 <rect key="frame" x="239" y="361" width="123" height="122"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="SkH-lz-5LV"/>
