@@ -32,11 +32,11 @@ class VideoTab: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-      
+        
         
         
         //location of video to be played (local for now)
-        let fileURL = NSURL(fileURLWithPath: "/Users/Greg/Documents/School/4820/TaskAnalysis/TaskAnalysis/test.m4v")
+        let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/test.m4v")!
         print(fileURL)
         
         //creates player
