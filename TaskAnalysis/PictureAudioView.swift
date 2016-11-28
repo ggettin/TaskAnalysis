@@ -42,6 +42,13 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "BacktoSteps"{
+            let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
+            tabView.selectedIndex = 1
+        }
+    }
+    
     
     
     override func didReceiveMemoryWarning() {
