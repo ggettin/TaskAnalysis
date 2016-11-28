@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FC568451DECC2ED001BB987 /* LocationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568441DECC2ED001BB987 /* LocationTable.swift */; };
+		1FC568471DECC2FE001BB987 /* LocationCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568461DECC2FE001BB987 /* LocationCoreData.swift */; };
+		1FC568491DECC446001BB987 /* LoginTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568481DECC446001BB987 /* LoginTable.swift */; };
+		1FC5684B1DECC454001BB987 /* LoginCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5684A1DECC454001BB987 /* LoginCoreData.swift */; };
+		1FC5684D1DECC463001BB987 /* StepsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5684C1DECC463001BB987 /* StepsTable.swift */; };
+		1FC5684F1DECC46E001BB987 /* StepsCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5684E1DECC46E001BB987 /* StepsCoreData.swift */; };
+		1FC568511DECC47E001BB987 /* StudentTaskLocalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568501DECC47E001BB987 /* StudentTaskLocalTable.swift */; };
+		1FC568531DECC48D001BB987 /* StudentTaskLocalCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568521DECC48D001BB987 /* StudentTaskLocalCoreData.swift */; };
+		1FC568571DECC4C0001BB987 /* TaskStepTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568561DECC4C0001BB987 /* TaskStepTable.swift */; };
+		1FC568591DECC4D9001BB987 /* TaskStepCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568581DECC4D9001BB987 /* TaskStepCoreData.swift */; };
+		1FC5685B1DECC4E9001BB987 /* TaskTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5685A1DECC4E9001BB987 /* TaskTable.swift */; };
+		1FC5685D1DECC4F6001BB987 /* TaskCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5685C1DECC4F6001BB987 /* TaskCoreData.swift */; };
 		3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7661DD394D500A920DC /* AppDelegate.swift */; };
 		3729C7691DD394D500A920DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7681DD394D500A920DC /* ViewController.swift */; };
 		3729C76C1DD394D500A920DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729C76A1DD394D500A920DC /* Main.storyboard */; };
@@ -23,6 +35,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FC568441DECC2ED001BB987 /* LocationTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTable.swift; sourceTree = "<group>"; };
+		1FC568461DECC2FE001BB987 /* LocationCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCoreData.swift; sourceTree = "<group>"; };
+		1FC568481DECC446001BB987 /* LoginTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTable.swift; sourceTree = "<group>"; };
+		1FC5684A1DECC454001BB987 /* LoginCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCoreData.swift; sourceTree = "<group>"; };
+		1FC5684C1DECC463001BB987 /* StepsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTable.swift; sourceTree = "<group>"; };
+		1FC5684E1DECC46E001BB987 /* StepsCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsCoreData.swift; sourceTree = "<group>"; };
+		1FC568501DECC47E001BB987 /* StudentTaskLocalTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTaskLocalTable.swift; sourceTree = "<group>"; };
+		1FC568521DECC48D001BB987 /* StudentTaskLocalCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTaskLocalCoreData.swift; sourceTree = "<group>"; };
+		1FC568561DECC4C0001BB987 /* TaskStepTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStepTable.swift; sourceTree = "<group>"; };
+		1FC568581DECC4D9001BB987 /* TaskStepCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStepCoreData.swift; sourceTree = "<group>"; };
+		1FC5685A1DECC4E9001BB987 /* TaskTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTable.swift; sourceTree = "<group>"; };
+		1FC5685C1DECC4F6001BB987 /* TaskCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCoreData.swift; sourceTree = "<group>"; };
 		3729C7631DD394D500A920DC /* TaskAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3729C7661DD394D500A920DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3729C7681DD394D500A920DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +110,18 @@
 				38E8AA481DDE3ECF00404274 /* Test.gpx */,
 				3729C76D1DD394D600A920DC /* TaskAnalysis.xcdatamodeld */,
 				37FC937D1DDABD010067AC77 /* test.m4v */,
+				1FC568441DECC2ED001BB987 /* LocationTable.swift */,
+				1FC568461DECC2FE001BB987 /* LocationCoreData.swift */,
+				1FC568481DECC446001BB987 /* LoginTable.swift */,
+				1FC5684A1DECC454001BB987 /* LoginCoreData.swift */,
+				1FC5684C1DECC463001BB987 /* StepsTable.swift */,
+				1FC5684E1DECC46E001BB987 /* StepsCoreData.swift */,
+				1FC568501DECC47E001BB987 /* StudentTaskLocalTable.swift */,
+				1FC568521DECC48D001BB987 /* StudentTaskLocalCoreData.swift */,
+				1FC568561DECC4C0001BB987 /* TaskStepTable.swift */,
+				1FC568581DECC4D9001BB987 /* TaskStepCoreData.swift */,
+				1FC5685A1DECC4E9001BB987 /* TaskTable.swift */,
+				1FC5685C1DECC4F6001BB987 /* TaskCoreData.swift */,
 			);
 			path = TaskAnalysis;
 			sourceTree = "<group>";
@@ -162,15 +198,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FC5684B1DECC454001BB987 /* LoginCoreData.swift in Sources */,
+				1FC568531DECC48D001BB987 /* StudentTaskLocalCoreData.swift in Sources */,
+				1FC568491DECC446001BB987 /* LoginTable.swift in Sources */,
+				1FC5684D1DECC463001BB987 /* StepsTable.swift in Sources */,
+				1FC568591DECC4D9001BB987 /* TaskStepCoreData.swift in Sources */,
+				1FC568511DECC47E001BB987 /* StudentTaskLocalTable.swift in Sources */,
 				37A17B151DDA1E5900F3FF04 /* PicturesTab.swift in Sources */,
 				374FE9E31DDA3C7B000312C4 /* StepCell.swift in Sources */,
 				374FE9E51DDA542F000312C4 /* PictureAudioView.swift in Sources */,
+				1FC5685B1DECC4E9001BB987 /* TaskTable.swift in Sources */,
+				1FC568471DECC2FE001BB987 /* LocationCoreData.swift in Sources */,
 				3729C76F1DD394D600A920DC /* TaskAnalysis.xcdatamodeld in Sources */,
 				382BD0731DDDFA9000986339 /* MapViewController.swift in Sources */,
+				1FC568451DECC2ED001BB987 /* LocationTable.swift in Sources */,
 				3729C7691DD394D500A920DC /* ViewController.swift in Sources */,
+				1FC568571DECC4C0001BB987 /* TaskStepTable.swift in Sources */,
 				37A17B171DDA1E6B00F3FF04 /* VideoTab.swift in Sources */,
 				3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */,
+				1FC5685D1DECC4F6001BB987 /* TaskCoreData.swift in Sources */,
 				37D9C0781DD93CE500EAAA4B /* CustomCollectionViewCell.swift in Sources */,
+				1FC5684F1DECC46E001BB987 /* StepsCoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
