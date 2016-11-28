@@ -8,8 +8,9 @@
 
 import UIKit
 
-class PictureAudioView: UIViewController {
-
+class PictureAudioView: UIViewController, UITabBarDelegate {
+    @IBOutlet var TabBar: UITabBarItem!
+    
     @IBOutlet var stepDescription: UILabel!
     
     @IBOutlet var stepImage: UIImageView!
@@ -26,13 +27,24 @@ class PictureAudioView: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
     }
 
+    
+    @IBOutlet var VideoTabButton: UITabBarItem!
+ 
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        if item == VideoTabButton{
+            self.performSegueWithIdentifier("BacktoSteps", sender: self)
+        }
+    }
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
