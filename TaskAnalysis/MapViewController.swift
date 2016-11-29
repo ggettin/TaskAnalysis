@@ -37,8 +37,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     mapView.userTrackingMode = .Follow
     
     //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
-        setupData("Test", radius: 300, Address: "Clemson, SC 29634")
-        
+        setupData("Test1", radius: 100, Address: "735 McMillan Rd, Clemson, SC 29634")
+        setupData("Test2", radius: 100, Address: "821 McMillan Rd, Clemson, SC 29634")
+        setupData("Test3", radius: 100, Address: "720 McMillan Rd, Clemson, SC 29634")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -86,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         let coordinate = coordinates?.coordinate
             
             //setup region this will read an object with a saved coordinate and name
-            let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate!.latitude,
+            var region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate!.latitude,
                 longitude: coordinate!.longitude), radius: regionRadius, identifier: title)
             self.locationManager.startMonitoringForRegion(region)
             
