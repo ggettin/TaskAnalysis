@@ -43,14 +43,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     //Segues to next view when cell is selected
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showSteps", sender: self)
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        self.performSegueWithIdentifier("showSteps", sender: indexPath)
     }
     
     
     //Passes data to next view during segue. (Not yet used)
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showSteps" {
+        
+        if segue.identifier! == "showSteps" {
+            let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
+            
+            tabView.navigationItem.title = taskTitles[sender!.row]
             
         }
     }
@@ -58,13 +62,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        collectionView.delegate = self
         
         //puts a mask on the location image
         self.locationImage.layer.cornerRadius = 20.0
         self.locationImage.layer.borderWidth = 10.0
         self.locationImage.layer.borderColor = UIColor.clearColor().CGColor
         self.locationImage.layer.masksToBounds = true;
+    
+        self.navigationItem.title = "Tasks"
 
     }
 

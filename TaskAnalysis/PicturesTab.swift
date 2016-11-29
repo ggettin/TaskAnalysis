@@ -10,6 +10,8 @@ import UIKit
 
 class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var TaskName:String = ""
+    
     @IBOutlet var tableView: UITableView!
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,13 +43,20 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
             
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.navigationItem.title = TaskName
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = TaskName
+        
         tableView.dataSource = self
         tableView.delegate = self
-
+        
+        
         // Do any additional setup after loading the view.
     }
 

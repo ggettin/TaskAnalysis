@@ -9,6 +9,9 @@
 import UIKit
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
+    
+    var TaskName:String = ""
+    
     @IBOutlet var TabBar: UITabBarItem!
     
     @IBOutlet var stepDescription: UILabel!
