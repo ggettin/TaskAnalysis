@@ -36,8 +36,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     mapView.showsUserLocation = true
     mapView.userTrackingMode = .Follow
     
-    //setup test data
-    setupData()
+    //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
+        setupData("Test", radius: 300, Address: "Clemson, SC 29634")
         
     }
     
@@ -68,14 +68,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
 
-    func setupData() {
+    func setupData( Label: String, radius: Double, Address: String ) {
         // check if system can monitor regions
         if CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion.self) {
             
             //region data need to put in its own class to read multiple regions
-            let title = "Test"
-            let regionRadius = 300.0
-            let address = "2900 Las Positas Rd, Livermore"
+            let title = Label
+            let regionRadius = radius // in meters
+            let address = Address // street, city, state zip
             
             //takes in the address of a location and converts it into 2d coordinates (lat/long)
             let geocoder = CLGeocoder()
