@@ -15,6 +15,8 @@ class VideoTab: UIViewController {
     var playerViewController = AVPlayerViewController()
     var playerView = AVPlayer()
     
+    var TaskName:String = ""
+    
     @IBOutlet var imageView: UIImageView!
     
     @IBOutlet var button: UIButton!
@@ -33,11 +35,8 @@ class VideoTab: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         
-        
-        
         //location of video to be played (local for now)
         let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/test.m4v")!
-        print(fileURL)
         
         //creates player
         playerView = AVPlayer(URL: fileURL)
@@ -63,7 +62,7 @@ class VideoTab: UIViewController {
             print("Error generating thumbnail: \(error)")
         }
         
-
+        print(TaskName)
         
     }
     
