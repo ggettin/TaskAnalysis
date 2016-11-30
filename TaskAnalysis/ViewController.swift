@@ -17,10 +17,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //hardcoded tasks for now
     
-    let taskTitles = ["Sweeping", "Laundry", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
+    let taskTitles = ["Sweeping", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
     
     //hardcoded task images for now
-    let taskImages = [UIImage(named: "sweeping"), UIImage(named: "laundry"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
+    let taskImages = [UIImage(named: "sweeping"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
     
     
     
@@ -49,15 +49,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    //Passes data to next view during segue. (Not yet used)
+    //Passes data to next view during segue.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
         
-       /* if segue.identifier! == "showSteps" {
+        if segue.identifier == "showSteps" {
             let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
             
             tabView.navigationItem.title = taskTitles[sender!.row]
             
-        } */
+        }
     }
     
     override func viewDidLoad() {
