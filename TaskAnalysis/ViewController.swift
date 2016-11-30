@@ -80,6 +80,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     }
 
+    override func viewDidAppear(animated: Bool) {
+        currentLocation.text = TaskLocation
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
