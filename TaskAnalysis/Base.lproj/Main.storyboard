@@ -200,7 +200,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="CM8-Ce-9Q7" customClass="CustomCollectionViewCell" customModule="TaskAnalysis" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="80" width="140" height="140"/>
+                                        <rect key="frame" x="16" y="16" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -286,7 +286,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -342,6 +342,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="XxQ-RM-qvL" id="wb7-2Z-eAL"/>
+                        <outlet property="currentLocation" destination="HMd-Yn-0pJ" id="LFY-Nn-03w"/>
                         <outlet property="locationImage" destination="99t-2w-TKM" id="0tO-wz-Yp0"/>
                         <segue destination="WwJ-3c-nQA" kind="show" identifier="showSteps" id="eEu-TQ-4nJ"/>
                     </connections>
@@ -567,11 +568,14 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="nextStepButton" destination="4ki-y0-Qwf" id="hPV-76-ZSZ"/>
+                        <outlet property="playButton" destination="usT-qO-WPV" id="Sct-bf-sc4"/>
                         <outlet property="prevStep" destination="DzU-uE-XaU" id="vc6-ud-fKe"/>
                         <outlet property="prevStepButton" destination="DzU-uE-XaU" id="IAm-Wp-5Ov"/>
                         <outlet property="scrubSlider" destination="fUh-59-xe8" id="fBd-bG-RC0"/>
                         <outlet property="stepDescription" destination="BBC-nP-4Ho" id="kTB-UI-UXM"/>
                         <outlet property="stepImage" destination="zYk-rU-LVw" id="BZk-x8-b0O"/>
+                        <outlet property="timerEnd" destination="b7t-LP-RSb" id="2lq-kn-seh"/>
+                        <outlet property="timerStart" destination="QEG-xu-NS9" id="iJo-HM-1X6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UYR-2Y-cQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -597,7 +601,7 @@
                                     <action selector="playButton:" destination="Gjz-sB-Rwc" eventType="touchUpInside" id="Usa-T9-BCl"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-Pd-7fS">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-Pd-7fS">
                                 <rect key="frame" x="20" y="72" width="560" height="471"/>
                             </imageView>
                         </subviews>
@@ -710,7 +714,7 @@ AAAAAQAAAAQAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAADgEAAAMAAAABAB4AAAEBAAMAAAABAB4AAAEC
 AAMAAAAEAAAOxgEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEV
 AAMAAAABAAQAAAEWAAMAAAABAB4AAAEXAAQAAAABAAAOEAEcAAMAAAABAAEAAAFSAAMAAAABAAIAAAFT
 AAMAAAAEAAAOzodzAAcAAAxIAAAO1gAAAAAACAAIAAgACAABAAEAAQABAAAMSExpbm8CEAAAbW50clJH
-QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA
+QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAEAAPbWAAEAAAAA
 0y1IUCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAA
 AVAAAAAzZGVzYwAAAYQAAABsd3RwdAAAAfAAAAAUYmtwdAAAAgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAA
 AiwAAAAUYlhZWgAAAkAAAAAUZG1uZAAAAlQAAABwZG1kZAAAAsQAAACIdnVlZAAAA0wAAACGdmlldwAA

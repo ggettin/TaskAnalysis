@@ -11,6 +11,8 @@ import AVFoundation
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
     
+    var playing:Bool = false
+    
     var TaskName:String = ""
     
     @IBOutlet var TabBar: UITabBarItem!
@@ -19,6 +21,36 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     @IBOutlet var stepImage: UIImageView!
     
+    //used to update audio time elapsed
+    @IBOutlet weak var timerStart: UILabel!
+    
+    //used to update audio time remaning
+    @IBOutlet weak var timerEnd: UILabel!
+    
+    var timer = NSTimer()
+    
+    //function updates the timer labels in a formatted pattern
+    func increaseTimer(){
+        var currentTime: NSTimeInterval = player.currentTime
+        var endTime: NSTimeInterval = player.duration - currentTime
+        
+        //save the times formatted min:sec
+        let minutes = UInt8(currentTime / 60)
+        let seconds = UInt8(currentTime)
+        let endMin = UInt8(endTime / 60)
+        let endSec = UInt8(endTime)
+        
+        let strMin = String(format: "%02d", minutes)
+        let strSec = String(format: "%02d", seconds)
+        let strEndMin = String(format: "%02d", endMin)
+        let strEndSec = String(format: "%02d", endSec)
+
+        //update labels
+        timerStart.text = "\(strMin):\(strSec)"
+        timerEnd.text = "\(strEndMin):\(strEndSec)"
+
+    }
+    
     //player used to play and pause audio
     var player: AVAudioPlayer = AVAudioPlayer()
     
@@ -26,10 +58,26 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     @IBAction func scrub(sender: AnyObject) {
          player.currentTime = NSTimeInterval(scrubSlider.value)
+         increaseTimer()
     }
+    @IBOutlet var playButton: UIButton!
+    
     @IBAction func playAudioButton(sender: AnyObject) {
-        player.play()
-        //player.pause()
+        if !playing{
+            playing = true
+            playButton.setImage(UIImage(named: "pause"), forState: UIControlState.Normal)
+            player.play()
+            
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("increaseTimer"), userInfo: nil, repeats: true)
+            
+        }else{
+            playing = false
+            playButton.setImage(UIImage(named: "playAudio"), forState: UIControlState.Normal)
+            player.pause()
+            timer.invalidate()
+        }
+        
+        
     }
     @IBOutlet var prevStepButton: UIButton!
     
@@ -38,6 +86,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     @IBOutlet var nextStepButton: UIButton!
     
     @IBAction func nextStep(sender: AnyObject) {
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +95,10 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
         do {
-            
-            try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("test", ofType: "mp3")!))
+            let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/HeyJude.mp3")!
+            let soundData = NSData.init(contentsOfURL: fileURL)
+            try player = AVAudioPlayer(data: soundData!)
+            //try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("test", ofType: "mp3")!))
             
             scrubSlider.maximumValue = Float(player.duration)
             
@@ -63,6 +114,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     func updateScrubSlider() {
         
         scrubSlider.value = Float(player.currentTime)
+        
         
     }
     

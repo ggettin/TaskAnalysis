@@ -34,7 +34,7 @@
 		37FC93811DDACF0D0067AC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FC93801DDACF0D0067AC77 /* Assets.xcassets */; };
 		382BD0731DDDFA9000986339 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382BD0721DDDFA9000986339 /* MapViewController.swift */; };
 		3891188A1DEE543200107F3A /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 389118891DEE543200107F3A /* test.mp3 */; };
-		38E8AA491DDE3ED000404274 /* Test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 38E8AA481DDE3ECF00404274 /* Test.gpx */; };
+		3891188E1DEE724900107F3A /* Campus.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3891188D1DEE724900107F3A /* Campus.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +68,7 @@
 		37FC93801DDACF0D0067AC77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		382BD0721DDDFA9000986339 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		389118891DEE543200107F3A /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
-		38E8AA481DDE3ECF00404274 /* Test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.gpx; sourceTree = "<group>"; };
+		3891188D1DEE724900107F3A /* Campus.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Campus.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				3729C7721DD394D600A920DC /* LaunchScreen.storyboard */,
 				3729C7751DD394D600A920DC /* Info.plist */,
 				389118891DEE543200107F3A /* test.mp3 */,
-				38E8AA481DDE3ECF00404274 /* Test.gpx */,
+				3891188D1DEE724900107F3A /* Campus.gpx */,
 				3729C76D1DD394D600A920DC /* TaskAnalysis.xcdatamodeld */,
 				37FC937D1DDABD010067AC77 /* test.m4v */,
 				1FC568441DECC2ED001BB987 /* LocationTable.swift */,
@@ -196,7 +196,7 @@
 				37FC93811DDACF0D0067AC77 /* Assets.xcassets in Resources */,
 				3891188A1DEE543200107F3A /* test.mp3 in Resources */,
 				3729C7741DD394D600A920DC /* LaunchScreen.storyboard in Resources */,
-				38E8AA491DDE3ED000404274 /* Test.gpx in Resources */,
+				3891188E1DEE724900107F3A /* Campus.gpx in Resources */,
 				3729C76C1DD394D500A920DC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
