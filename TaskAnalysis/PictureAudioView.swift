@@ -95,8 +95,10 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
         do {
-            
-            try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("test", ofType: "mp3")!))
+            let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/HeyJude.mp3")!
+            let soundData = NSData.init(contentsOfURL: fileURL)
+            try player = AVAudioPlayer(data: soundData!)
+            //try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("test", ofType: "mp3")!))
             
             scrubSlider.maximumValue = Float(player.duration)
             
