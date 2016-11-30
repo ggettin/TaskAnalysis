@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
     
@@ -18,7 +19,17 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     @IBOutlet var stepImage: UIImageView!
     
+    //player used to play and pause audio
+    var player: AVAudioPlayer = AVAudioPlayer()
+    
+    @IBOutlet weak var scrubSlider: UISlider!
+    
+    @IBAction func scrub(sender: AnyObject) {
+         player.currentTime = NSTimeInterval(scrubSlider.value)
+    }
     @IBAction func playAudioButton(sender: AnyObject) {
+        player.play()
+        //player.pause()
     }
     @IBOutlet var prevStepButton: UIButton!
     
@@ -34,8 +45,26 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
+        do {
+            
+            try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("test", ofType: "mp3")!))
+            
+            scrubSlider.maximumValue = Float(player.duration)
+            
+        } catch {
+            
+            // It didn't work!
+            
+        }
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateScrubSlider"), userInfo: nil, repeats: true)
     }
 
+    func updateScrubSlider() {
+        
+        scrubSlider.value = Float(player.currentTime)
+        
+    }
     
     @IBOutlet var VideoTabButton: UITabBarItem!
  

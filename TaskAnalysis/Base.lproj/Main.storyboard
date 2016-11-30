@@ -438,6 +438,9 @@
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fUh-59-xe8">
                                 <rect key="frame" x="72" y="381" width="456" height="31"/>
+                                <connections>
+                                    <action selector="scrub:" destination="h24-Fx-Miv" eventType="valueChanged" id="e61-A5-Jgh"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7t-LP-RSb">
                                 <rect key="frame" x="534" y="385" width="46" height="21"/>
@@ -500,10 +503,15 @@
                             <constraint firstItem="BBC-nP-4Ho" firstAttribute="top" secondItem="hrI-ml-YaZ" secondAttribute="bottom" id="vzb-VM-TPU"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="8d4-c3-uxp"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="nextStepButton" destination="4ki-y0-Qwf" id="hPV-76-ZSZ"/>
                         <outlet property="prevStep" destination="DzU-uE-XaU" id="vc6-ud-fKe"/>
                         <outlet property="prevStepButton" destination="DzU-uE-XaU" id="IAm-Wp-5Ov"/>
+                        <outlet property="scrubSlider" destination="fUh-59-xe8" id="fBd-bG-RC0"/>
                         <outlet property="stepDescription" destination="BBC-nP-4Ho" id="kTB-UI-UXM"/>
                         <outlet property="stepImage" destination="zYk-rU-LVw" id="BZk-x8-b0O"/>
                     </connections>
@@ -644,7 +652,7 @@ AAAAAQAAAAQAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAADgEAAAMAAAABAB4AAAEBAAMAAAABAB4AAAEC
 AAMAAAAEAAAOxgEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEV
 AAMAAAABAAQAAAEWAAMAAAABAB4AAAEXAAQAAAABAAAOEAEcAAMAAAABAAEAAAFSAAMAAAABAAIAAAFT
 AAMAAAAEAAAOzodzAAcAAAxIAAAO1gAAAAAACAAIAAgACAABAAEAAQABAAAMSExpbm8CEAAAbW50clJH
-QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA
+QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAEAAPbWAAEAAAAA
 0y1IUCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAA
 AVAAAAAzZGVzYwAAAYQAAABsd3RwdAAAAfAAAAAUYmtwdAAAAgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAA
 AiwAAAAUYlhZWgAAAkAAAAAUZG1uZAAAAlQAAABwZG1kZAAAAsQAAACIdnVlZAAAA0wAAACGdmlldwAA
