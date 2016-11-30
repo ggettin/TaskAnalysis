@@ -239,7 +239,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="2A19FD49-EF7D-4283-9967-10A8A0C8D077" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="64DEDB5F-2FB0-4B22-A9F0-E0DC7AC116A7" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -281,6 +281,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="XxQ-RM-qvL" id="wb7-2Z-eAL"/>
+                        <outlet property="currentLocation" destination="HMd-Yn-0pJ" id="LFY-Nn-03w"/>
                         <outlet property="locationImage" destination="99t-2w-TKM" id="0tO-wz-Yp0"/>
                         <segue destination="WwJ-3c-nQA" kind="show" identifier="showSteps" id="eEu-TQ-4nJ"/>
                     </connections>
@@ -583,7 +584,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2A19FD49-EF7D-4283-9967-10A8A0C8D077" width="30" height="30">
+        <image name="64DEDB5F-2FB0-4B22-A9F0-E0DC7AC116A7" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-var TaskLocation: String = "none"
+var TaskLocation: String = "test"
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -37,9 +37,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     mapView.userTrackingMode = .Follow
     
     //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
-        setupData("Test1", radius: 100, Address: "Redfern Health Center, Clemson, SC 29634")
-        setupData("Test2", radius: 200, Address: "821 McMillan Rd, Clemson, SC 29634")
-        setupData("Test3", radius: 300, Address: "720 McMillan Rd, Clemson, SC 29634")
+        setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
+        setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -66,6 +65,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             alert.dismissViewControllerAnimated(true, completion: nil)
         }))
         self.presentViewController(alert, animated: true, completion: nil)
+       
         
     }
 
@@ -124,14 +124,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     //user enters region this will update the users current task location
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        showAlert("enter \(region.identifier)")
         TaskLocation = region.identifier
-    }
+        print(TaskLocation)
+        showAlert("enter \(region.identifier)")
+        }
     
     //user exit region this will set the users current task location to null
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        showAlert("exit \(region.identifier)")
         TaskLocation = "none"
+        print(TaskLocation)
+        showAlert("exit \(region.identifier)")
+        
         
     }
 }
