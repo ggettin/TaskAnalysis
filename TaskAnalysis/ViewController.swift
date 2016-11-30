@@ -51,12 +51,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //Passes data to next view during segue. (Not yet used)
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier! == "showSteps" {
+       /* if segue.identifier! == "showSteps" {
             let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
             
             tabView.navigationItem.title = taskTitles[sender!.row]
             
-        }
+        } */
     }
     
     override func viewDidLoad() {

@@ -37,9 +37,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     mapView.userTrackingMode = .Follow
     
     //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
-        setupData("Test1", radius: 100, Address: "735 McMillan Rd, Clemson, SC 29634")
-        setupData("Test2", radius: 100, Address: "821 McMillan Rd, Clemson, SC 29634")
-        setupData("Test3", radius: 100, Address: "720 McMillan Rd, Clemson, SC 29634")
+        setupData("Test1", radius: 100, Address: "Redfern Health Center, Clemson, SC 29634")
+        setupData("Test2", radius: 200, Address: "821 McMillan Rd, Clemson, SC 29634")
+        setupData("Test3", radius: 300, Address: "720 McMillan Rd, Clemson, SC 29634")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -111,10 +111,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     //draw circle
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlay = overlay as? MKCircle
+        {
         let circleRenderer = MKCircleRenderer(overlay: overlay)
         circleRenderer.strokeColor = UIColor.redColor()
         circleRenderer.lineWidth = 1.0
         return circleRenderer
+        }
+        
+        return MKOverlayRenderer(overlay: overlay)
     }
     
     //user enters region this will update the users current task location

@@ -31,7 +31,7 @@
 		37D9C0781DD93CE500EAAA4B /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9C0771DD93CE500EAAA4B /* CustomCollectionViewCell.swift */; };
 		37FC93811DDACF0D0067AC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FC93801DDACF0D0067AC77 /* Assets.xcassets */; };
 		382BD0731DDDFA9000986339 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382BD0721DDDFA9000986339 /* MapViewController.swift */; };
-		38E3D4BF1DECDC3F00EDA83C /* GpsiesTrack.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 38E3D4BE1DECDC3F00EDA83C /* GpsiesTrack.gpx */; };
+		3891188A1DEE543200107F3A /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 389118891DEE543200107F3A /* test.mp3 */; };
 		38E8AA491DDE3ED000404274 /* Test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 38E8AA481DDE3ECF00404274 /* Test.gpx */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,7 @@
 		37FC937D1DDABD010067AC77 /* test.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4v; sourceTree = "<group>"; };
 		37FC93801DDACF0D0067AC77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		382BD0721DDDFA9000986339 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		38E3D4BE1DECDC3F00EDA83C /* GpsiesTrack.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GpsiesTrack.gpx; sourceTree = "<group>"; };
+		389118891DEE543200107F3A /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		38E8AA481DDE3ECF00404274 /* Test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +109,7 @@
 				37FC93801DDACF0D0067AC77 /* Assets.xcassets */,
 				3729C7721DD394D600A920DC /* LaunchScreen.storyboard */,
 				3729C7751DD394D600A920DC /* Info.plist */,
-				38E3D4BE1DECDC3F00EDA83C /* GpsiesTrack.gpx */,
+				389118891DEE543200107F3A /* test.mp3 */,
 				38E8AA481DDE3ECF00404274 /* Test.gpx */,
 				3729C76D1DD394D600A920DC /* TaskAnalysis.xcdatamodeld */,
 				37FC937D1DDABD010067AC77 /* test.m4v */,
@@ -187,8 +187,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38E3D4BF1DECDC3F00EDA83C /* GpsiesTrack.gpx in Resources */,
 				37FC93811DDACF0D0067AC77 /* Assets.xcassets in Resources */,
+				3891188A1DEE543200107F3A /* test.mp3 in Resources */,
 				3729C7741DD394D600A920DC /* LaunchScreen.storyboard in Resources */,
 				38E8AA491DDE3ED000404274 /* Test.gpx in Resources */,
 				3729C76C1DD394D500A920DC /* Main.storyboard in Resources */,
