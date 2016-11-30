@@ -15,16 +15,8 @@ class Navigation_CoreData_Controller: UINavigationController {
         
         super.viewDidLoad()
         
-        let urlPath: NSString = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/StepTable.php"
-        
-        let urlStr : NSString =  urlPath.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        
-        let url = NSURL(string: urlStr as String)
-        
-        let request = NSURLRequest(URL: url!)
-        
-        let connection = NSURLConnection(request: request, delegate: self)
-        
+        let getStepsData = getStepData()
+        getStepsData.downloadItems()
     }
     
     

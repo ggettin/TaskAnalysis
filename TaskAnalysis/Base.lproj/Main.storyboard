@@ -168,7 +168,7 @@
                     <navigationItem key="navigationItem" title="All Tasks" id="wMF-Zw-ZYG">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="FrH-Io-2la">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="presentation" id="lUg-4L-dde"/>
+                                <segue destination="BYZ-38-t0r" kind="show" id="12L-c0-KAX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -295,7 +295,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="A4086F99-B905-42AE-B351-C2B95EAE4E44" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="86D2D6F1-45C5-4C46-844D-338341A3C6AC" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -385,7 +385,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-tF-giX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-tF-giX">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -645,7 +645,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A4086F99-B905-42AE-B351-C2B95EAE4E44" width="30" height="30">
+        <image name="86D2D6F1-45C5-4C46-844D-338341A3C6AC" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -787,6 +787,6 @@ AAAAAAActw
         <image name="video" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1XR-mA-bFH"/>
+        <segue reference="12L-c0-KAX"/>
     </inferredMetricsTieBreakers>
 </document>
