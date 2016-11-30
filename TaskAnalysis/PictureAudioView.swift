@@ -21,6 +21,36 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     @IBOutlet var stepImage: UIImageView!
     
+    //used to update audio time elapsed
+    @IBOutlet weak var timerStart: UILabel!
+    
+    //used to update audio time remaning
+    @IBOutlet weak var timerEnd: UILabel!
+    
+    var timer = NSTimer()
+    
+    //function updates the timer labels in a formatted pattern
+    func increaseTimer(){
+        var currentTime: NSTimeInterval = player.currentTime
+        var endTime: NSTimeInterval = player.duration - currentTime
+        
+        //save the times formatted min:sec
+        let minutes = UInt8(currentTime / 60)
+        let seconds = UInt8(currentTime)
+        let endMin = UInt8(endTime / 60)
+        let endSec = UInt8(endTime)
+        
+        let strMin = String(format: "%02d", minutes)
+        let strSec = String(format: "%02d", seconds)
+        let strEndMin = String(format: "%02d", endMin)
+        let strEndSec = String(format: "%02d", endSec)
+
+        //update labels
+        timerStart.text = "\(strMin):\(strSec)"
+        timerEnd.text = "\(strEndMin):\(strEndSec)"
+
+    }
+    
     //player used to play and pause audio
     var player: AVAudioPlayer = AVAudioPlayer()
     
@@ -28,6 +58,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     @IBAction func scrub(sender: AnyObject) {
          player.currentTime = NSTimeInterval(scrubSlider.value)
+         increaseTimer()
     }
     @IBOutlet var playButton: UIButton!
     
@@ -37,10 +68,13 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             playButton.setImage(UIImage(named: "pause"), forState: UIControlState.Normal)
             player.play()
             
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("increaseTimer"), userInfo: nil, repeats: true)
+            
         }else{
             playing = false
             playButton.setImage(UIImage(named: "playAudio"), forState: UIControlState.Normal)
             player.pause()
+            timer.invalidate()
         }
         
         
@@ -79,6 +113,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     func updateScrubSlider() {
         
         scrubSlider.value = Float(player.currentTime)
+        
         
     }
     

@@ -12,6 +12,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet weak var currentLocation: UILabel!
     @IBOutlet var locationImage: UIImageView!
     
     //hardcoded tasks for now
@@ -62,6 +63,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //trying to update the currentLocation text at the bottom of the screen to match location
+        currentLocation.text = TaskLocation
+
         // Do any additional setup after loading the view, typically from a nib.
         collectionView.delegate = self
         
@@ -72,6 +76,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.locationImage.layer.masksToBounds = true;
     
         self.navigationItem.title = "Tasks"
+        
 
     }
 
