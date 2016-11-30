@@ -11,6 +11,8 @@ import AVFoundation
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
     
+    var playing:Bool = false
+    
     var TaskName:String = ""
     
     @IBOutlet var TabBar: UITabBarItem!
@@ -27,9 +29,21 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     @IBAction func scrub(sender: AnyObject) {
          player.currentTime = NSTimeInterval(scrubSlider.value)
     }
+    @IBOutlet var playButton: UIButton!
+    
     @IBAction func playAudioButton(sender: AnyObject) {
-        player.play()
-        //player.pause()
+        if !playing{
+            playing = true
+            playButton.setImage(UIImage(named: "pause"), forState: UIControlState.Normal)
+            player.play()
+            
+        }else{
+            playing = false
+            playButton.setImage(UIImage(named: "playAudio"), forState: UIControlState.Normal)
+            player.pause()
+        }
+        
+        
     }
     @IBOutlet var prevStepButton: UIButton!
     
@@ -38,6 +52,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     @IBOutlet var nextStepButton: UIButton!
     
     @IBAction func nextStep(sender: AnyObject) {
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

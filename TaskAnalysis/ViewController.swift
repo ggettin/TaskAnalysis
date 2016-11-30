@@ -16,10 +16,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //hardcoded tasks for now
     
-    let taskTitles = ["Sweeping", "Laundry", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
+    let taskTitles = ["Sweeping", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
     
     //hardcoded task images for now
-    let taskImages = [UIImage(named: "sweeping"), UIImage(named: "laundry"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
+    let taskImages = [UIImage(named: "sweeping"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
     
     
     
