@@ -6,14 +6,14 @@
 //  Copyright © 2016 Greg Gettings. All rights reserved.
 //
 
-/*import Foundation
-
+import Foundation
+import CoreData
 
 protocol getStepProtocol: class {
     func itemsDownloaded(items: NSArray)
 }
 
-class getBookData: NSObject, NSURLSessionDataDelegate {
+class getStepData: NSObject, NSURLSessionDataDelegate {
     
     //properties
     
@@ -53,6 +53,8 @@ class getBookData: NSObject, NSURLSessionDataDelegate {
         }
         
     }
+
+    
     
     func parseJSON() {
         
@@ -67,36 +69,41 @@ class getBookData: NSObject, NSURLSessionDataDelegate {
         }
         
         var jsonElement: NSDictionary = NSDictionary()
-        let bookData: NSMutableArray = NSMutableArray()
+        let stepData: NSMutableArray = NSMutableArray()
         
         for(var i = 0; i < jsonResult.count; i++)
         {
             
             jsonElement = jsonResult[i] as! NSDictionary
             
-            let step_data =
+           let step_data = StepsModel()
             
             //the following insures none of the JsonElement values are nil through optional binding
-            if let book_id = jsonElement["book_id"] as? String,
-                let bookName = jsonElement["book_name"] as? String,
-                let bookAuthor = jsonElement["book_author"] as? String,
-                let bookPrice = jsonElement["book_Price"] as? String
+            if let step_id = jsonElement["step_id"] as? String,
+                let step_info = jsonElement["step_info"] as? String,
+                let step_photo = jsonElement["step_photo"] as? String,
+                let step_audio = jsonElement["step_audio"] as? String,
+                let step_number = jsonElement["step_number"] as? String,
+                let delete_id = jsonElement["delete_id"] as? String,
+                let timestamp = jsonElement["timestamp"] as? String
             {
-                book_data.book_id = Int(book_id)
-                book_data.book_name = bookName
-                book_data.author = bookAuthor
-                book_data.book_price = bookPrice
+                step_data.step_id = Int(step_id)
+                step_data.step_number = Int(step_number)
+                step_data.step_info = step_info
+                step_data.step_audio = step_audio
+                step_data.step_photo = step_photo
+                step_data.delete_id = Int(delete_id)
+                step_data.timestamp = timestamp
             }
             
-            bookData.addObject(book_data)
-            //print(bookData)
+            stepData.addObject(step_data)
+            print(stepData)
         }
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
-            self.delegate.itemsDownloaded(bookData)
+           // self.delegate.itemsDownloaded(stepData)
             
         })
     }
 }
- */
