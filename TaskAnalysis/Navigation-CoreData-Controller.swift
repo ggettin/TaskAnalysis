@@ -15,8 +15,26 @@ class Navigation_CoreData_Controller: UINavigationController {
         
         super.viewDidLoad()
         
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+        
+        
+        
+        
+        
+        
+        
+        
+        //Get all of the data on this viewcontroller
+        
+        
+        //Get steps Data
         let getStepsData = getStepData()
         getStepsData.downloadItems()
+        
+        
+        
     }
     
     
