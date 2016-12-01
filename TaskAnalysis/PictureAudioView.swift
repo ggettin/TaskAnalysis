@@ -36,18 +36,18 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         
         //save the times formatted min:sec
         let minutes = UInt8(currentTime / 60)
-        let seconds = UInt8(currentTime)
+        let seconds = UInt8(currentTime % 60)
         let endMin = UInt8(endTime / 60)
-        //let endSec = UInt8(endTime)
+        let endSec = UInt8(endTime % 60)
         
-        let strMin = String(format: "%02d", minutes)
-        let strSec = String(format: "%02d", seconds)
-        let strEndMin = String(format: "%02d", endMin)
-        //let strEndSec = String(format: "%02d", endSec)
+        let strMin = String(format: "%2d", minutes)
+        let strSec = String(format: "%.2d", seconds)
+        let strEndMin = String(format: "%2d", endMin)
+        let strEndSec = String(format: "%.2d", endSec)
 
         //update labels
         timerStart.text = "\(strMin):\(strSec)"
-       // timerEnd.text = "\(strEndMin):\(strEndSec)"
+        timerEnd.text = "\(strEndMin):\(strEndSec)"
 
     }
     
@@ -135,7 +135,9 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     }
     
     
-    
+    override func viewWillDisappear(animated: Bool) {
+        player.pause()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

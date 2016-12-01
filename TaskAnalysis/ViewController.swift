@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+
+//User current location
+var TaskLocation: String = "test"
+
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
 
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet weak var currentLocation: UILabel!
     @IBOutlet var locationImage: UIImageView!
+    
+    //set up way to handle location
+    let locationManager = CLLocationManager()
+    
     
     //hardcoded tasks for now
     
@@ -64,7 +73,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         //trying to update the currentLocation text at the bottom of the screen to match location
-        currentLocation.text = TaskLocation
+        //currentLocation.text = TaskLocation
 
         // Do any additional setup after loading the view, typically from a nib.
         collectionView.delegate = self
@@ -77,13 +86,95 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
         self.navigationItem.title = "Tasks"
         
+        //setup locationManager
+        locationManager.delegate = self
+        locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        
 
     }
 
     override func viewDidAppear(animated: Bool) {
-        currentLocation.text = TaskLocation
+        //currentLocation.text = TaskLocation
+        
+        // status is not determined
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            locationManager.requestAlwaysAuthorization()
+        }
+            // authorizations were denied
+        else if CLLocationManager.authorizationStatus() == .Denied {
+            showAlert("Location services were previously denied. Please enable location services for this app in Settings.")
+        }
+            //authorization accepted
+        else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
+            locationManager.startUpdatingLocation()
+        }
 
     }
+    
+    //function for easy resuse of alert boxes
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+    }
+
+    func setupData( Label: String, radius: Double, Address: String ) {
+        // check if system can monitor regions
+        if CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion.self) {
+            
+            //region data need to put in its own class to read multiple regions
+            let title = Label
+            let regionRadius = radius // in meters
+            let address = Address // street, city, state zip
+            
+            //takes in the address of a location and converts it into 2d coordinates (lat/long)
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(address) { (placemarks, error) in
+                if let placemarks = placemarks {
+                    if placemarks.count != 0 {
+                        let coordinates = placemarks.first!.location
+                        let coordinate = coordinates?.coordinate
+                        
+                        //setup region this will read an object with a saved coordinate and name
+                        let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate!.latitude,
+                            longitude: coordinate!.longitude), radius: regionRadius, identifier: title)
+                        self.locationManager.startMonitoringForRegion(region)
+                        
+                    }
+                    else {
+                        print("System can't track regions")
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        TaskLocation = region.identifier
+        currentLocation.text = TaskLocation
+        print(TaskLocation)
+        //showAlert("enter \(region.identifier)")
+    }
+    
+    //user exit region this will set the users current task location to null
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        TaskLocation = "none"
+        currentLocation.text = TaskLocation
+        print(TaskLocation)
+        //showAlert("exit \(region.identifier)")
+        
+        
+    }
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
