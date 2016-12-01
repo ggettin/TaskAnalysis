@@ -4,17 +4,18 @@
 //
 //  Created by Brendan Giberson on 11/17/16.
 //  Copyright © 2016 Greg Gettings. All rights reserved.
-//
+// this view controller exists for location testing purposes
 
 import Foundation
 import UIKit
 import MapKit
 import CoreLocation
 
-var TaskLocation: String = "test"
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    var TaskLocation: String = "test"
+
     //link to mapview for testing purposes
     @IBOutlet weak var mapView: MKMapView!
    
