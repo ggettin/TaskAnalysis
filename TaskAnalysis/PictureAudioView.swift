@@ -96,8 +96,10 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         
         do {
             
-            //try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("test", ofType: "mp3")!))
-            try player = AVAudioPlayer(contentsOfURL: NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/HeyJude.mp3")!)
+            
+            let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/HeyJude.mp3")!
+            let soundData = NSData.init(contentsOfURL: fileURL)
+            try player = AVAudioPlayer(data: soundData!)
             
             scrubSlider.maximumValue = Float(player.duration)
             
