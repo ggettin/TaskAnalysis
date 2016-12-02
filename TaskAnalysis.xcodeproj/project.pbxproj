@@ -36,6 +36,7 @@
 		37D9C0781DD93CE500EAAA4B /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9C0771DD93CE500EAAA4B /* CustomCollectionViewCell.swift */; };
 		37FC93811DDACF0D0067AC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37FC93801DDACF0D0067AC77 /* Assets.xcassets */; };
 		382BD0731DDDFA9000986339 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382BD0721DDDFA9000986339 /* MapViewController.swift */; };
+		382D64251DF0E2BA00124531 /* phoneNumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382D64241DF0E2B900124531 /* phoneNumController.swift */; };
 		3891188A1DEE543200107F3A /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 389118891DEE543200107F3A /* test.mp3 */; };
 		3891188E1DEE724900107F3A /* Campus.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3891188D1DEE724900107F3A /* Campus.gpx */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		37FC937D1DDABD010067AC77 /* test.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4v; sourceTree = "<group>"; };
 		37FC93801DDACF0D0067AC77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		382BD0721DDDFA9000986339 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		382D64241DF0E2B900124531 /* phoneNumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = phoneNumController.swift; sourceTree = "<group>"; };
 		389118891DEE543200107F3A /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		3891188D1DEE724900107F3A /* Campus.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Campus.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				382BD0721DDDFA9000986339 /* MapViewController.swift */,
 				1FC568681DEF2985001BB987 /* Navigation-CoreData-Controller.swift */,
 				37D9C0771DD93CE500EAAA4B /* CustomCollectionViewCell.swift */,
+				382D64241DF0E2B900124531 /* phoneNumController.swift */,
 				1FC568621DEE80F5001BB987 /* AllTasksController.swift */,
 				1FC568661DEE8587001BB987 /* AllTasksCell.swift */,
 			);
@@ -244,6 +247,7 @@
 				37A17B151DDA1E5900F3FF04 /* PicturesTab.swift in Sources */,
 				1FC5686F1DEF5724001BB987 /* StepsModel.swift in Sources */,
 				374FE9E31DDA3C7B000312C4 /* StepCell.swift in Sources */,
+				382D64251DF0E2BA00124531 /* phoneNumController.swift in Sources */,
 				1FC568631DEE80F5001BB987 /* AllTasksController.swift in Sources */,
 				374FE9E51DDA542F000312C4 /* PictureAudioView.swift in Sources */,
 				1FC5685B1DECC4E9001BB987 /* TaskTable.swift in Sources */,
