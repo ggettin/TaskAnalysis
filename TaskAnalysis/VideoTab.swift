@@ -10,6 +10,8 @@ import UIKit
 import AVKit
 import AVFoundation
 
+var taskVideoss = ""
+
 class VideoTab: UIViewController {
     
     var playerViewController = AVPlayerViewController()
@@ -40,7 +42,7 @@ class VideoTab: UIViewController {
         //location of video to be played (local for now)
         //let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/test.m4v")!
         
-        let fileURL: NSURL = NSURL(string: taskVideoS)!
+        let fileURL: NSURL = NSURL(string: taskVideoss)!
         
         
         //creates player

@@ -104,9 +104,7 @@ func parseJSONLocal(data: NSMutableData) {
             locationTable.location_address = location_address
             locationTable.location_photo = location_photo
             locationTable.delete_id = Int(delete_id)
-            locationTable.timestamp = timestamp
-          
-            
+            locationTable.timestamp = String(timestamp)
         }
         
         do{
@@ -120,8 +118,7 @@ func parseJSONLocal(data: NSMutableData) {
         }
         
         //taskData.addObject(task_data)
-        print("fadsfasdfasdfasdfasdfasdfasdfdddfdjjdjdjdjdjdjdjdjdjjddjddjjdjdjdjdjdjdjdjdjdjjdjdjdjdjdj")
-       print(locationData)
+        print(locationData)
     }
     
     dispatch_async(dispatch_get_main_queue(), { () -> Void in

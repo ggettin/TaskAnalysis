@@ -139,12 +139,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         self.performSegueWithIdentifier("showSteps", sender: indexPath)
         
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer") as! VideoTab
-        
-    
         let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
         
-        vc.taskVideoS = video
+        taskVideoss = video
        
         
         
@@ -152,7 +149,6 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         
         //self.presentViewController(vc, animated: true, completion: nil)
-        self.showViewController(vc, sender: self)
         //self.viewDidLoad()
     }
     
@@ -171,6 +167,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
        //NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
 

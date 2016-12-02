@@ -1,20 +1,20 @@
 //
-//  Navigation-CoreData-Controller.swift
+//  LoadingView.swift
 //  TaskAnalysis
 //
-//  Created by Jordan Marro on 11/30/16.
+//  Created by Jordan Marro on 12/2/16.
 //  Copyright © 2016 Greg Gettings. All rights reserved.
 //
+
 
 import UIKit
 import CoreData
 
-class Navigation_CoreData_Controller: UINavigationController {
+class LoadingView: UIViewController{
 
-  
     override func viewDidLoad() {
-    
-         super.viewDidLoad()
+        
+        super.viewDidLoad()
         
         
         //Get all of the data on this viewcontroller
@@ -28,15 +28,8 @@ class Navigation_CoreData_Controller: UINavigationController {
         let getLocationDatas = getLocationData()
         getLocationDatas.downloadItems()
         
-       super.viewDidLoad()
-    }
-    
-    
-    override func viewDidAppear(animated: Bool) {
-      
-    super.viewDidLoad()
         
-        
+        super.viewDidLoad()
     }
     
     
@@ -47,6 +40,7 @@ class Navigation_CoreData_Controller: UINavigationController {
         
     }
     
+
     
     
 }
