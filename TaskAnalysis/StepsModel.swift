@@ -43,6 +43,11 @@ class StepsModel: NSObject {
         
     }
     
+    func getValues(step_id: Int, step_info: String, step_number: Int, step_audio: String, step_photo: String, delete_id: Int, timestamp: String){
+        
+        
+    }
+    
     
     //prints object's current state
     

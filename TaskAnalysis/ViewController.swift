@@ -8,13 +8,15 @@
 
 import UIKit
 import CoreLocation
-
+import CoreData
 
 //User current location
 var TaskLocation: String = "test"
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
-
+    
+let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     @IBAction func logoutButton(sender: AnyObject) {
         // Create the alert controller
         let alertController = UIAlertController(title: "Confirmation", message: "Would you like to logout?", preferredStyle: .Alert)
@@ -52,16 +54,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //hardcoded tasks for now
     
-    let taskTitles = ["Sweeping", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
+    var taskTitles = [String]()
     
     //hardcoded task images for now
-    let taskImages = [UIImage(named: "sweeping"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
+    //let taskImages = [UIImage(named: "sweeping"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
+    
     
     
     
     // Determines how many collection view cells there are
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.taskTitles.count
+        
+        let context = appDele.managedObjectContext
+        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+        taskRequest.returnsObjectsAsFaults = false
+        do{
+            let tasks: [TaskTable] = try context.executeFetchRequest(taskRequest) as! [TaskTable]
+            return tasks.count
+        }
+        catch{
+            
+        }
+        return 0
+
+        //return self.taskTitles.count
     }
     
     
@@ -70,9 +86,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
         
-        cell.taskName.text = self.taskTitles[indexPath.row]
+       /* cell.taskName.text = self.taskTitles[indexPath.row]
         cell.taskImage.image = self.taskImages[indexPath.row]
+ */
         cell.completionImage.image = UIImage(named: "completed")
+ 
+        //MARK: CORE DATA
+        let context = appDele.managedObjectContext
+        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+        taskRequest.returnsObjectsAsFaults = false
+        do{
+            let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
+            cell.taskName.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
+            //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
+            
+            let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
+            let data = NSData(contentsOfURL: url!)
+            cell.taskImage.image = UIImage(data: data!)
+            taskTitles.append(cell.taskName.text!)
+        }
+        catch{
+            
+        }
+        
         
         return cell
     }
