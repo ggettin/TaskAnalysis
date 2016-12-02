@@ -94,19 +94,17 @@ func parseJSONLocal(data: NSMutableData) {
         //the following insures none of the JsonElement values are nil through optional binding
         if let location_id = row["location_id"] as? String,
         let location_name = row["location_name"] as? String,
-            let location_image = row["location_image"] as? String,
+            let location_photo = row["location_photo"] as? String,
             let location_address = row["location_address"] as? String,
             let delete_id = row["delete_id"] as? String,
             let timestamp = row["timestamp"] as? String
         {
-            
+            locationTable.location_id = Int(location_id)
             locationTable.location_name = location_name
             locationTable.location_address = location_address
-            locationTable.location_image = location_image
+            locationTable.location_photo = location_photo
             locationTable.delete_id = Int(delete_id)
-            locationTable.timestamp = timestamp
-            locationTable.location_id = Int(location_id)
-            
+            locationTable.timestamp = String(timestamp)
         }
         
         do{

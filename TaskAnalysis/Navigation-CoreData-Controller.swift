@@ -27,7 +27,16 @@ class Navigation_CoreData_Controller: UINavigationController {
         getTasksData.downloadItems()
         let getLocationDatas = getLocationData()
         getLocationDatas.downloadItems()
+        
        super.viewDidLoad()
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+      
+    super.viewDidLoad()
+        
+        
     }
     
     

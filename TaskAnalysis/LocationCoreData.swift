@@ -16,10 +16,9 @@ extension LocationsTable {
     @NSManaged var location_longitude: NSNumber?
     @NSManaged var location_latitude: NSNumber?
     @NSManaged var location_name: NSString?
-    @NSManaged var location_photo: NSURL?
+    @NSManaged var location_photo: NSString?
     @NSManaged var location_radius: NSNumber
     @NSManaged var location_address: NSString?
-    @NSManaged var location_image: NSString?
     @NSManaged var timestamp: NSString?
 
     

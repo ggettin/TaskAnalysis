@@ -106,6 +106,7 @@ func parseJSONTask(data: NSMutableData) {
             taskTable.timestamp = timestamp
             taskTable.location_id = Int(location_id)
             taskTable.task_image = task_image
+            taskTable.completed = 0
             
         }
         

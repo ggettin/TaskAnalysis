@@ -15,6 +15,11 @@ var TaskLocation: String = "test"
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
     
+//dictionary for locationname/url
+var urlDictionary = [String: NSURL]()
+    
+    
+    
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBAction func AllTasksButton(sender: AnyObject) {
@@ -111,12 +116,12 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
             
             //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
-           /* if valueForKey("completed")! as! NSObject == true
+            let completed = tasks[indexPath.row].valueForKey("completed") as! NSNumber
+            if (completed == 1)
             {
-                
                 cell.completionImage.hidden = false
                 
-            }*/
+            }
             
             let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
             let data = NSData(contentsOfURL: url!)
@@ -139,12 +144,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         self.performSegueWithIdentifier("showSteps", sender: indexPath)
         
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer") as! VideoTab
-        
-    
         let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
         
-        vc.taskVideoS = video
+        taskVideoss = video
        
         
         
@@ -152,7 +154,6 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         
         //self.presentViewController(vc, animated: true, completion: nil)
-        self.showViewController(vc, sender: self)
         //self.viewDidLoad()
     }
     
@@ -171,6 +172,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
        //NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
 
@@ -192,8 +194,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         locationManager.requestAlwaysAuthorization()
         
         //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
-        setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
-        setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
+        //setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
+        //setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
         setUpLocations()
         
 
@@ -242,14 +244,28 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDele.managedObjectContext
         let request = NSFetchRequest(entityName: "LocationsTable")
         request.returnsObjectsAsFaults = false
+        
         do{
-            
-            let results =  try context.executeFetchRequest(request)
+            //access coredata and load elements to be sent to setUpData
+            let results: [AnyObject]  =  try context.executeFetchRequest(request)
             
                 for result:AnyObject in results{
-                    print(result.valueForKey("location_name"))
-                    //print(result.valueForKey("password")!)//get passwords
+                    print("printing results")
+                    let locationID:Double = result.valueForKey("location_id") as! Double!
+                    print(result.valueForKey("location_id")!)
+                    let locationName:String = result.valueForKey("location_name") as! String!
+                    print(result.valueForKey("location_name")!)
+                    let locationAddress:String = result.valueForKey("location_address") as! String!
+                    print(result.valueForKey("location_address")!)
+                    let locationRadius:Double = result.valueForKey("location_radius") as! Double!
+                    print(result.valueForKey("location_radius")!)
                     
+                    let url = NSURL(string: "\(result.valueForKey("location_photo")!)")
+                    
+                    //populate the dictionary with url so that way pics can be loaded
+                    urlDictionary[locationName] = url
+                    
+                    setupData(locationName, radius: locationRadius, Address: locationAddress)
 
                 }
             
@@ -292,10 +308,17 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        //get the current location of the 
         TaskLocation = region.identifier
         currentLocation.text = TaskLocation
+        
+        //fetch the url from dictionary and convert to media
+        let url = urlDictionary[TaskLocation]
+        let data = NSData(contentsOfURL: url!)
+        locationImage.image = UIImage(data: data!)
+        
+
         print(TaskLocation)
-        //showAlert("enter \(region.identifier)")
     }
     
     //user exit region this will set the users current task location to null
