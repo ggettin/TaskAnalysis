@@ -22,7 +22,7 @@ class getLocationData: NSObject, NSURLSessionDataDelegate {
     
     var data : NSMutableData = NSMutableData()
     
-    let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/LocationTable.php"
+    let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/LocationsTable.php"
     
     
     func downloadItems() {
@@ -76,10 +76,10 @@ func parseJSONLocal(data: NSMutableData) {
     }
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     let context = appDel.managedObjectContext
-    let stepsEntity = NSEntityDescription.entityForName("TaskTable", inManagedObjectContext: context)
+    let locationEntity = NSEntityDescription.entityForName("LocationsTable", inManagedObjectContext: context)
     
     var jsonElement: NSDictionary = NSDictionary()
-    let taskData: NSMutableArray = NSMutableArray()
+    let locationData: NSMutableArray = NSMutableArray()
     
     print(jsonResult)
     
@@ -89,19 +89,19 @@ func parseJSONLocal(data: NSMutableData) {
         
         //jsonElement = jsonResult[i] as! NSDictionary
         
-        let locationTable = LocationsTable(entity: stepsEntity!, insertIntoManagedObjectContext: context)
+        let locationTable = LocationsTable(entity: locationEntity!, insertIntoManagedObjectContext: context)
         
         //the following insures none of the JsonElement values are nil through optional binding
-        if let location_id = row["task_id"] as? String,
-            let location_name = row["task_title"] as? String,
-            let location_image = row["task_image"] as? String,
-            let location_addresss = row["location_address"] as? String,
+        if let location_id = row["location_id"] as? String,
+        let location_name = row["location_name"] as? String,
+            let location_image = row["location_image"] as? String,
+            let location_address = row["location_address"] as? String,
             let delete_id = row["delete_id"] as? String,
             let timestamp = row["timestamp"] as? String
         {
             
             locationTable.location_name = location_name
-            locationTable.location_address = location_name
+            locationTable.location_address = location_address
             locationTable.location_image = location_image
             locationTable.delete_id = Int(delete_id)
             locationTable.timestamp = timestamp
@@ -120,7 +120,7 @@ func parseJSONLocal(data: NSMutableData) {
         }
         
         //taskData.addObject(task_data)
-        print(taskData)
+        print(locationData)
     }
     
     dispatch_async(dispatch_get_main_queue(), { () -> Void in
