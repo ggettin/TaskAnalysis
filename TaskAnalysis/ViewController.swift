@@ -14,8 +14,35 @@ import CoreData
 var TaskLocation: String = "test"
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
-
     
+let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    @IBAction func logoutButton(sender: AnyObject) {
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Confirmation", message: "Would you like to logout?", preferredStyle: .Alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            //NSLog("OK Pressed")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
+            self.navigationController?.pushViewController(phoneController, animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+    
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet weak var currentLocation: UILabel!
