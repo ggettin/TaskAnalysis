@@ -8,13 +8,41 @@
 
 import UIKit
 import CoreLocation
-
+import CoreData
 
 //User current location
 var TaskLocation: String = "test"
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
-
+    
+let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    @IBAction func logoutButton(sender: AnyObject) {
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Confirmation", message: "Would you like to logout?", preferredStyle: .Alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            //NSLog("OK Pressed")
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
+            self.navigationController?.pushViewController(phoneController, animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+    
+        
+        // Present the controller
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet weak var currentLocation: UILabel!
@@ -26,16 +54,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //hardcoded tasks for now
     
-    let taskTitles = ["Sweeping", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
+    var taskTitles = [String]()
     
     //hardcoded task images for now
-    let taskImages = [UIImage(named: "sweeping"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
+    //let taskImages = [UIImage(named: "sweeping"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
+    
     
     
     
     // Determines how many collection view cells there are
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.taskTitles.count
+        
+        let context = appDele.managedObjectContext
+        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+        taskRequest.returnsObjectsAsFaults = false
+        do{
+            let tasks: [TaskTable] = try context.executeFetchRequest(taskRequest) as! [TaskTable]
+            return tasks.count
+        }
+        catch{
+            
+        }
+        return 0
+
+        //return self.taskTitles.count
     }
     
     
@@ -44,9 +86,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
         
-        cell.taskName.text = self.taskTitles[indexPath.row]
+       /* cell.taskName.text = self.taskTitles[indexPath.row]
         cell.taskImage.image = self.taskImages[indexPath.row]
+ */
         cell.completionImage.image = UIImage(named: "completed")
+ 
+        //MARK: CORE DATA
+        let context = appDele.managedObjectContext
+        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+        taskRequest.returnsObjectsAsFaults = false
+        do{
+            let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
+            cell.taskName.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
+            //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
+            
+            let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
+            let data = NSData(contentsOfURL: url!)
+            cell.taskImage.image = UIImage(data: data!)
+            taskTitles.append(cell.taskName.text!)
+        }
+        catch{
+            
+        }
+        
         
         return cell
     }
@@ -72,8 +134,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //trying to update the currentLocation text at the bottom of the screen to match location
-        //currentLocation.text = TaskLocation
+        
+       //NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
 
         // Do any additional setup after loading the view, typically from a nib.
         collectionView.delegate = self
@@ -92,11 +154,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         
+        //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
+        setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
+        setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
         
 
     }
 
     override func viewDidAppear(animated: Bool) {
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
+
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
+            self.navigationController?.pushViewController(phoneController, animated: true)
+                        
+        }
+        
         currentLocation.text = TaskLocation
         
         // status is not determined

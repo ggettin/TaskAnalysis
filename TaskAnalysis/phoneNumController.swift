@@ -19,24 +19,29 @@ class phoneNumController: UIViewController {
     @IBAction func submitButton(sender: AnyObject) {
         
         phoneNum = phoneNumTextField.text!
+        
+        if phoneNum.characters.count != 10
+        {
+            showAlert("Phone number must be 10 digits")
+            phoneNumTextField.text = ""
+        }
+        else{
         //check database for phone num if valid pull data
         //if phone valid present next segue and save phone num
         NSUserDefaults.standardUserDefaults().setObject(phoneNum, forKey: "phoneNum")
         //else display error try again
-        self.performSegueWithIdentifier("enterApp", sender: self)
+        //showAlert("Phone number does not exist")
+        self.navigationController?.popViewControllerAnimated(false)
+        }
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem .setHidesBackButton(true, animated: true)
     }
 
     override func viewDidAppear(animated: Bool) {
-        if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") != nil {
-            var phoneNum = NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") as! String
-            print(phoneNum)
-            self.performSegueWithIdentifier("enterApp", sender: self)
-            }
+
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) { //close keyboard with click
         
@@ -52,6 +57,17 @@ class phoneNumController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //function for easy resuse of alert boxes
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
     }
     
     

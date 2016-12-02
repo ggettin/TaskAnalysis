@@ -24,6 +24,8 @@
 		1FC568691DEF2985001BB987 /* Navigation-CoreData-Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568681DEF2985001BB987 /* Navigation-CoreData-Controller.swift */; };
 		1FC5686B1DEF43F6001BB987 /* GetStepTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5686A1DEF43F6001BB987 /* GetStepTableData.swift */; };
 		1FC5686F1DEF5724001BB987 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5686E1DEF5724001BB987 /* StepsModel.swift */; };
+		1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */; };
+		1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568721DF125B1001BB987 /* GetLocationTable.swift */; };
 		3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7661DD394D500A920DC /* AppDelegate.swift */; };
 		3729C7691DD394D500A920DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7681DD394D500A920DC /* ViewController.swift */; };
 		3729C76C1DD394D500A920DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729C76A1DD394D500A920DC /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		1FC568681DEF2985001BB987 /* Navigation-CoreData-Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Navigation-CoreData-Controller.swift"; sourceTree = "<group>"; };
 		1FC5686A1DEF43F6001BB987 /* GetStepTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStepTableData.swift; sourceTree = "<group>"; };
 		1FC5686E1DEF5724001BB987 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
+		1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskTableData.swift; sourceTree = "<group>"; };
+		1FC568721DF125B1001BB987 /* GetLocationTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationTable.swift; sourceTree = "<group>"; };
 		3729C7631DD394D500A920DC /* TaskAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3729C7661DD394D500A920DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3729C7681DD394D500A920DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,17 +117,19 @@
 			children = (
 				1FC568441DECC2ED001BB987 /* LocationTable.swift */,
 				1FC568461DECC2FE001BB987 /* LocationCoreData.swift */,
+				1FC568721DF125B1001BB987 /* GetLocationTable.swift */,
 				1FC568481DECC446001BB987 /* LoginTable.swift */,
 				1FC5684A1DECC454001BB987 /* LoginCoreData.swift */,
-				1FC5684C1DECC463001BB987 /* StepsTable.swift */,
-				1FC5684E1DECC46E001BB987 /* StepsCoreData.swift */,
 				1FC568501DECC47E001BB987 /* StudentTaskLocalTable.swift */,
 				1FC568521DECC48D001BB987 /* StudentTaskLocalCoreData.swift */,
 				1FC568561DECC4C0001BB987 /* TaskStepTable.swift */,
 				1FC568581DECC4D9001BB987 /* TaskStepCoreData.swift */,
 				1FC5685A1DECC4E9001BB987 /* TaskTable.swift */,
 				1FC5685C1DECC4F6001BB987 /* TaskCoreData.swift */,
+				1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */,
 				1FC5686A1DEF43F6001BB987 /* GetStepTableData.swift */,
+				1FC5684E1DECC46E001BB987 /* StepsCoreData.swift */,
+				1FC5684C1DECC463001BB987 /* StepsTable.swift */,
 				1FC5686E1DEF5724001BB987 /* StepsModel.swift */,
 			);
 			name = CoreData;
@@ -257,6 +263,8 @@
 				382BD0731DDDFA9000986339 /* MapViewController.swift in Sources */,
 				1FC568451DECC2ED001BB987 /* LocationTable.swift in Sources */,
 				3729C7691DD394D500A920DC /* ViewController.swift in Sources */,
+				1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */,
+				1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */,
 				1FC568571DECC4C0001BB987 /* TaskStepTable.swift in Sources */,
 				37A17B171DDA1E6B00F3FF04 /* VideoTab.swift in Sources */,
 				3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */,

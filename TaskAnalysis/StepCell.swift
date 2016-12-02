@@ -16,6 +16,7 @@ class StepCell: UITableViewCell {
     
     @IBOutlet var stepDescription: UILabel!
     
+    var stepAudio = ""
     
     
     
