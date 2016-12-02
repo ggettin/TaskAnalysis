@@ -97,7 +97,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     override func viewDidAppear(animated: Bool) {
-        //currentLocation.text = TaskLocation
+        currentLocation.text = TaskLocation
         
         // status is not determined
         if CLLocationManager.authorizationStatus() == .NotDetermined {
