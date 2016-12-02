@@ -11,6 +11,8 @@ import AVFoundation
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
     
+    var lastStep:Bool = false
+    
     var playing:Bool = false
     
     var TaskName:String = ""
@@ -33,6 +35,8 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     var timer = NSTimer()
     
+    
+
     //function updates the timer labels in a formatted pattern
     func increaseTimer(){
         var currentTime: NSTimeInterval = player.currentTime
@@ -90,10 +94,20 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     @IBOutlet var nextStepButton: UIButton!
     
     @IBAction func nextStep(sender: AnyObject) {
+        //checkmark should present tasks and place a check mark if completed.
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //check if last step and if so change arrow to check mark
+        
+        if lastStep == true
+        {
+            nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
+        }
+        
+        
         // Do any additional setup after loading the view.
         print(taskinfo)
         stepImage.image = image
@@ -114,6 +128,8 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         }
         
         _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateScrubSlider"), userInfo: nil, repeats: true)
+        
+      
     }
 
     func updateScrubSlider() {
