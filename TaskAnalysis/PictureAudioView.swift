@@ -139,7 +139,9 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     }
     
     
-    
+    override func viewWillDisappear(animated: Bool) {
+        player.pause()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
