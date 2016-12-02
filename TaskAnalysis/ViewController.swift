@@ -15,6 +15,11 @@ var TaskLocation: String = "test"
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
     
+//dictionary for locationname/url
+var urlDictionary = [String: NSURL]()
+    
+    
+    
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBAction func AllTasksButton(sender: AnyObject) {
@@ -192,8 +197,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         locationManager.requestAlwaysAuthorization()
         
         //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
-        setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
-        setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
+        //setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
+        //setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
         setUpLocations()
         
 
@@ -244,14 +249,26 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         request.returnsObjectsAsFaults = false
         
         do{
-            
+            //access coredata and load elements to be sent to setUpData
             let results: [AnyObject]  =  try context.executeFetchRequest(request)
             
                 for result:AnyObject in results{
                     print("printing results")
+                    let locationID:Double = result.valueForKey("location_id") as! Double!
                     print(result.valueForKey("location_id")!)
-                    //print(result.valueForKey("password")!)//get passwords
+                    let locationName:String = result.valueForKey("location_name") as! String!
+                    print(result.valueForKey("location_name")!)
+                    let locationAddress:String = result.valueForKey("location_address") as! String!
+                    print(result.valueForKey("location_address")!)
+                    let locationRadius:Double = result.valueForKey("location_radius") as! Double!
+                    print(result.valueForKey("location_radius")!)
                     
+                    let url = NSURL(string: "\(result.valueForKey("location_photo")!)")
+                    
+                    //populate the dictionary with url so that way pics can be loaded
+                    urlDictionary[locationName] = url
+                    
+                    setupData(locationName, radius: locationRadius, Address: locationAddress)
 
                 }
             
@@ -294,10 +311,17 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        //get the current location of the 
         TaskLocation = region.identifier
         currentLocation.text = TaskLocation
+        
+        //fetch the url from dictionary and convert to media
+        let url = urlDictionary[TaskLocation]
+        let data = NSData(contentsOfURL: url!)
+        locationImage.image = UIImage(data: data!)
+        
+
         print(TaskLocation)
-        //showAlert("enter \(region.identifier)")
     }
     
     //user exit region this will set the users current task location to null

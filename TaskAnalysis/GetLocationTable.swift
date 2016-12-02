@@ -107,6 +107,8 @@ func parseJSONLocal(data: NSMutableData) {
             locationTable.location_id = Int(location_id)
             locationTable.location_photo = location_photo
             
+            print("printing test")
+            print(locationTable.location_name)
         }
         
         do{
