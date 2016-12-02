@@ -17,6 +17,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    @IBAction func AllTasksButton(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ThisController = storyboard.instantiateViewControllerWithIdentifier("AllTasksView") as! AllTasksController
+        self.navigationController?.pushViewController(ThisController, animated: true)
+        
+    }
     @IBAction func logoutButton(sender: AnyObject) {
         // Create the alert controller
         let alertController = UIAlertController(title: "Confirmation", message: "Would you like to logout?", preferredStyle: .Alert)
@@ -104,6 +110,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             let data = NSData(contentsOfURL: url!)
             cell.taskImage.image = UIImage(data: data!)
             taskTitles.append(cell.taskName.text!)
+            
+            cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
+            
         }
         catch{
             
@@ -117,6 +126,22 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     //Segues to next view when cell is selected
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         self.performSegueWithIdentifier("showSteps", sender: indexPath)
+        
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer") as! VideoTab
+        
+    
+        let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
+        
+        vc.taskVideoS = video
+       
+        
+        
+        
+        
+        
+        //self.presentViewController(vc, animated: true, completion: nil)
+        self.showViewController(vc, sender: self)
+        //self.viewDidLoad()
     }
     
     
