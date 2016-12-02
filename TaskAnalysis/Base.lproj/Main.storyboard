@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yrQ-jC-xYC">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2553a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yrQ-jC-xYC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -123,7 +123,7 @@
         <!--All Tasks-->
         <scene sceneID="o8B-fE-RzB">
             <objects>
-                <viewController id="gmA-EX-l4y" customClass="AllTasksController" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllTasksView" id="gmA-EX-l4y" customClass="AllTasksController" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pjd-ml-r2H"/>
                         <viewControllerLayoutGuide type="bottom" id="rxn-St-tM1"/>
@@ -137,7 +137,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="taskCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="eM9-4L-Dz4" customClass="AllTasksCell" customModule="TaskAnalysis" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="106"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eM9-4L-Dz4" id="k5t-yL-ERA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="105"/>
@@ -167,10 +167,13 @@
                     <navigationItem key="navigationItem" title="All Tasks" id="wMF-Zw-ZYG">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="FrH-Io-2la">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="12L-c0-KAX"/>
+                                <action selector="alltasksbackbutton:" destination="gmA-EX-l4y" id="3xg-Ob-jS1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="allid" id="gCJ-g4-DLy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7c-sW-dQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -199,7 +202,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="CM8-Ce-9Q7" customClass="CustomCollectionViewCell" customModule="TaskAnalysis" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="80" width="140" height="140"/>
+                                        <rect key="frame" x="16" y="16" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -282,7 +285,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -291,7 +294,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="8D00E007-664E-40E1-826A-07A6D396251D" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="B63E5D11-3644-4F0D-8401-BD38F740F42D" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -336,7 +339,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="All Tasks" id="2ct-o6-drz">
                             <connections>
-                                <segue destination="gmA-EX-l4y" kind="show" id="LZG-FL-03D"/>
+                                <action selector="AllTasksButton:" destination="BYZ-38-t0r" id="OXP-0p-WNa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -479,7 +482,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ki-y0-Qwf">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ki-y0-Qwf">
                                 <rect key="frame" x="515" y="419" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="ez8-0m-xUj"/>
@@ -489,7 +492,7 @@
                                     <action selector="nextStep:" destination="h24-Fx-Miv" eventType="touchUpInside" id="y80-qM-TWo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzU-uE-XaU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzU-uE-XaU">
                                 <rect key="frame" x="20" y="419" width="65" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="dMs-tL-pzq"/>
@@ -503,7 +506,7 @@
                                     <action selector="scrub:" destination="h24-Fx-Miv" eventType="valueChanged" id="e61-A5-Jgh"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7t-LP-RSb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7t-LP-RSb">
                                 <rect key="frame" x="544" y="385" width="36" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -515,10 +518,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cleanDishes" translatesAutoresizingMaskIntoConstraints="NO" id="zYk-rU-LVw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cleanDishes" translatesAutoresizingMaskIntoConstraints="NO" id="zYk-rU-LVw">
                                 <rect key="frame" x="20" y="133" width="560" height="240"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usT-qO-WPV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usT-qO-WPV">
                                 <rect key="frame" x="243" y="453" width="115" height="115"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="115" id="J61-V8-bQs"/>
@@ -585,7 +588,7 @@
         <!--Clean Dishes-->
         <scene sceneID="ZEG-an-jqk">
             <objects>
-                <viewController title="Clean Dishes" id="Gjz-sB-Rwc" customClass="VideoTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoPlayer" title="Clean Dishes" id="Gjz-sB-Rwc" customClass="VideoTab" customModule="TaskAnalysis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QkU-tS-oRc"/>
                         <viewControllerLayoutGuide type="bottom" id="szh-SP-iEg"/>
@@ -601,7 +604,7 @@
                                     <action selector="playButton:" destination="Gjz-sB-Rwc" eventType="touchUpInside" id="Usa-T9-BCl"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-Pd-7fS">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-Pd-7fS">
                                 <rect key="frame" x="20" y="72" width="560" height="471"/>
                             </imageView>
                         </subviews>
@@ -645,7 +648,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8D00E007-664E-40E1-826A-07A6D396251D" width="30" height="30">
+        <image name="B63E5D11-3644-4F0D-8401-BD38F740F42D" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -714,7 +717,7 @@ AAAAAQAAAAQAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAADgEAAAMAAAABAB4AAAEBAAMAAAABAB4AAAEC
 AAMAAAAEAAAOxgEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEV
 AAMAAAABAAQAAAEWAAMAAAABAB4AAAEXAAQAAAABAAAOEAEcAAMAAAABAAEAAAFSAAMAAAABAAIAAAFT
 AAMAAAAEAAAOzodzAAcAAAxIAAAO1gAAAAAACAAIAAgACAABAAEAAQABAAAMSExpbm8CEAAAbW50clJH
-QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA
+QiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNSR0IAAAAAAAAAAAAAAAEAAPbWAAEAAAAA
 0y1IUCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAA
 AVAAAAAzZGVzYwAAAYQAAABsd3RwdAAAAfAAAAAUYmtwdAAAAgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAA
 AiwAAAAUYlhZWgAAAkAAAAAUZG1uZAAAAlQAAABwZG1kZAAAAsQAAACIdnVlZAAAA0wAAACGdmlldwAA
@@ -786,6 +789,6 @@ AAAAAAActw
         <image name="video" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="flc-wu-hLe"/>
+        <segue reference="gCJ-g4-DLy"/>
     </inferredMetricsTieBreakers>
 </document>

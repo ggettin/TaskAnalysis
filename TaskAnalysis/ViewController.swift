@@ -17,6 +17,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    @IBAction func AllTasksButton(sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ThisController = storyboard.instantiateViewControllerWithIdentifier("AllTasksView") as! AllTasksController
+        self.navigationController?.pushViewController(ThisController, animated: true)
+        
+    }
     @IBAction func logoutButton(sender: AnyObject) {
         // Create the alert controller
         let alertController = UIAlertController(title: "Confirmation", message: "Would you like to logout?", preferredStyle: .Alert)
@@ -89,8 +95,10 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
        /* cell.taskName.text = self.taskTitles[indexPath.row]
         cell.taskImage.image = self.taskImages[indexPath.row]
  */
+        
         cell.completionImage.image = UIImage(named: "completed")
- 
+        cell.completionImage.hidden = true
+        
         //MARK: CORE DATA
         let context = appDele.managedObjectContext
         let taskRequest = NSFetchRequest(entityName: "TaskTable")
@@ -98,12 +106,25 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         do{
             let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
             cell.taskName.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
+            
+            
             //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
+            
+            //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
+           /* if valueForKey("completed")! as! NSObject == true
+            {
+                
+                cell.completionImage.hidden = false
+                
+            }*/
             
             let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
             let data = NSData(contentsOfURL: url!)
             cell.taskImage.image = UIImage(data: data!)
             taskTitles.append(cell.taskName.text!)
+            
+            cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
+            
         }
         catch{
             
@@ -117,6 +138,22 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     //Segues to next view when cell is selected
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         self.performSegueWithIdentifier("showSteps", sender: indexPath)
+        
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoPlayer") as! VideoTab
+        
+    
+        let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
+        
+        vc.taskVideoS = video
+       
+        
+        
+        
+        
+        
+        //self.presentViewController(vc, animated: true, completion: nil)
+        self.showViewController(vc, sender: self)
+        //self.viewDidLoad()
     }
     
     
@@ -157,6 +194,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
         setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
         setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
+        setUpLocations()
         
 
     }
@@ -199,6 +237,28 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
     }
 
+    func setUpLocations()
+    {
+        let context = appDele.managedObjectContext
+        let request = NSFetchRequest(entityName: "LocationsTable")
+        request.returnsObjectsAsFaults = false
+        do{
+            
+            let results =  try context.executeFetchRequest(request)
+            
+                for result:AnyObject in results{
+                    print(result.valueForKey("location_name"))
+                    //print(result.valueForKey("password")!)//get passwords
+                    
+
+                }
+            
+        }catch{
+            print("Fetch failed")
+        }
+
+    }
+    
     func setupData( Label: String, radius: Double, Address: String ) {
         // check if system can monitor regions
         if CLLocationManager.isMonitoringAvailableForClass(CLCircularRegion.self) {

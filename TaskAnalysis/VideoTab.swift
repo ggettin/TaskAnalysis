@@ -15,6 +15,8 @@ class VideoTab: UIViewController {
     var playerViewController = AVPlayerViewController()
     var playerView = AVPlayer()
     
+    var taskVideoS = "" 
+    
     var TaskName:String = ""
     
     @IBOutlet var imageView: UIImageView!
@@ -36,7 +38,10 @@ class VideoTab: UIViewController {
         
         
         //location of video to be played (local for now)
-        let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/test.m4v")!
+        //let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/test.m4v")!
+        
+        let fileURL: NSURL = NSURL(string: taskVideoS)!
+        
         
         //creates player
         playerView = AVPlayer(URL: fileURL)

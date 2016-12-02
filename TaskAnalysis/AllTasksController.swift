@@ -11,6 +11,11 @@ import UIKit
 class AllTasksController: UIViewController {
     
     
+    @IBAction func alltasksbackbutton(sender: AnyObject) {
+        
+        performSegueWithIdentifier("allid", sender: self)
+        
+    }
     let taskTitles = ["Sweeping", "Laundry", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
     
     //hardcoded task images for now
