@@ -20,14 +20,7 @@ class LoadingView: UIViewController{
         //Get all of the data on this viewcontroller
         
         
-        //Get steps Data
-        let getStepsData = getStepData()
-        getStepsData.downloadItems()
-        let getTasksData = getTaskData()
-        getTasksData.downloadItems()
-        let getLocationDatas = getLocationData()
-        getLocationDatas.downloadItems()
-        
+  
         
         super.viewDidLoad()
     }

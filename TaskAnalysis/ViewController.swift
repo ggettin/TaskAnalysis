@@ -173,6 +173,13 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
+            self.navigationController?.pushViewController(phoneController, animated: true)
+            
+        }
         
        //NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
 
@@ -203,13 +210,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidAppear(animated: Bool) {
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
-
-           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
-            self.navigationController?.pushViewController(phoneController, animated: true)
-                        
-        }
+  
         
         currentLocation.text = TaskLocation
         
