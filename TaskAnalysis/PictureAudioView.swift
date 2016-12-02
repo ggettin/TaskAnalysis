@@ -94,17 +94,17 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     @IBOutlet var nextStepButton: UIButton!
     
     @IBAction func nextStep(sender: AnyObject) {
+        //checkmark should present tasks and place a check mark if completed.
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //check if last step and if so change arrow to check mark
-        //if last step next step func should put check mark over pic
         
         if lastStep == true
         {
-            
+            nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
         }
         
         
