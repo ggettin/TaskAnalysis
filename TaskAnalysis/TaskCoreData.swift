@@ -18,4 +18,5 @@ extension TaskTable {
     @NSManaged var task_video: NSString?
     @NSManaged var task_image: NSString?
     @NSManaged var timestamp: NSString?
+    @NSManaged var completed: NSNumber?
 }
