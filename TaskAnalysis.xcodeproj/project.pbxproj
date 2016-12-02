@@ -26,6 +26,7 @@
 		1FC5686F1DEF5724001BB987 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5686E1DEF5724001BB987 /* StepsModel.swift */; };
 		1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */; };
 		1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568721DF125B1001BB987 /* GetLocationTable.swift */; };
+		1FD717281DF1764C00A4CA28 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD717271DF1764C00A4CA28 /* LoadingView.swift */; };
 		3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7661DD394D500A920DC /* AppDelegate.swift */; };
 		3729C7691DD394D500A920DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7681DD394D500A920DC /* ViewController.swift */; };
 		3729C76C1DD394D500A920DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729C76A1DD394D500A920DC /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		1FC5686E1DEF5724001BB987 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskTableData.swift; sourceTree = "<group>"; };
 		1FC568721DF125B1001BB987 /* GetLocationTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationTable.swift; sourceTree = "<group>"; };
+		1FD717271DF1764C00A4CA28 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3729C7631DD394D500A920DC /* TaskAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3729C7661DD394D500A920DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3729C7681DD394D500A920DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				382D64241DF0E2B900124531 /* phoneNumController.swift */,
 				1FC568621DEE80F5001BB987 /* AllTasksController.swift */,
 				1FC568661DEE8587001BB987 /* AllTasksCell.swift */,
+				1FD717271DF1764C00A4CA28 /* LoadingView.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				3729C7691DD394D500A920DC /* ViewController.swift in Sources */,
 				1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */,
 				1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */,
+				1FD717281DF1764C00A4CA28 /* LoadingView.swift in Sources */,
 				1FC568571DECC4C0001BB987 /* TaskStepTable.swift in Sources */,
 				37A17B171DDA1E6B00F3FF04 /* VideoTab.swift in Sources */,
 				3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */,
