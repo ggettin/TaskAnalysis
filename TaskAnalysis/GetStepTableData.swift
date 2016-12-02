@@ -9,6 +9,9 @@
 import Foundation
 import CoreData
 import UIKit
+
+var stepssCount = 0
+
 protocol getStepProtocol: class {
     func itemsDownloaded(items: NSArray)
 }
@@ -85,6 +88,7 @@ func parseJSON(data: NSMutableData) {
     //for(var i = 0; i < jsonResult.count; i++)
     for row in jsonResult
     {
+      
         
         //jsonElement = jsonResult[i] as! NSDictionary
         
@@ -117,6 +121,8 @@ func parseJSON(data: NSMutableData) {
         //Add Functionality to download into directory
         stepsTable.step_audio = step_audio
         stepsTable.step_photo = step_photo
+            
+        stepssCount = stepssCount + 1
 
         }
         

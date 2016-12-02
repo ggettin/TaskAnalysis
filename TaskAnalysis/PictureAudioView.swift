@@ -9,13 +9,17 @@
 import UIKit
 import AVFoundation
 
+ var lastStep:Bool = false
+
 class PictureAudioView: UIViewController, UITabBarDelegate {
-    
-    var lastStep:Bool = false
     
     var playing:Bool = false
     
     var TaskName:String = ""
+    
+    var nextStep = UIViewController()
+    
+    var previousStep = UIViewController()
     
     @IBOutlet var TabBar: UITabBarItem!
     var taskinfo = ""
@@ -92,9 +96,10 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     @IBOutlet var prevStep: UIButton!
     
     @IBOutlet var nextStepButton: UIButton!
-    
+  
     @IBAction func nextStep(sender: AnyObject) {
         //checkmark should present tasks and place a check mark if completed.
+        
         
     }
     override func viewDidLoad() {
@@ -105,6 +110,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         if lastStep == true
         {
             nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
+            lastStep = false
         }
         
         

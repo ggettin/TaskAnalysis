@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+var ran = false
+
 class Navigation_CoreData_Controller: UINavigationController {
 
   
@@ -21,14 +23,15 @@ class Navigation_CoreData_Controller: UINavigationController {
         
         
         //Get steps Data
+        if(!ran){
         let getStepsData = getStepData()
         getStepsData.downloadItems()
         let getTasksData = getTaskData()
         getTasksData.downloadItems()
         let getLocationDatas = getLocationData()
         getLocationDatas.downloadItems()
-        
-       super.viewDidLoad()
+            ran = true
+        }
     }
     
     
