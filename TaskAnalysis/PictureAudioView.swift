@@ -114,9 +114,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
         do {
-            
-            
-            let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/HeyJude.mp3")!
+            let fileURL:NSURL = NSURL(string: audioFile)!
             let soundData = NSData.init(contentsOfURL: fileURL)
             try player = AVAudioPlayer(data: soundData!)
             
