@@ -17,8 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 //dictionary for locationname/url
 var urlDictionary = [String: NSURL]()
-    
-    
+
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -173,6 +172,12 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
+        Controller.loader()
+        
+        
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -203,7 +208,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
         //setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
         //setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
-        setUpLocations()
+        //setUpLocations()
         
 
     }
@@ -227,6 +232,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             locationManager.startUpdatingLocation()
         }
 
+           setUpLocations()
+            self.collectionView.reloadData()
     }
     
     //function for easy resuse of alert boxes
