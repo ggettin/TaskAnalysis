@@ -242,12 +242,14 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDele.managedObjectContext
         let request = NSFetchRequest(entityName: "LocationsTable")
         request.returnsObjectsAsFaults = false
+        
         do{
             
-            let results =  try context.executeFetchRequest(request)
+            let results: [AnyObject]  =  try context.executeFetchRequest(request)
             
                 for result:AnyObject in results{
-                    print(result.valueForKey("location_name"))
+                    print("printing results")
+                    print(result.valueForKey("location_id")!)
                     //print(result.valueForKey("password")!)//get passwords
                     
 
