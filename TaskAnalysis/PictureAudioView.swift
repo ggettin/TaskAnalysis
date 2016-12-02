@@ -16,10 +16,14 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     var TaskName:String = ""
     
     @IBOutlet var TabBar: UITabBarItem!
-    
+    var taskinfo = ""
     @IBOutlet var stepDescription: UILabel!
     
     @IBOutlet var stepImage: UIImageView!
+   
+    var image = UIImage()
+    
+    var audioFile = ""
     
     //used to update audio time elapsed
     @IBOutlet weak var timerStart: UILabel!
@@ -47,7 +51,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
 
         //update labels
         timerStart.text = "\(strMin):\(strSec)"
-       //timerEnd.text = "\(strEndMin):\(strEndSec)"
+        timerEnd.text = "\(strEndMin):\(strEndSec)"
 
     }
     
@@ -91,11 +95,12 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        print(taskinfo)
+        stepImage.image = image
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
         do {
-            let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/HeyJude.mp3")!
+            let fileURL:NSURL = NSURL(string: audioFile)!
             let soundData = NSData.init(contentsOfURL: fileURL)
             try player = AVAudioPlayer(data: soundData!)
             //try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("test", ofType: "mp3")!))

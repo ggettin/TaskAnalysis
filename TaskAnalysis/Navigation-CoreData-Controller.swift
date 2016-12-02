@@ -15,15 +15,6 @@ class Navigation_CoreData_Controller: UINavigationController {
         
         super.viewDidLoad()
         
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let context: NSManagedObjectContext = appDel.managedObjectContext
-        
-        
-        
-        
-        
-        
         
         
         //Get all of the data on this viewcontroller
@@ -32,7 +23,8 @@ class Navigation_CoreData_Controller: UINavigationController {
         //Get steps Data
         let getStepsData = getStepData()
         getStepsData.downloadItems()
-        
+        let getTasksData = getTaskData()
+        getTasksData.downloadItems()
         
         
     }
