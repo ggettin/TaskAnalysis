@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-var ran = false
 
 class Navigation_CoreData_Controller: UINavigationController {
 
@@ -17,21 +16,20 @@ class Navigation_CoreData_Controller: UINavigationController {
     override func viewDidLoad() {
     
          super.viewDidLoad()
-        
+
         
         //Get all of the data on this viewcontroller
         
         
         //Get steps Data
-        if(!ran){
+  
         let getStepsData = getStepData()
         getStepsData.downloadItems()
         let getTasksData = getTaskData()
         getTasksData.downloadItems()
         let getLocationDatas = getLocationData()
         getLocationDatas.downloadItems()
-            ran = true
-        }
+    
     }
     
     

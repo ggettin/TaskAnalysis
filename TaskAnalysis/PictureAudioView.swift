@@ -110,6 +110,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         if lastStep == true
         {
             nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
+            
             lastStep = false
         }
         
