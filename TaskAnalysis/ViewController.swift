@@ -15,7 +15,6 @@ var TaskLocation: String = "test"
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
 
-let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet var collectionView: UICollectionView!
     
