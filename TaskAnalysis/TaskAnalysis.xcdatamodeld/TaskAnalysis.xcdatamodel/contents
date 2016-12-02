@@ -9,7 +9,7 @@
         <attribute name="location_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location_photo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location_radius" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="LoginTable" syncable="YES">
         <attribute name="delete_id" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -37,7 +37,7 @@
         <attribute name="task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="TaskTable" syncable="YES">
-        <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="delete_id" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="location_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="task_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

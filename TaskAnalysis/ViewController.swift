@@ -111,12 +111,12 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
             
             //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
-           /* if valueForKey("completed")! as! NSObject == true
+            let completed = tasks[indexPath.row].valueForKey("completed") as! NSNumber
+            if (completed == 1)
             {
-                
                 cell.completionImage.hidden = false
                 
-            }*/
+            }
             
             let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
             let data = NSData(contentsOfURL: url!)
@@ -242,12 +242,14 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDele.managedObjectContext
         let request = NSFetchRequest(entityName: "LocationsTable")
         request.returnsObjectsAsFaults = false
+        
         do{
             
-            let results =  try context.executeFetchRequest(request)
+            let results: [AnyObject]  =  try context.executeFetchRequest(request)
             
                 for result:AnyObject in results{
-                    print(result.valueForKey("location_name"))
+                    print("printing results")
+                    print(result.valueForKey("location_id")!)
                     //print(result.valueForKey("password")!)//get passwords
                     
 
