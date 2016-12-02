@@ -107,8 +107,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //trying to update the currentLocation text at the bottom of the screen to match location
-        //currentLocation.text = TaskLocation
+        
+       //NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
 
         // Do any additional setup after loading the view, typically from a nib.
         collectionView.delegate = self
@@ -127,11 +127,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         
+        //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
+        setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
+        setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
         
 
     }
 
     override func viewDidAppear(animated: Bool) {
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
+
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
+            self.navigationController?.pushViewController(phoneController, animated: true)
+                        
+        }
+        
         currentLocation.text = TaskLocation
         
         // status is not determined
