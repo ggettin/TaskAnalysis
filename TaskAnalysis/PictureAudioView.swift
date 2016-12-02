@@ -11,6 +11,8 @@ import AVFoundation
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
     
+    var lastStep:Bool = false
+    
     var playing:Bool = false
     
     var TaskName:String = ""
@@ -29,6 +31,8 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     var timer = NSTimer()
     
+    
+
     //function updates the timer labels in a formatted pattern
     func increaseTimer(){
         var currentTime: NSTimeInterval = player.currentTime
@@ -90,6 +94,16 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //check if last step and if so change arrow to check mark
+        //if last step next step func should put check mark over pic
+        
+        if lastStep == true
+        {
+            
+        }
+        
+        
         // Do any additional setup after loading the view.
         
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
@@ -109,6 +123,8 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         }
         
         _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateScrubSlider"), userInfo: nil, repeats: true)
+        
+      
     }
 
     func updateScrubSlider() {
