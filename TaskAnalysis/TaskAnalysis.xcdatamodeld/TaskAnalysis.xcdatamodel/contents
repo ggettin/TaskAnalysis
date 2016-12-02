@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="16B2553a" minimumToolsVersion="Automatic">
     <entity name="LocationsTable" syncable="YES">
-        <attribute name="deleted_id" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="delete_id" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="location_address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="location_latitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="location_longitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -45,7 +46,7 @@
         <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LocationsTable" positionX="-101" positionY="-9" width="128" height="163"/>
+        <element name="LocationsTable" positionX="-101" positionY="-9" width="128" height="180"/>
         <element name="LoginTable" positionX="-90" positionY="278" width="128" height="118"/>
         <element name="StepsTable" positionX="252" positionY="-15" width="128" height="150"/>
         <element name="StudentTaskLocalTable" positionX="214" positionY="314" width="128" height="88"/>

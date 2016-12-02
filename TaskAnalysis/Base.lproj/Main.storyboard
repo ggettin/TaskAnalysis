@@ -292,7 +292,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="EB93D570-B6CB-4253-BC72-55D8DF7841B5" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="E1545C4B-D686-4A2F-91A7-BACD96D5D4B3" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -642,7 +642,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EB93D570-B6CB-4253-BC72-55D8DF7841B5" width="30" height="30">
+        <image name="E1545C4B-D686-4A2F-91A7-BACD96D5D4B3" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -784,6 +784,6 @@ AAAAAAActw
         <image name="video" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="flc-wu-hLe"/>
+        <segue reference="1XR-mA-bFH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,9 +11,10 @@ import CoreData
 
 class Navigation_CoreData_Controller: UINavigationController {
 
+    var loadItems = false
+  
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
+    
         
         
         
@@ -21,12 +22,14 @@ class Navigation_CoreData_Controller: UINavigationController {
         
         
         //Get steps Data
+        if(loadItems == false){
         let getStepsData = getStepData()
         getStepsData.downloadItems()
         let getTasksData = getTaskData()
         getTasksData.downloadItems()
-        
-        
+        }
+        super.viewDidLoad()
+        loadItems = true
     }
     
     
