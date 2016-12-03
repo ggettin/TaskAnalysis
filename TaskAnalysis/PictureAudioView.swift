@@ -9,21 +9,16 @@
 import UIKit
 import AVFoundation
 
- var lastStep:Bool = false
+var currentStep : Int = -1
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
+    
+    var lastStep:Bool = false
     
     var playing:Bool = false
     
     var TaskName:String = ""
     
-    var nextStep = UIViewController()
-    
-    var nextStepCell = UITableView()
-    var nextaudio = ""
-    var nextphoto = ""
-    
-    var previousStep = UIViewController()
     
     @IBOutlet var TabBar: UITabBarItem!
     var taskinfo = ""
@@ -34,6 +29,9 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     var image = UIImage()
     
     var audioFile = ""
+    
+    var steps: [AnyObject] = []
+
     
     //used to update audio time elapsed
     @IBOutlet weak var timerStart: UILabel!
@@ -105,13 +103,43 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         //checkmark should present tasks and place a check mark if completed.
         //call view did load of next cell
         
+    if (lastStep != true)
+        {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
+            
+            
+        let info = steps[currentStep + 1].valueForKey("step_info")!
+        vc.taskinfo = info as! String
+        vc.steps = steps
+        
+        let url = NSURL(string: "\(steps[currentStep + 1].valueForKey("step_photo")!)")
+
+        let data = NSData(contentsOfURL: url!)
+        vc.image = UIImage(data: data!)!
+
+        
+        
+        let audioUrl =  "\(steps[currentStep + 1].valueForKey("step_audio")!)"
+
+        vc.audioFile = audioUrl
+        
+        if (currentStep + 1 ==  stepsCount-1) {
+            
+            vc.lastStep = true
+        }
+            
+            currentStep = currentStep + 1
+            
+            navigationController?.pushViewController(vc, animated: true)
+
+
+    }
         
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //check if last step and if so change arrow to check mark
         
         if lastStep == true
