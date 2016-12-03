@@ -8,12 +8,18 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 var currentStep : Int = -1
 
+
 class PictureAudioView: UIViewController, UITabBarDelegate {
     
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     var lastStep:Bool = false
+    
+    var firstStep:Bool = false
     
     var playing:Bool = false
     
@@ -99,6 +105,41 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     @IBOutlet var nextStepButton: UIButton!
   
+    @IBAction func previousStep(sender: AnyObject) {
+       
+        if (firstStep != true)
+        {
+            let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
+            
+            
+            let info = steps[currentStep - 1].valueForKey("step_info")!
+            vc.taskinfo = info as! String
+            vc.steps = steps
+            
+            let url = NSURL(string: "\(steps[currentStep - 1].valueForKey("step_photo")!)")
+            
+            let data = NSData(contentsOfURL: url!)
+            vc.image = UIImage(data: data!)!
+            
+            
+            
+            let audioUrl =  "\(steps[currentStep - 1].valueForKey("step_audio")!)"
+            
+            vc.audioFile = audioUrl
+            
+            if (currentStep == 1) {
+                
+                vc.firstStep = true
+            }
+            
+            currentStep = currentStep - 1
+            
+            navigationController?.pushViewController(vc, animated: true)
+            
+            
+        }
+
+    }
     @IBAction func nextStep(sender: AnyObject) {
         //checkmark should present tasks and place a check mark if completed.
         //call view did load of next cell
@@ -134,6 +175,58 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
 
 
     }
+    else{
+        let context = appDel.managedObjectContext
+        let taskRequest = NSFetchRequest(entityName: "TaskStepTable")
+        let stepID = steps[currentStep].valueForKey("step_id")!
+        var taskID: AnyObject = "-1" as AnyObject
+        
+        //get the taskID associated with the stepID of the storyboard
+        taskRequest.predicate = NSPredicate(format: "step_id= %d", stepID as! [AnyObject])
+        taskRequest.returnsObjectsAsFaults = false
+
+                do{
+            
+            let results =  try context.executeFetchRequest(taskRequest)
+            if results.count > 0{
+                
+            for result in results as! [NSManagedObject]
+            {
+                taskID = result.valueForKey("task_id")!
+            }
+        
+                
+            }
+            
+        }catch{
+            print("could not fetch")
+        }
+        
+        //access the taskID of the tasktable and set its completed value to true
+        let tableRequest = NSFetchRequest(entityName: "TaskTable")
+        tableRequest.predicate = NSPredicate(format: "task_id= %d", taskID as! [AnyObject])
+        tableRequest.returnsObjectsAsFaults = false
+        do{
+            
+            let results =  try context.executeFetchRequest(tableRequest)
+            if results.count > 0{
+            for result in results as! [NSManagedObject]
+            {
+                result.setValue("true", forKey: "completed")
+            }
+
+            }
+            
+        }
+        catch{
+            print("could not fetch")
+        }
+        
+       self.performSegueWithIdentifier("BacktoStepsPlease", sender: self)
+        
+
+        
+        }
         
     }
     
@@ -141,6 +234,11 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //check if last step and if so change arrow to check mark
+        
+        if (firstStep == true)
+        {
+            prevStepButton.hidden = true
+        }
         
         if lastStep == true
         {
@@ -172,6 +270,13 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateScrubSlider"), userInfo: nil, repeats: true)
         
       
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if (firstStep == true)
+        {
+            prevStepButton.hidden = true
+        }
     }
 
     func updateScrubSlider() {
