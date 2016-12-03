@@ -231,8 +231,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             locationManager.startUpdatingLocation()
         }
 
-           setUpLocations()
-            self.collectionView.reloadData()
+        setUpLocations()
+        
+        self.collectionView.reloadData()
     }
     
     //function for easy resuse of alert boxes
