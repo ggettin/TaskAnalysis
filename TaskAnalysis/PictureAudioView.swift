@@ -101,6 +101,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
   
     @IBAction func nextStep(sender: AnyObject) {
         //checkmark should present tasks and place a check mark if completed.
+        //call view did load of next cell
         
     if (lastStep != true)
         {
@@ -135,6 +136,8 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     }
         
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //check if last step and if so change arrow to check mark
@@ -186,12 +189,24 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         }
     }
     
+    func navBar(navBar: UINavigationBar, didSelectItem item: UIBarButtonItem){
+        if item == navigationItem.backBarButtonItem{
+            self.performSegueWithIdentifier("StepsSegue", sender: self)
+        }
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "BacktoSteps"{
             let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
             tabView.selectedIndex = 1
         }
+        if segue.identifier == "StepsSegue" {
+            let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
+            tabView.selectedIndex = 1
+
+        }
+        
     }
+    
     
     
     override func viewWillDisappear(animated: Bool) {
