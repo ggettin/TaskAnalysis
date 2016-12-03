@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
-
-
+ let getStepsData = getStepData()
+let getTasksData =  getTaskData()
+let getLocationDatas = getLocationData()
 class Navigation_CoreData_Controller: UINavigationController {
 
   
@@ -27,14 +28,13 @@ class Navigation_CoreData_Controller: UINavigationController {
     func loader()
     {
         //Get steps Data
-  
-        let getStepsData = getStepData()
-        getStepsData.downloadItems()
-        let getTasksData = getTaskData()
+    // let getStepsData = getStepData()
+         getStepsData.downloadItems()
+       // let getTasksData =  getTaskData()
         getTasksData.downloadItems()
-        let getLocationDatas = getLocationData()
+       // let getLocationDatas = getLocationData()
         getLocationDatas.downloadItems()
-    
+
     }
     
     override func viewDidAppear(animated: Bool) {

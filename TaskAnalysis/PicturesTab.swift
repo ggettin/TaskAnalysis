@@ -27,7 +27,6 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
             return steps.count
         }
         catch{
-            
         }
         return 0
     }
@@ -85,6 +84,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let image = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepImage.image
         
         vc.image = image!
+    
         
         vc.audioFile = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepAudio
         print((tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepCount.text)

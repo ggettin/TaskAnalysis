@@ -15,6 +15,7 @@ class AllTasksCell: UITableViewCell {
     
     @IBOutlet var TaskImage: UIImageView!
     
+    var taskVideo = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
