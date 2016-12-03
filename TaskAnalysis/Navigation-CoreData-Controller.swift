@@ -27,6 +27,7 @@ class Navigation_CoreData_Controller: UINavigationController {
     
     func loader()
     {
+
         //Get steps Data
     // let getStepsData = getStepData()
          getStepsData.downloadItems()
@@ -34,7 +35,6 @@ class Navigation_CoreData_Controller: UINavigationController {
         getTasksData.downloadItems()
        // let getLocationDatas = getLocationData()
         getLocationDatas.downloadItems()
-
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -101,6 +101,11 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
             
         }
         
+        if(indexPath.row == 0)
+        {
+            vc.firstStep = true
+        }
+        
         
 //        self.presentViewController(vc, animated: true, completion: nil)
         navigationController?.pushViewController(vc, animated: true)

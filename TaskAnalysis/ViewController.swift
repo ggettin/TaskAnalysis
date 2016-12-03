@@ -116,6 +116,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             
             //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
             let completed = tasks[indexPath.row].valueForKey("completed") as! NSNumber
+            
             if (completed == 1)
             {
                 cell.completionImage.hidden = false
