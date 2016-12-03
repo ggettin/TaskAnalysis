@@ -72,6 +72,12 @@ func parseJSONTask(data: NSMutableData) {
         print(error)
         
     }
+    let oldJsonResult = try NSUserDefaults.standardUserDefaults().objectForKey("taskData") as! NSMutableArray!
+    if(oldJsonResult != jsonResult){
+        
+        NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "taskData")
+        
+
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     let context = appDel.managedObjectContext
     let stepsEntity = NSEntityDescription.entityForName("TaskTable", inManagedObjectContext: context)
@@ -108,6 +114,8 @@ func parseJSONTask(data: NSMutableData) {
             taskTable.task_image = task_image
             taskTable.completed = 0
             
+        taskData.addObject(taskTable)
+
         }
         
         do{
@@ -119,9 +127,8 @@ func parseJSONTask(data: NSMutableData) {
             print(error)
             
         }
-        
-        taskData.addObject(taskTable)
-        print("Saving Tasks")
+        }
+                print("Saving Tasks")
         print(taskData)
     }
     
