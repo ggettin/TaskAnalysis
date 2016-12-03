@@ -8,13 +8,15 @@
 
 import UIKit
 
+var allTasksCalled = false
+
 class AllTasksController: UIViewController {
     
     
     @IBAction func alltasksbackbutton(sender: AnyObject) {
         
         performSegueWithIdentifier("allid", sender: self)
-        
+        allTasksCalled = true
     }
     let taskTitles = ["Sweeping", "Laundry", "Fold Napkins", "Clean Dishes", "Cook Pasta"]
     

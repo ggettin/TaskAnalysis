@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import CoreData
 
+var viewcontrollerloadedalready = false
 //User current location
 var TaskLocation: String = "test"
 
@@ -17,8 +18,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 //dictionary for locationname/url
 var urlDictionary = [String: NSURL]()
-    
-    
+
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -90,8 +90,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
         //return self.taskTitles.count
     }
-    
-    
+
     // creates collection view cell for location
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
@@ -172,7 +171,20 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
+        if(viewcontrollerloadedalready == false){
+        Controller.loader()
+        }
         
+        if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
+            self.navigationController?.pushViewController(phoneController, animated: true)
+            
+        }
         
        //NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
 
@@ -196,20 +208,15 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //setup test data will need to link coredata to pass in (LocationLabel, radius, address)
         //setupData("Fike", radius: 100, Address: "110 Heisman St, Clemson, SC 29634")
         //setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
-        setUpLocations()
+        //setUpLocations()
         
+        viewcontrollerloadedalready = true
 
     }
 
     override func viewDidAppear(animated: Bool) {
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
-
-           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
-            self.navigationController?.pushViewController(phoneController, animated: true)
-                        
-        }
+  
         
         currentLocation.text = TaskLocation
         
@@ -226,6 +233,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             locationManager.startUpdatingLocation()
         }
 
+        setUpLocations()
+        
+        self.collectionView.reloadData()
     }
     
     //function for easy resuse of alert boxes

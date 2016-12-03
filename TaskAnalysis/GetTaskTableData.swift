@@ -120,13 +120,14 @@ func parseJSONTask(data: NSMutableData) {
             
         }
         
-        //taskData.addObject(task_data)
+        taskData.addObject(taskTable)
+        print("Saving Tasks")
         print(taskData)
     }
     
     dispatch_async(dispatch_get_main_queue(), { () -> Void in
         
-        // self.delegate.itemsDownloaded(stepData)
+         //self.delegate.itemsDownloaded(taskData)
         
     })
 }

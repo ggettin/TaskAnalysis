@@ -9,28 +9,33 @@
 import UIKit
 import CoreData
 
+
 class Navigation_CoreData_Controller: UINavigationController {
 
   
     override func viewDidLoad() {
     
          super.viewDidLoad()
-        
+
         
         //Get all of the data on this viewcontroller
         
+      
         
+    }
+    
+    func loader()
+    {
         //Get steps Data
+  
         let getStepsData = getStepData()
         getStepsData.downloadItems()
         let getTasksData = getTaskData()
         getTasksData.downloadItems()
         let getLocationDatas = getLocationData()
         getLocationDatas.downloadItems()
-        
-       super.viewDidLoad()
-    }
     
+    }
     
     override func viewDidAppear(animated: Bool) {
       

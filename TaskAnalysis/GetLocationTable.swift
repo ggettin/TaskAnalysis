@@ -117,7 +117,7 @@ func parseJSONLocal(data: NSMutableData) {
             
         }
         
-        //taskData.addObject(task_data)
+      //  locationData.addObject(locationTable)
         print(locationData)
     }
     

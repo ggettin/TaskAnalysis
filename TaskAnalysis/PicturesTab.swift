@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+
+var stepsCount = 0
+
 class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     var TaskName:String = ""
@@ -20,6 +23,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         stepRequest.returnsObjectsAsFaults = false
         do{
             let steps: [StepsTable] = try context.executeFetchRequest(stepRequest) as! [StepsTable]
+            stepsCount = steps.count
             return steps.count
         }
         catch{
@@ -48,7 +52,10 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         do{
             let steps: [AnyObject] = try context.executeFetchRequest(stepRequest)
             cell.stepCount.text = "\(steps[indexPath.row].valueForKey("step_number")!)" //change to just indexPathrow after fixing the updating and adding
+            
             cell.stepDescription.text = "\(steps[indexPath.row].valueForKey("step_info")!)"
+         
+        
             //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
             
             let url = NSURL(string: "\(steps[indexPath.row].valueForKey("step_photo")!)")
@@ -57,6 +64,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
             
              let audioUrl =  "\(steps[indexPath.row].valueForKey("step_audio")!)"
             cell.stepAudio = audioUrl
+            
         }
         catch{
             
@@ -79,6 +87,14 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         vc.image = image!
         
         vc.audioFile = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepAudio
+        print((tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepCount.text)
+        print(stepsCount)
+        print(indexPath.row)
+        if(indexPath.row ==  stepsCount-1){
+            
+            lastStep = true
+            
+        }
         
         
 //        self.presentViewController(vc, animated: true, completion: nil)
