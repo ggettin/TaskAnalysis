@@ -9,9 +9,8 @@
 import UIKit
 import CoreData
 
-var stepsCount = 0
+var stepsCount : Int = 0
 
-var pictabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("picsTab") as! PicturesTab
 
 class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -19,21 +18,18 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     @IBOutlet var tableView: UITableView!
     
-    
+    var steps: [AnyObject] = []
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection svarion: Int) -> Int {
-        let context = appDel.managedObjectContext
-        let stepRequest = NSFetchRequest(entityName: "StepsTable")
-        stepRequest.returnsObjectsAsFaults = false
+        
         do{
-            let steps: [StepsTable] = try context.executeFetchRequest(stepRequest) as! [StepsTable]
-            stepsCount = steps.count
             return steps.count
+        }catch{
+            return 0
         }
-        catch{
-        }
-        return 0
+        
+        
     }
     
     
@@ -54,7 +50,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         stepRequest.returnsObjectsAsFaults = false
         stepRequest.sortDescriptors = [NSSortDescriptor(key: "step_number", ascending: true)]
         do{
-            let steps: [AnyObject] = try context.executeFetchRequest(stepRequest)
+            steps = try context.executeFetchRequest(stepRequest)
             cell.stepCount.text = "\(steps[indexPath.row].valueForKey("step_number")!)" //change to just indexPathrow after fixing the updating and adding
             
             cell.stepDescription.text = "\(steps[indexPath.row].valueForKey("step_info")!)"
@@ -85,7 +81,10 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
        
         let info = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepDescription.text
-         vc.taskinfo = info!
+        vc.taskinfo = info!
+        currentStep = indexPath.row
+        vc.steps = steps
+        
         let image = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepImage.image
         
         vc.image = image!
@@ -97,7 +96,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         if(indexPath.row ==  stepsCount-1){
             
-            lastStep = true
+            vc.lastStep = true
             
         }
         
@@ -106,10 +105,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func changeStep(step: Int, type: String)
-    {
-        
-    }
+
     
     //Passes data to next view during segue. (Not yet used)
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -126,7 +122,17 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pictabController = self
+         let context = appDel.managedObjectContext
+         let stepRequest = NSFetchRequest(entityName: "StepsTable")
+         stepRequest.returnsObjectsAsFaults = false
+         do{
+         steps = try context.executeFetchRequest(stepRequest) as! [StepsTable]
+         stepsCount = steps.count
+         }
+         catch{
+         }
+        
+        
         
         self.navigationItem.title = TaskName
         
