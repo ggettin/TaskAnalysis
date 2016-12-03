@@ -89,8 +89,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
         //return self.taskTitles.count
     }
-    
-    
+
     // creates collection view cell for location
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
