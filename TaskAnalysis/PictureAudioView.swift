@@ -19,6 +19,10 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     var nextStep = UIViewController()
     
+    var nextStepCell = UITableView()
+    var nextaudio = ""
+    var nextphoto = ""
+    
     var previousStep = UIViewController()
     
     @IBOutlet var TabBar: UITabBarItem!
@@ -99,9 +103,12 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
   
     @IBAction func nextStep(sender: AnyObject) {
         //checkmark should present tasks and place a check mark if completed.
+        //call view did load of next cell
         
         
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -154,12 +161,24 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         }
     }
     
+    func navBar(navBar: UINavigationBar, didSelectItem item: UIBarButtonItem){
+        if item == navigationItem.backBarButtonItem{
+            self.performSegueWithIdentifier("StepsSegue", sender: self)
+        }
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "BacktoSteps"{
             let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
             tabView.selectedIndex = 1
         }
+        if segue.identifier == "StepsSegue" {
+            let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
+            tabView.selectedIndex = 1
+
+        }
+        
     }
+    
     
     
     override func viewWillDisappear(animated: Bool) {
