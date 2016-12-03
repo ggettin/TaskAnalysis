@@ -56,14 +56,14 @@ class getStepData: NSObject, NSURLSessionDataDelegate {
         }
         
     }
-
+    
     
 }
 
 /*
  func addDataintoCoreData(StepsTable){
-}
-*/
+ }
+ */
 
 func parseJSON(data: NSMutableData) {
     
@@ -79,7 +79,7 @@ func parseJSON(data: NSMutableData) {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     let context = appDel.managedObjectContext
     let stepsEntity = NSEntityDescription.entityForName("StepsTable", inManagedObjectContext: context)
-
+    
     var jsonElement: NSDictionary = NSDictionary()
     let stepData: NSMutableArray = NSMutableArray()
     
@@ -88,13 +88,13 @@ func parseJSON(data: NSMutableData) {
     //for(var i = 0; i < jsonResult.count; i++)
     for row in jsonResult
     {
-      
+        
         
         //jsonElement = jsonResult[i] as! NSDictionary
         
-        //let step_data = StepsModel()
+      //  let step_data = StepsModel()
         let stepsTable = StepsTable(entity: stepsEntity!, insertIntoManagedObjectContext: context)
-        
+
         //the following insures none of the JsonElement values are nil through optional binding
         if let step_id = row["step_id"] as? String,
             let step_info = row["step_info"] as? String,
@@ -112,18 +112,18 @@ func parseJSON(data: NSMutableData) {
             //                step_data.delete_id = Int(delete_id)
             //                step_data.timestamp = timestamp
             
-        stepsTable.step_id = Int(step_id)
-        stepsTable.step_number = Int(step_number)
-        stepsTable.step_info = step_info
-        stepsTable.delete_id = Int(delete_id)
-        stepsTable.timestamp = timestamp
+            stepsTable.step_id = Int(step_id)
+            stepsTable.step_number = Int(step_number)
+            stepsTable.step_info = step_info
+            stepsTable.delete_id = Int(delete_id)
+            stepsTable.timestamp = timestamp
             
-        //Add Functionality to download into directory
-        stepsTable.step_audio = step_audio
-        stepsTable.step_photo = step_photo
+            //Add Functionality to download into directory
+            stepsTable.step_audio = step_audio
+            stepsTable.step_photo = step_photo
             
-        stepssCount = stepssCount + 1
-
+            stepssCount = stepssCount + 1
+            stepData.addObject(stepsTable)
         }
         
         do{
@@ -133,10 +133,11 @@ func parseJSON(data: NSMutableData) {
         } catch let error as NSError{
             
             print(error)
-        
+            
         }
         
-        //stepData.addObject(step_data)
+        
+        print("Saving steps table to CoreData")
         print(stepData)
     }
     

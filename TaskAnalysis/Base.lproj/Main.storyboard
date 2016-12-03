@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yrQ-jC-xYC">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2553a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yrQ-jC-xYC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -203,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7c-sW-dQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="494" y="-755"/>
+            <point key="canvasLocation" x="516" y="-855"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -228,7 +228,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="CM8-Ce-9Q7" customClass="CustomCollectionViewCell" customModule="TaskAnalysis" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="80" width="140" height="140"/>
+                                        <rect key="frame" x="16" y="16" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -311,7 +311,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -320,7 +320,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="5AA2DE20-08FE-4879-B898-3022E3612445" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="A3F3C7D1-EB8F-49AC-8306-3B8078327287" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -674,7 +674,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="5AA2DE20-08FE-4879-B898-3022E3612445" width="30" height="30">
+        <image name="A3F3C7D1-EB8F-49AC-8306-3B8078327287" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -815,6 +815,6 @@ AAAAAAActw
         <image name="video" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1XR-mA-bFH"/>
+        <segue reference="gCJ-g4-DLy"/>
     </inferredMetricsTieBreakers>
 </document>

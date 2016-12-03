@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import CoreData
 
+var viewcontrollerloadedalready = false
 //User current location
 var TaskLocation: String = "test"
 
@@ -170,12 +171,12 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+     
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
+        if(viewcontrollerloadedalready == false){
         Controller.loader()
-        
+        }
         
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
@@ -209,6 +210,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //setupData("Suntrust ATM", radius: 100, Address: "527 Fort Hill St, Clemson, SC 29634")
         //setUpLocations()
         
+        viewcontrollerloadedalready = true
 
     }
 

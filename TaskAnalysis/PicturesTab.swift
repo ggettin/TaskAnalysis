@@ -52,7 +52,10 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         do{
             let steps: [AnyObject] = try context.executeFetchRequest(stepRequest)
             cell.stepCount.text = "\(steps[indexPath.row].valueForKey("step_number")!)" //change to just indexPathrow after fixing the updating and adding
+            
             cell.stepDescription.text = "\(steps[indexPath.row].valueForKey("step_info")!)"
+         
+        
             //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
             
             let url = NSURL(string: "\(steps[indexPath.row].valueForKey("step_photo")!)")
