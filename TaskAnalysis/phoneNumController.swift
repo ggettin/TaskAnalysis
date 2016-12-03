@@ -41,6 +41,7 @@ class phoneNumController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
+        self.navigationItem .setHidesBackButton(true, animated: true)
 
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) { //close keyboard with click

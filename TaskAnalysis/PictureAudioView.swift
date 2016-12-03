@@ -104,7 +104,6 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //check if last step and if so change arrow to check mark
         
         if lastStep == true

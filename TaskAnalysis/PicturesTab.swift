@@ -11,12 +11,17 @@ import CoreData
 
 var stepsCount = 0
 
+var pictabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("picsTab") as! PicturesTab
+
 class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     var TaskName:String = ""
     
     @IBOutlet var tableView: UITableView!
     
+    
+
+
     func tableView(tableView: UITableView, numberOfRowsInSection svarion: Int) -> Int {
         let context = appDel.managedObjectContext
         let stepRequest = NSFetchRequest(entityName: "StepsTable")
@@ -90,6 +95,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         print((tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepCount.text)
         print(stepsCount)
         print(indexPath.row)
+        
         if(indexPath.row ==  stepsCount-1){
             
             lastStep = true
@@ -98,7 +104,12 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         
 //        self.presentViewController(vc, animated: true, completion: nil)
-        self.showViewController(vc, sender: self)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func changeStep(step: Int, type: String)
+    {
+        
     }
     
     //Passes data to next view during segue. (Not yet used)
@@ -110,10 +121,13 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 //    
     override func viewDidAppear(animated: Bool) {
         self.navigationItem.title = TaskName
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pictabController = self
         
         self.navigationItem.title = TaskName
         

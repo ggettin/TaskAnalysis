@@ -141,6 +141,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     //Segues to next view when cell is selected
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        
         self.performSegueWithIdentifier("showSteps", sender: indexPath)
         
         let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
