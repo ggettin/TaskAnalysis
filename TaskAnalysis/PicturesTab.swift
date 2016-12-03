@@ -32,7 +32,6 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
             return steps.count
         }
         catch{
-            
         }
         return 0
     }

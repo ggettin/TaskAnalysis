@@ -122,9 +122,22 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                 
             }
             
-            let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
-            let data = NSData(contentsOfURL: url!)
-            cell.taskImage.image = UIImage(data: data!)
+            if(NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)") != nil){
+                
+                let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
+                if(NSData(contentsOfURL: url!) != nil){
+                    let data = NSData(contentsOfURL: url!)
+                    cell.taskImage.image = UIImage(data: data!)
+                }else{
+                    print("Data Nil")
+                }
+               
+            }else{
+                print("Error NIL")
+            }
+            
+
+    
             taskTitles.append(cell.taskName.text!)
             
             cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
