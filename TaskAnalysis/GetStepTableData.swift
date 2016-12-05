@@ -112,7 +112,7 @@ func parseJSON(data: NSMutableData) {
                     //                step_data.delete_id = Int(delete_id)
                     //                step_data.timestamp = timestamp
                     
-                    stepsTable.step_id = Int(step_id)
+                  /*  stepsTable.step_id = Int(step_id)
                     stepsTable.step_number = Int(step_number)
                     stepsTable.step_info = step_info
                     stepsTable.delete_id = Int(delete_id)
@@ -122,6 +122,17 @@ func parseJSON(data: NSMutableData) {
                     stepsTable.step_photo = step_photo
                     stepssCount = stepssCount + 1
                     stepData.addObject(stepsTable)
+                    */
+                    
+                    
+                    stepsTable.setValue(Int(step_id), forKey: "step_id")
+                    stepsTable.setValue(step_info, forKey: "step_info")
+                    stepsTable.setValue(step_photo, forKey: "step_photo")
+                    stepsTable.setValue(step_audio, forKey: "step_audio")
+                    stepsTable.setValue(Int(delete_id), forKey: "delete_id")
+                    stepsTable.setValue(timestamp, forKey: "timestamp")
+                    stepsTable.setValue(Int(step_number), forKey: "step_number")
+                    
                     
                 }
             do{

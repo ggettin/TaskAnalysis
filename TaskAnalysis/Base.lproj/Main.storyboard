@@ -197,7 +197,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XxQ-RM-qvL">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XxQ-RM-qvL">
                                 <rect key="frame" x="8" y="0.0" width="580" height="443"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="6" id="NoX-SO-2k1">
@@ -208,7 +208,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="CM8-Ce-9Q7" customClass="CustomCollectionViewCell" customModule="TaskAnalysis" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="16" width="140" height="140"/>
+                                        <rect key="frame" x="16" y="80" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -259,13 +259,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="5Fx-oh-XkJ"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gKq-e6-EwZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="locationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gKq-e6-EwZ">
                                 <rect key="frame" x="8" y="472" width="39" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="HW0-aq-65P"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showing tasks for: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS4-Zm-SGg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Showing tasks for: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS4-Zm-SGg">
                                 <rect key="frame" x="66" y="446" width="153" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="153" id="PwA-ac-X2v"/>
@@ -275,14 +275,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ci-e3-xSe">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ci-e3-xSe">
                                 <rect key="frame" x="66" y="492" width="389" height="88"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Change your location">
                                     <color key="titleColor" red="0.86147684010152281" green="0.078635503628738876" blue="0.15462955400632583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMd-Yn-0pJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMd-Yn-0pJ">
                                 <rect key="frame" x="66" y="480" width="397" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="x4C-7T-m82"/>
@@ -291,7 +291,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy4-Yd-OlN">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
@@ -300,11 +300,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="D6F5C0C8-E69C-45A6-B4D7-5674029D2850" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="82696ADB-502C-4D8B-880C-1DB2507FB33B" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room" translatesAutoresizingMaskIntoConstraints="NO" id="99t-2w-TKM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="room" translatesAutoresizingMaskIntoConstraints="NO" id="99t-2w-TKM">
                                 <rect key="frame" x="471" y="446" width="117" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="117" id="UnP-C3-wgs"/>
@@ -394,12 +394,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-tF-giX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-tF-giX">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StepCell" editingAccessoryType="disclosureIndicator" rowHeight="106" id="qJe-Sn-uKG" customClass="StepCell" customModule="TaskAnalysis" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="106"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qJe-Sn-uKG" id="rhm-YE-1Wy">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="105"/>
@@ -613,7 +613,7 @@
                                     <action selector="playButton:" destination="Gjz-sB-Rwc" eventType="touchUpInside" id="Usa-T9-BCl"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-Pd-7fS">
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-Pd-7fS">
                                 <rect key="frame" x="20" y="72" width="560" height="471"/>
                             </imageView>
                         </subviews>
@@ -657,7 +657,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D6F5C0C8-E69C-45A6-B4D7-5674029D2850" width="30" height="30">
+        <image name="82696ADB-502C-4D8B-880C-1DB2507FB33B" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -799,9 +799,7 @@ AAAAAAActw
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7r7-Or-dS3"/>
-        <segue reference="joT-9k-PnF"/>
-        <segue reference="flc-wu-hLe"/>
         <segue reference="Bj4-PK-55B"/>
-        <segue reference="eEu-TQ-4nJ"/>
+        <segue reference="1XR-mA-bFH"/>
     </inferredMetricsTieBreakers>
 </document>

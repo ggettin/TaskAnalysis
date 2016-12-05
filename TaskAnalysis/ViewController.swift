@@ -84,7 +84,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             return tasks.count
         }
         catch{
-            
+            print("CollectionView Error")
         }
         return 0
 
@@ -94,7 +94,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     // creates collection view cell for location
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
+   let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
         
        /* cell.taskName.text = self.taskTitles[indexPath.row]
         cell.taskImage.image = self.taskImages[indexPath.row]
@@ -145,11 +145,12 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             
         }
         catch{
-            
+            print("Helko")
         }
         
         
         return cell
+            
     }
     
     
@@ -183,16 +184,29 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             
         }
     }
-    
+            func loader()
+        {
+            
+            //Get steps Data
+            // let getStepsData = getStepData()
+           getStepsData.downloadItems()
+            // let getTasksData =  getTaskData()
+            getTasksData.downloadItems()
+            // let getLocationDatas = getLocationData()
+            getLocationDatas.downloadItems()
+
+            print("helloooooooo")
+        }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
-        if(viewcontrollerloadedalready == false){
-        Controller.loader()
-        }
+    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
+     
+        loader()
         
+
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
