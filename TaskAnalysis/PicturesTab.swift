@@ -117,7 +117,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       // getStepsData.downloadItems()
          let context = appDel.managedObjectContext
          let stepRequest = NSFetchRequest(entityName: "StepsTable")
          stepRequest.returnsObjectsAsFaults = false

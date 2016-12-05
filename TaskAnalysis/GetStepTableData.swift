@@ -74,6 +74,7 @@ func parseJSON(data: NSMutableData) {
     
         
         let oldJsonResult = try NSUserDefaults.standardUserDefaults().objectForKey("stepData") as! NSMutableArray!
+        
         if(oldJsonResult != jsonResult){
             
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -132,6 +133,8 @@ func parseJSON(data: NSMutableData) {
                     stepsTable.setValue(Int(delete_id), forKey: "delete_id")
                     stepsTable.setValue(timestamp, forKey: "timestamp")
                     stepsTable.setValue(Int(step_number), forKey: "step_number")
+                    stepssCount = stepssCount + 1
+                    stepData.addObject(stepsTable)
                     
                     
                 }

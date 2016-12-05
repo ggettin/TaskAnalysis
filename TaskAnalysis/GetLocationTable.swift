@@ -105,8 +105,7 @@ func parseJSONLocal(data: NSMutableData) {
             locationTable.location_photo = location_photo
             locationTable.delete_id = Int(delete_id)
             locationTable.timestamp = String(timestamp)
- 
- */
+          */
             
             
             locationTable.setValue(Int(location_id), forKey: "location_id")
