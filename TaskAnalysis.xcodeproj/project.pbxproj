@@ -134,6 +134,7 @@
 				1FC5684C1DECC463001BB987 /* StepsTable.swift */,
 				1FC5686E1DEF5724001BB987 /* StepsModel.swift */,
 				1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */,
+				3729C7641DD394D500A920DC /* Products */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -142,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				3729C7651DD394D500A920DC /* TaskAnalysis */,
-				3729C7641DD394D500A920DC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +152,7 @@
 				3729C7631DD394D500A920DC /* TaskAnalysis.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		3729C7651DD394D500A920DC /* TaskAnalysis */ = {
