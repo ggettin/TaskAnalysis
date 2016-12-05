@@ -24,19 +24,7 @@ class Navigation_CoreData_Controller: UINavigationController {
       
         
     }
-    
-    func loader()
-    {
-
-        //Get steps Data
-    // let getStepsData = getStepData()
-         getStepsData.downloadItems()
-       // let getTasksData =  getTaskData()
-        getTasksData.downloadItems()
-       // let getLocationDatas = getLocationData()
-        getLocationDatas.downloadItems()
-    }
-    
+     
     override func viewDidAppear(animated: Bool) {
       
     super.viewDidLoad()

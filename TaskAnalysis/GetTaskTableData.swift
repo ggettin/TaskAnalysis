@@ -16,7 +16,7 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
     
     //properties
     
-    weak var delegate: getStepProtocol!
+    weak var delegate: getTaskProtocol!
     
     var data : NSMutableData = NSMutableData()
     
@@ -74,7 +74,7 @@ func parseJSONTask(data: NSMutableData) {
     }
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     let context = appDel.managedObjectContext
-    let stepsEntity = NSEntityDescription.entityForName("TaskTable", inManagedObjectContext: context)
+    let tasksEntity = NSEntityDescription.entityForName("TaskTable", inManagedObjectContext: context)
     
     var jsonElement: NSDictionary = NSDictionary()
     let taskData: NSMutableArray = NSMutableArray()
@@ -87,7 +87,7 @@ func parseJSONTask(data: NSMutableData) {
         
         //jsonElement = jsonResult[i] as! NSDictionary
         
-        let taskTable = TaskTable(entity: stepsEntity!, insertIntoManagedObjectContext: context)
+        let taskTable = TaskTable(entity: tasksEntity!, insertIntoManagedObjectContext: context)
         
         //the following insures none of the JsonElement values are nil through optional binding
         if let task_id = row["task_id"] as? String,
@@ -98,7 +98,7 @@ func parseJSONTask(data: NSMutableData) {
             let delete_id = row["delete_id"] as? String,
             let timestamp = row["timestamp"] as? String
         {
-            
+           /*
             taskTable.task_id = Int(task_id)
             taskTable.task_title = task_title
             taskTable.task_video = task_video
@@ -107,6 +107,16 @@ func parseJSONTask(data: NSMutableData) {
             taskTable.location_id = Int(location_id)
             taskTable.task_image = task_image
             taskTable.completed = 0
+             */
+            
+            taskTable.setValue(Int(task_id), forKey: "task_id")
+            taskTable.setValue(task_title, forKey: "task_title")
+            taskTable.setValue(task_image, forKey: "task_image")
+            taskTable.setValue(task_video, forKey: "task_video")
+            taskTable.setValue(Int(location_id), forKey: "location_id")
+            taskTable.setValue(Int(delete_id), forKey: "delete_id")
+            taskTable.setValue(timestamp, forKey: "timestamp")
+            taskTable.setValue(0, forKey: "completed")
             
         }
         
