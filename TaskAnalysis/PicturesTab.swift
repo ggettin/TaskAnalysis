@@ -82,7 +82,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
        
         let info = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepDescription.text
         vc.taskinfo = info!
-        currentStep = indexPath.row
+        vc.currentStep = indexPath.row + 1
         vc.steps = steps
         
         let image = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepImage.image
@@ -95,16 +95,6 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         print(stepsCount)
         print(indexPath.row)
         
-        if(indexPath.row ==  stepsCount-1){
-            
-            vc.lastStep = true
-            
-        }
-        
-        if(indexPath.row == 0)
-        {
-            vc.firstStep = true
-        }
         
         
 //        self.presentViewController(vc, animated: true, completion: nil)
@@ -133,7 +123,6 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
          stepRequest.returnsObjectsAsFaults = false
          do{
          steps = try context.executeFetchRequest(stepRequest) as! [StepsTable]
-         stepsCount = steps.count
          }
          catch{
          }

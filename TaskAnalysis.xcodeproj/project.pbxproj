@@ -97,9 +97,9 @@
 		1FC5686C1DEF47E0001BB987 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				37A17B141DDA1E5900F3FF04 /* PicturesTab.swift */,
-				37A17B161DDA1E6B00F3FF04 /* VideoTab.swift */,
 				3729C7681DD394D500A920DC /* ViewController.swift */,
+				37A17B161DDA1E6B00F3FF04 /* VideoTab.swift */,
+				37A17B141DDA1E5900F3FF04 /* PicturesTab.swift */,
 				374FE9E41DDA542F000312C4 /* PictureAudioView.swift */,
 				374FE9E21DDA3C7B000312C4 /* StepCell.swift */,
 				382BD0721DDDFA9000986339 /* MapViewController.swift */,

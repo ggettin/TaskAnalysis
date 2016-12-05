@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import CoreData
 
-var currentStep : Int = -1
+
 
 
 class PictureAudioView: UIViewController, UITabBarDelegate {
@@ -25,6 +25,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     var TaskName:String = ""
     
+    var currentStep : Int = -1
     
     @IBOutlet var TabBar: UITabBarItem!
     var taskinfo = ""
@@ -88,7 +89,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             playButton.setImage(UIImage(named: "pause"), forState: UIControlState.Normal)
             player.play()
             
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("increaseTimer"), userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(PictureAudioView.increaseTimer), userInfo: nil, repeats: true)
             
         }else{
             playing = false
@@ -106,127 +107,160 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     @IBOutlet var nextStepButton: UIButton!
   
     @IBAction func previousStep(sender: AnyObject) {
-       
-        if (firstStep != true)
-        {
-            let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
-            
-            
-            let info = steps[currentStep - 1].valueForKey("step_info")!
-            vc.taskinfo = info as! String
-            vc.steps = steps
-            
+        if (firstStep != true){
+            stepDescription.text = steps[currentStep - 1].valueForKey("step_info")! as! String
             let url = NSURL(string: "\(steps[currentStep - 1].valueForKey("step_photo")!)")
             
             let data = NSData(contentsOfURL: url!)
-            vc.image = UIImage(data: data!)!
+            stepImage.image = UIImage(data: data!)!
             
+            audioFile = "\(steps[currentStep - 1].valueForKey("step_audio")!)"
             
-            
-            let audioUrl =  "\(steps[currentStep - 1].valueForKey("step_audio")!)"
-            
-            vc.audioFile = audioUrl
-            
-            if (currentStep == 1) {
-                
-                vc.firstStep = true
-            }
+            loadPlayer()
             
             currentStep = currentStep - 1
             
-            navigationController?.pushViewController(vc, animated: true)
+            if currentStep == 1{
+                firstStep = true
+                prevStepButton.hidden = true
+            }else{
+                prevStepButton.hidden = false
+            }
             
+            if currentStep == steps.count{
+                lastStep = true
+                nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
+            }
+
             
         }
+        
+        
+        
+       
+//        if (firstStep != true)
+//        {
+//            let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
+//            
+//            
+//            let info = steps[currentStep - 1].valueForKey("step_info")!
+//            vc.taskinfo = info as! String
+//            vc.steps = steps
+//            
+//            let url = NSURL(string: "\(steps[currentStep - 1].valueForKey("step_photo")!)")
+//            
+//            let data = NSData(contentsOfURL: url!)
+//            vc.image = UIImage(data: data!)!
+//            
+//            
+//            
+//            let audioUrl =  "\(steps[currentStep - 1].valueForKey("step_audio")!)"
+//            
+//            vc.audioFile = audioUrl
+//            
+//            if (currentStep == 1) {
+//                
+//                vc.firstStep = true
+//            }
+//            
+//            currentStep = currentStep - 1
+//            
+//            navigationController?.pushViewController(vc, animated: true)
+//
+//            
+//        }
 
     }
+    
+    
     @IBAction func nextStep(sender: AnyObject) {
         //checkmark should present tasks and place a check mark if completed.
         //call view did load of next cell
         
-    if (lastStep != true)
-        {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
+        
+        if !lastStep {
+            stepDescription.text = steps[currentStep + 1].valueForKey("step_info")! as! String
+            let url = NSURL(string: "\(steps[currentStep + 1].valueForKey("step_photo")!)")
             
+            let data = NSData(contentsOfURL: url!)
+            stepImage.image = UIImage(data: data!)!
             
-        let info = steps[currentStep + 1].valueForKey("step_info")!
-        vc.taskinfo = info as! String
-        vc.steps = steps
-        
-        let url = NSURL(string: "\(steps[currentStep + 1].valueForKey("step_photo")!)")
-
-        let data = NSData(contentsOfURL: url!)
-        vc.image = UIImage(data: data!)!
-
-        
-        
-        let audioUrl =  "\(steps[currentStep + 1].valueForKey("step_audio")!)"
-
-        vc.audioFile = audioUrl
-        
-        if (currentStep + 1 ==  stepsCount-1) {
+            audioFile = "\(steps[currentStep + 1].valueForKey("step_audio")!)"
             
-            vc.lastStep = true
-        }
+            loadPlayer()
             
             currentStep = currentStep + 1
             
-            navigationController?.pushViewController(vc, animated: true)
-
-
-    }
-    else{
-        let context = appDel.managedObjectContext
-        let taskRequest = NSFetchRequest(entityName: "TaskStepTable")
-        let stepID = steps[currentStep].valueForKey("step_id")!
-        var taskID: AnyObject = "-1" as AnyObject
-        
-        //get the taskID associated with the stepID of the storyboard
-        taskRequest.predicate = NSPredicate(format: "step_id= %d", stepID as! [AnyObject])
-        taskRequest.returnsObjectsAsFaults = false
-
-                do{
-            
-            let results =  try context.executeFetchRequest(taskRequest)
-            if results.count > 0{
-                
-            for result in results as! [NSManagedObject]
-            {
-                taskID = result.valueForKey("task_id")!
-            }
-        
-                
+            if currentStep == 1{
+                firstStep = true
+            }else{
+                prevStepButton.hidden = false
             }
             
-        }catch{
-            print("could not fetch")
-        }
-        
-        //access the taskID of the tasktable and set its completed value to true
-        let tableRequest = NSFetchRequest(entityName: "TaskTable")
-        tableRequest.predicate = NSPredicate(format: "task_id= %d", taskID as! [AnyObject])
-        tableRequest.returnsObjectsAsFaults = false
-        do{
             
-            let results =  try context.executeFetchRequest(tableRequest)
-            if results.count > 0{
-            for result in results as! [NSManagedObject]
-            {
-                result.setValue("true", forKey: "completed")
+            if currentStep == steps.count{
+                lastStep = true
             }
 
-            }
-            
-        }
-        catch{
-            print("could not fetch")
+        }else{
+            self.performSegueWithIdentifier("BacktoStepsPlease", sender: self)
         }
         
-       self.performSegueWithIdentifier("BacktoStepsPlease", sender: self)
         
-
         
-        }
+        
+        
+        
+        
+        
+        
+//        if (lastStep != true)
+//        {
+//            let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
+//            
+//            
+//            let info = steps[currentStep + 1].valueForKey("step_info")!
+//            vc.taskinfo = info as! String
+//            vc.steps = steps
+//            
+//            let url = NSURL(string: "\(steps[currentStep + 1].valueForKey("step_photo")!)")
+//            
+//            let data = NSData(contentsOfURL: url!)
+//            vc.image = UIImage(data: data!)!
+//            
+//            
+//            
+//            let audioUrl =  "\(steps[currentStep + 1].valueForKey("step_audio")!)"
+//            
+//            vc.audioFile = audioUrl
+//            print("HERE \n\n\n\n\n\n\n")
+//            print(currentStep+1)
+//            print(stepsCount-1)
+//            print("\n\n\n\n\n\n\n\n")
+//            if (currentStep + 1 ==  stepsCount-1) {
+//                
+//                vc.lastStep = true
+//            }
+//            
+//            currentStep = currentStep + 1
+//            
+//            navigationController?.pushViewController(vc, animated: true)
+//            
+//            
+//        }
+//        else{
+//            let context = appDel.managedObjectContext
+//            let taskRequest = NSFetchRequest(entityName: "TaskStepTable")
+//            let stepID = steps[currentStep].valueForKey("step_id")!
+//            var taskID: AnyObject = "-1" as AnyObject
+//            
+//            
+//            
+//            self.performSegueWithIdentifier("BacktoStepsPlease", sender: self)
+//            
+//            
+//            
+//        }
         
     }
     
@@ -235,16 +269,38 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         //check if last step and if so change arrow to check mark
         
+        let context = appDel.managedObjectContext
+        let stepRequest = NSFetchRequest(entityName: "StepsTable")
+        stepRequest.returnsObjectsAsFaults = false
+        do{
+            steps = try context.executeFetchRequest(stepRequest) as! [StepsTable]
+        }catch{
+            print(error)
+        }
+        
+        
+        if currentStep == 1{
+            firstStep = true
+            prevStepButton.hidden = true
+        }
+        
+        
+        if currentStep == steps.count{
+            lastStep = true
+        }
+        
+        
         if (firstStep == true)
         {
             prevStepButton.hidden = true
+            
+    
         }
         
         if lastStep == true
         {
             nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
             
-            lastStep = false
         }
         
         
@@ -253,6 +309,12 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         stepImage.image = image
         stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
         
+        
+      
+    }
+    
+    
+    func loadPlayer(){
         do {
             let fileURL:NSURL = NSURL(string: audioFile)!
             let soundData = NSData.init(contentsOfURL: fileURL)
@@ -266,9 +328,8 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             
         }
         
-        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateScrubSlider"), userInfo: nil, repeats: true)
-        
-      
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(PictureAudioView.updateScrubSlider), userInfo: nil, repeats: true)
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -286,7 +347,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     }
     
     @IBOutlet var VideoTabButton: UITabBarItem!
- 
+    
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if item == VideoTabButton{
             self.performSegueWithIdentifier("BacktoSteps", sender: self)
@@ -306,7 +367,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         if segue.identifier == "StepsSegue" {
             let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
             tabView.selectedIndex = 1
-
+            
         }
         
     }
@@ -314,7 +375,12 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     
     
     override func viewWillDisappear(animated: Bool) {
-        player.pause()
+        if playing{
+            playing = false
+            playButton.setImage(UIImage(named: "playAudio"), forState: UIControlState.Normal)
+            player.pause()
+            timer.invalidate()
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
