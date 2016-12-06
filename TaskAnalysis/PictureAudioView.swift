@@ -38,7 +38,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     var audioFile = ""
     
     var steps: [AnyObject] = []
-
+   
     
     //used to update audio time elapsed
     @IBOutlet weak var timerStart: UILabel!
@@ -120,14 +120,14 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             
             currentStep = currentStep - 1
             
-            if currentStep == 1{
+            if currentStep == 0{
                 firstStep = true
                 prevStepButton.hidden = true
             }else{
                 prevStepButton.hidden = false
             }
             
-            if currentStep == steps.count{
+            if currentStep == steps.count - 1{
                 lastStep = true
                 nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
             }
@@ -136,40 +136,6 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         }
         
         
-        
-       
-//        if (firstStep != true)
-//        {
-//            let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
-//            
-//            
-//            let info = steps[currentStep - 1].valueForKey("step_info")!
-//            vc.taskinfo = info as! String
-//            vc.steps = steps
-//            
-//            let url = NSURL(string: "\(steps[currentStep - 1].valueForKey("step_photo")!)")
-//            
-//            let data = NSData(contentsOfURL: url!)
-//            vc.image = UIImage(data: data!)!
-//            
-//            
-//            
-//            let audioUrl =  "\(steps[currentStep - 1].valueForKey("step_audio")!)"
-//            
-//            vc.audioFile = audioUrl
-//            
-//            if (currentStep == 1) {
-//                
-//                vc.firstStep = true
-//            }
-//            
-//            currentStep = currentStep - 1
-//            
-//            navigationController?.pushViewController(vc, animated: true)
-//
-//            
-//        }
-
     }
     
     
@@ -191,76 +157,24 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             
             currentStep = currentStep + 1
             
-            if currentStep == 1{
+            print("\(currentStep) of \(steps.count - 1)")
+
+            
+            if currentStep == 0{
                 firstStep = true
             }else{
                 prevStepButton.hidden = false
             }
             
             
-            if currentStep == steps.count{
+            if currentStep == steps.count - 1 {
                 lastStep = true
+                nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
             }
 
         }else{
-            self.performSegueWithIdentifier("BacktoStepsPlease", sender: self)
+            self.performSegueWithIdentifier("unwindToMain", sender: self)
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        if (lastStep != true)
-//        {
-//            let vc = storyboard?.instantiateViewControllerWithIdentifier("StepDetail") as! PictureAudioView
-//            
-//            
-//            let info = steps[currentStep + 1].valueForKey("step_info")!
-//            vc.taskinfo = info as! String
-//            vc.steps = steps
-//            
-//            let url = NSURL(string: "\(steps[currentStep + 1].valueForKey("step_photo")!)")
-//            
-//            let data = NSData(contentsOfURL: url!)
-//            vc.image = UIImage(data: data!)!
-//            
-//            
-//            
-//            let audioUrl =  "\(steps[currentStep + 1].valueForKey("step_audio")!)"
-//            
-//            vc.audioFile = audioUrl
-//            print("HERE \n\n\n\n\n\n\n")
-//            print(currentStep+1)
-//            print(stepsCount-1)
-//            print("\n\n\n\n\n\n\n\n")
-//            if (currentStep + 1 ==  stepsCount-1) {
-//                
-//                vc.lastStep = true
-//            }
-//            
-//            currentStep = currentStep + 1
-//            
-//            navigationController?.pushViewController(vc, animated: true)
-//            
-//            
-//        }
-//        else{
-//            let context = appDel.managedObjectContext
-//            let taskRequest = NSFetchRequest(entityName: "TaskStepTable")
-//            let stepID = steps[currentStep].valueForKey("step_id")!
-//            var taskID: AnyObject = "-1" as AnyObject
-//            
-//            
-//            
-//            self.performSegueWithIdentifier("BacktoStepsPlease", sender: self)
-//            
-//            
-//            
-//        }
         
     }
     
@@ -269,23 +183,15 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         //check if last step and if so change arrow to check mark
         
-        let context = appDel.managedObjectContext
-        let stepRequest = NSFetchRequest(entityName: "StepsTable")
-        stepRequest.returnsObjectsAsFaults = false
-        do{
-            steps = try context.executeFetchRequest(stepRequest) as! [StepsTable]
-        }catch{
-            print(error)
-        }
+        loadPlayer()
         
-        
-        if currentStep == 1{
+        if currentStep == 0{
             firstStep = true
             prevStepButton.hidden = true
         }
         
         
-        if currentStep == steps.count{
+        if currentStep == steps.count - 1{
             lastStep = true
         }
         
@@ -321,6 +227,8 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             try player = AVAudioPlayer(data: soundData!)
             
             scrubSlider.maximumValue = Float(player.duration)
+            
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(PictureAudioView.increaseTimer), userInfo: nil, repeats: true)
             
         } catch {
             

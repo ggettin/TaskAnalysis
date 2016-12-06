@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-var stepsCount : Int = 0
 
 
 class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -23,13 +22,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 
     func tableView(tableView: UITableView, numberOfRowsInSection svarion: Int) -> Int {
         
-        do{
-            return steps.count
-        }catch{
-            return 0
-        }
-        
-        
+            return steps.count        
     }
     
     
@@ -82,7 +75,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
        
         let info = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepDescription.text
         vc.taskinfo = info!
-        vc.currentStep = indexPath.row + 1
+        vc.currentStep = indexPath.row
         vc.steps = steps
         
         let image = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepImage.image
@@ -92,7 +85,6 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         vc.audioFile = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepAudio
         print((tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepCount.text)
-        print(stepsCount)
         print(indexPath.row)
         
         
