@@ -11,8 +11,9 @@ import CoreData
 
 extension StudentTaskLocalTable {
     
+    @NSManaged var stl_id: NSNumber?
     @NSManaged var student_id: NSNumber?
-    @NSManaged var student_location: NSNumber?
+    @NSManaged var student_location_id: NSNumber?
     @NSManaged var task_id: NSNumber?
     
 }

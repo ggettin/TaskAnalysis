@@ -18,7 +18,7 @@ class getStudTaskLocalData: NSObject, NSURLSessionDataDelegate {
     
     //properties
     
-    weak var delegate: getTaskProtocol!
+    weak var delegate: getStudTaskLocalProtocol!
     
     var data : NSMutableData = NSMutableData()
     
@@ -76,7 +76,7 @@ func parseJSONSTL(data: NSMutableData) {
     }
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     let context = appDel.managedObjectContext
-    let STLEntity = NSEntityDescription.entityForName("StudenTaskLocalTable", inManagedObjectContext: context)
+    let STLEntity = NSEntityDescription.entityForName("StudentTaskLocalTable", inManagedObjectContext: context)
     
     var jsonElement: NSDictionary = NSDictionary()
     let stlData: NSMutableArray = NSMutableArray()
@@ -100,8 +100,8 @@ func parseJSONSTL(data: NSMutableData) {
             
             STLTable.setValue(Int(stl_id), forKey: "stl_id")
             STLTable.setValue(Int(task_id), forKey: "task_id")
-            STLTable.setValue(location_id, forKey: "location_id")
-            STLTable.setValue(student_id, forKey: "student_id")
+            STLTable.setValue(Int(location_id), forKey: "student_location_id")
+            STLTable.setValue(Int(student_id), forKey: "student_id")
 
             
         }
@@ -117,7 +117,7 @@ func parseJSONSTL(data: NSMutableData) {
         }
         
         stlData.addObject(STLTable)
-        print("Saving Tasks")
+        print("Saving STL")
         print(stlData)
     }
     
@@ -127,3 +127,25 @@ func parseJSONSTL(data: NSMutableData) {
         
     })
 }
+func shouldAddStudTaskLocal(id: Int, delete_id: Int, timestamp: String) -> Bool{
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let managedContext = appDelegate.managedObjectContext
+    let fetchRequest = NSFetchRequest(entityName: "TaskTable")
+    fetchRequest.returnsObjectsAsFaults = false
+    
+    var newTask = NSPredicate(format: "task_id = %d", id)
+    fetchRequest.predicate = newTask
+    
+    do{
+        var newTasks = try managedContext.executeFetchRequest(fetchRequest) as! [AnyObject]
+        if(newTasks.count == 0){
+            return true
+        }
+    }catch{
+        print("Could not Update Core Data")
+    }
+    return false
+    
+}
+

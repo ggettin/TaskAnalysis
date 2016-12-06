@@ -10,6 +10,13 @@ import UIKit
 import CoreLocation
 import CoreData
 
+let getStepsData = getStepData()
+let getTasksData =  getTaskData()
+let getLocationDatas = getLocationData()
+let getTaskStepsData = getTaskStepData()
+let getStudentTaskLocationData = getStudTaskLocalData()
+
+var userId: Int?
 var viewcontrollerloadedalready = false
 //User current location
 var TaskLocation: String = "test"
@@ -18,7 +25,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
 //dictionary for locationname/url
 var urlDictionary = [String: NSURL]()
-
+var tasksData = [AnyObject]()
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -68,7 +75,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     //hardcoded tasks for now
     
-    var taskTitles = [String]()
+    //var taskTitles = [String]()
     
     //hardcoded task images for now
     //let taskImages = [UIImage(named: "sweeping"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
@@ -79,17 +86,18 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     // Determines how many collection view cells there are
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let context = appDele.managedObjectContext
-        let taskRequest = NSFetchRequest(entityName: "TaskTable")
-        taskRequest.returnsObjectsAsFaults = false
-        do{
-            let tasks: [TaskTable] = try context.executeFetchRequest(taskRequest) as! [TaskTable]
-            return tasks.count
-        }
-        catch{
-            print("CollectionView Error")
-        }
-        return 0
+//        let context = appDele.managedObjectContext
+//        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+//        taskRequest.returnsObjectsAsFaults = false
+//        do{
+//            let tasks: [TaskTable] = try context.executeFetchRequest(taskRequest) as! [TaskTable]
+//            return tasks.count
+//        }
+//        catch{
+//            print("CollectionView Error")
+//        }
+        print(tasksData.count)
+        return tasksData.count
 
         //return self.taskTitles.count
     }
@@ -102,60 +110,148 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         /* cell.taskName.text = self.taskTitles[indexPath.row]
          cell.taskImage.image = self.taskImages[indexPath.row]
          */
-        
         cell.completionImage.image = UIImage(named: "completed")
         cell.completionImage.hidden = true
         
+        cell.taskName.text = "\(tasksData[indexPath.row].valueForKey("task_title")!)"
+        if(NSURL(string: "\(tasksData[indexPath.row].valueForKey("task_image")!)") != nil){
+            
+    let url = NSURL(string: "\(tasksData[indexPath.row].valueForKey("task_image")!)")
+                            if(NSData(contentsOfURL: url!) != nil){
+                                let data = NSData(contentsOfURL: url!)
+                                cell.taskImage.image = UIImage(data: data!)
+                            }else{
+                                print("Data Nil")
+                            }
+            
+                        }else{
+                            print("Error NIL")
+                        }
+        
+                    cell.taskVideo = String(tasksData[indexPath.row].valueForKey("task_video")!)
+        
+
+        
         //MARK: CORE DATA
-        let context = appDele.managedObjectContext
-        let taskRequest = NSFetchRequest(entityName: "TaskTable")
-        taskRequest.returnsObjectsAsFaults = false
-        do{
-            let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
-            cell.taskName.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
-            
-            
-            //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
-            
-            //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
-            let completed = tasks[indexPath.row].valueForKey("completed") as! NSNumber
-            
-            if (completed == 1)
-            {
-                cell.completionImage.hidden = false
-                
-            }
-            
-            if(NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)") != nil){
-                
-                let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
-                if(NSData(contentsOfURL: url!) != nil){
-                    let data = NSData(contentsOfURL: url!)
-                    cell.taskImage.image = UIImage(data: data!)
-                }else{
-                    print("Data Nil")
-                }
-                
-            }else{
-                print("Error NIL")
-            }
-            
-            
-            
-            taskTitles.append(cell.taskName.text!)
-            
-            cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
-            
-        }
-        catch{
-            print("Helko")
-        }
-        
-        
+       // let context = appDele.managedObjectContext
+//        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+//        let specificTasks = NSPredicate(format: "task_id = %d", 1)
+//        taskRequest.returnsObjectsAsFaults = false
+//        do{
+//            taskRequest.predicate = specificTasks
+//            let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
+//            cell.taskName.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
+//            
+//            
+//            //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
+//            
+//            //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
+//            let completed = tasks[indexPath.row].valueForKey("completed") as! NSNumber
+//            
+//            if (completed == 1)
+//            {
+//                cell.completionImage.hidden = false
+//                
+//            }
+//            
+//            if(NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)") != nil){
+//                
+//                let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
+//                if(NSData(contentsOfURL: url!) != nil){
+//                    let data = NSData(contentsOfURL: url!)
+//                    cell.taskImage.image = UIImage(data: data!)
+//                }else{
+//                    print("Data Nil")
+//                }
+//                
+//            }else{
+//                print("Error NIL")
+//            }
+//            
+//            
+//            
+//            taskTitles.append(cell.taskName.text!)
+//            
+//            cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
+//            
+//        }
+//        catch{
+//            print("Helko")
+//        }
+//        
+//        
         return cell
             
     }
-    
+    func read(){
+        
+        var count = 0
+        tasksData = [TaskTable]()
+        let context = appDele.managedObjectContext
+        let userTask = NSFetchRequest(entityName: "StudentTaskLocalTable")
+        userTask.returnsObjectsAsFaults = false
+        //MARK: dontforget to change id
+        let userTasks = NSPredicate(format: "student_id = %d", 8)
+        userTask.predicate = userTasks
+        do{
+            let userTaskArray = try context.executeFetchRequest(userTask)
+            if(userTaskArray.count > 0){
+                for utask in userTaskArray{
+                    let taskRequest = NSFetchRequest(entityName: "TaskTable")
+                    let specificTasks = NSPredicate(format: "task_id = \(utask.valueForKey("task_id") as! Int)")
+                    taskRequest.returnsObjectsAsFaults = false
+                    do{
+                        taskRequest.predicate = specificTasks
+                        let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
+                        tasksData.append(tasks[0])
+                        //count+=1
+                        
+                        
+//                        cell.taskName.text = "\(tasks[count].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
+                        
+                        
+                        //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
+                        
+//                        //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
+//                        let completed = tasks[indexPath.row].valueForKey("completed") as! NSNumber
+//                        
+//                        if (completed == 1)
+//                        {
+//                            cell.completionImage.hidden = false
+//                            
+//                        }
+//                        
+//                        if(NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)") != nil){
+//                            
+//                            let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
+//                            if(NSData(contentsOfURL: url!) != nil){
+//                                let data = NSData(contentsOfURL: url!)
+//                                cell.taskImage.image = UIImage(data: data!)
+//                            }else{
+//                                print("Data Nil")
+//                            }
+                    }
+                    
+                    }
+                        }else{
+                            print("Error NIL")
+                        }
+                        
+                        
+                        
+//                        taskTitles.append(cell.taskName.text!)
+//                        
+//                        cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
+                    
+                    }
+                    catch{
+                        print("Helko")
+                    }
+//                }
+//            }
+        
+collectionView.reloadData()
+    }
     
     //Segues to next view when cell is selected
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
@@ -183,39 +279,52 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         if segue.identifier == "showSteps" {
             let tabView: UITabBarController = segue.destinationViewController as! UITabBarController
             
-            tabView.navigationItem.title = taskTitles[sender!.row]
+            //tabView.navigationItem.title = taskTitles[sender!.row]
             
+             tabView.navigationItem.title = (collectionView.cellForItemAtIndexPath(sender as! NSIndexPath) as! CustomCollectionViewCell).taskName.text
         }
     }
 
 
     func loader()
         {
-            //Get steps Data
-            // let getStepsData = getStepData()
-           // getStepsData.downloadItems()
-            // let getTasksData =  getTaskData()
-           
-                getLocationDatas.downloadItems()
+           /* if(viewcontrollerloadedalready == false){
+            deleteAllData("TaskTable")
+            deleteAllData("StepsTable")
+            deleteAllData("LocationsTable")
+            */
+//            getLocationDatas.downloadItems("commands") {
+//                (result: String) in
+//                print("got back: \(result)")
+//                }
+//                
+              //getTasksData.downloadItems()
+            
+//            getStepsData.downloadItems("commands") {
+//                (result: String) in
+//                print("got back: \(result)")
+//                }
+        getStudentTaskLocationData.downloadItems()
             
             let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
             dispatch_after(time, dispatch_get_main_queue()) {
-              getTasksData.downloadItems()
+                //Put your code which should be executed with a delay here
+                getTasksData.downloadItems()
             }
-            
-            let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 8 * Int64(NSEC_PER_SEC))
+
+
+      let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 8 * Int64(NSEC_PER_SEC))
             dispatch_after(time2, dispatch_get_main_queue()) {
-                // Put your code which should be executed with a delay here
-                 getStepsData.downloadItems()
-
+           //Put your code which should be executed with a delay here
+                getStepsData.downloadItems()
             }
-            
-            // let getLocationDatas = getLocationData()
-        
 
-            print("helloooooooo")
-    }
-    
+            
+            
+
+            print("All Data Downloaded!")
+        }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -223,8 +332,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
      
         loader()
-        
 
+        
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -258,7 +367,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //setUpLocations()
         
         viewcontrollerloadedalready = true
-
+        //read()
+        collectionView.reloadData()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -282,6 +392,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
         setUpLocations()
         
+        read()
         self.collectionView.reloadData()
     }
     
@@ -401,6 +512,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
+
 
 
 }

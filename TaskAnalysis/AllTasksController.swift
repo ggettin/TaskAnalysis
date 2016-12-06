@@ -73,27 +73,27 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
         taskRequest.sortDescriptors = [NSSortDescriptor(key: "task_id", ascending: true)]
         do{
             let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
-            cell.TaskLabel.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
+            //cell.TaskLabel.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
 
             
             
             //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
             
-        
-            if(NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)") != nil){
-                
-                let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
-                if(NSData(contentsOfURL: url!) != nil){
-                    let data = NSData(contentsOfURL: url!)
-                    cell.TaskImage.image = UIImage(data: data!)
-                }else{
-                    print("Data Nil")
-                }
-                
-            }else{
-                print("Error NIL1111")
-            }
-                 cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
+//        
+//            if(NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)") != nil){
+//                
+//                let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
+//                if(NSData(contentsOfURL: url!) != nil){
+//                    let data = NSData(contentsOfURL: url!)
+//                    cell.TaskImage.image = UIImage(data: data!)
+//                }else{
+//                    print("Data Nil")
+//                }
+//            
+//            }else{
+//                print("Error NIL1111")
+//            }
+                 //cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
 
             
         }

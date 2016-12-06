@@ -27,6 +27,7 @@
 		1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */; };
 		1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568721DF125B1001BB987 /* GetLocationTable.swift */; };
 		1FD7172C1DF6289B00A4CA28 /* GetStudTaskLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */; };
+		1FD7172E1DF63E8400A4CA28 /* GetTaskStepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7172D1DF63E8400A4CA28 /* GetTaskStepData.swift */; };
 		3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7661DD394D500A920DC /* AppDelegate.swift */; };
 		3729C7691DD394D500A920DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7681DD394D500A920DC /* ViewController.swift */; };
 		3729C76C1DD394D500A920DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729C76A1DD394D500A920DC /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskTableData.swift; sourceTree = "<group>"; };
 		1FC568721DF125B1001BB987 /* GetLocationTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationTable.swift; sourceTree = "<group>"; };
 		1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStudTaskLocalData.swift; sourceTree = "<group>"; };
+		1FD7172D1DF63E8400A4CA28 /* GetTaskStepData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskStepData.swift; sourceTree = "<group>"; };
 		3729C7631DD394D500A920DC /* TaskAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3729C7661DD394D500A920DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3729C7681DD394D500A920DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +108,6 @@
 				374FE9E21DDA3C7B000312C4 /* StepCell.swift */,
 				382BD0721DDDFA9000986339 /* MapViewController.swift */,
 				1FC568681DEF2985001BB987 /* Navigation-CoreData-Controller.swift */,
-				37D9C0771DD93CE500EAAA4B /* CustomCollectionViewCell.swift */,
 				382D64241DF0E2B900124531 /* phoneNumController.swift */,
 				1FC568621DEE80F5001BB987 /* AllTasksController.swift */,
 				1FC568661DEE8587001BB987 /* AllTasksCell.swift */,
@@ -117,23 +118,24 @@
 		1FC5686D1DEF482D001BB987 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				1FC568441DECC2ED001BB987 /* LocationTable.swift */,
 				1FC568461DECC2FE001BB987 /* LocationCoreData.swift */,
-				1FC568721DF125B1001BB987 /* GetLocationTable.swift */,
 				1FC568481DECC446001BB987 /* LoginTable.swift */,
 				1FC5684A1DECC454001BB987 /* LoginCoreData.swift */,
+				1FC568441DECC2ED001BB987 /* LocationTable.swift */,
 				1FC568501DECC47E001BB987 /* StudentTaskLocalTable.swift */,
 				1FC568521DECC48D001BB987 /* StudentTaskLocalCoreData.swift */,
 				1FC568561DECC4C0001BB987 /* TaskStepTable.swift */,
 				1FC568581DECC4D9001BB987 /* TaskStepCoreData.swift */,
 				1FC5685A1DECC4E9001BB987 /* TaskTable.swift */,
 				1FC5685C1DECC4F6001BB987 /* TaskCoreData.swift */,
-				1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */,
-				1FC5686A1DEF43F6001BB987 /* GetStepTableData.swift */,
 				1FC5684E1DECC46E001BB987 /* StepsCoreData.swift */,
 				1FC5684C1DECC463001BB987 /* StepsTable.swift */,
 				1FC5686E1DEF5724001BB987 /* StepsModel.swift */,
+				1FC568721DF125B1001BB987 /* GetLocationTable.swift */,
+				1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */,
+				1FC5686A1DEF43F6001BB987 /* GetStepTableData.swift */,
 				1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */,
+				1FD7172D1DF63E8400A4CA28 /* GetTaskStepData.swift */,
 				3729C7641DD394D500A920DC /* Products */,
 			);
 			name = CoreData;
@@ -162,6 +164,7 @@
 				1FC5686C1DEF47E0001BB987 /* ViewControllers */,
 				3729C76A1DD394D500A920DC /* Main.storyboard */,
 				37FC93801DDACF0D0067AC77 /* Assets.xcassets */,
+				37D9C0771DD93CE500EAAA4B /* CustomCollectionViewCell.swift */,
 				3729C7721DD394D600A920DC /* LaunchScreen.storyboard */,
 				3729C7751DD394D600A920DC /* Info.plist */,
 				389118891DEE543200107F3A /* test.mp3 */,
@@ -205,7 +208,7 @@
 				TargetAttributes = {
 					3729C7621DD394D500A920DC = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 93CS88QLG4;
+						DevelopmentTeam = ECJS4EVSXB;
 					};
 				};
 			};
@@ -272,6 +275,7 @@
 				1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */,
 				1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */,
 				1FC568571DECC4C0001BB987 /* TaskStepTable.swift in Sources */,
+				1FD7172E1DF63E8400A4CA28 /* GetTaskStepData.swift in Sources */,
 				37A17B171DDA1E6B00F3FF04 /* VideoTab.swift in Sources */,
 				3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */,
 				1FC5685D1DECC4F6001BB987 /* TaskCoreData.swift in Sources */,
@@ -392,10 +396,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TaskAnalysis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.greggettings.TaskAnalysis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greggettings.TaskAnalysis9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -406,10 +412,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TaskAnalysis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.greggettings.TaskAnalysis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.greggettings.TaskAnalysis9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
