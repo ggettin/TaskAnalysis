@@ -118,13 +118,23 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             
             loadPlayer()
             
+            if playing{
+                playing = false
+                playButton.setImage(UIImage(named: "playAudio"), forState: UIControlState.Normal)
+                player.pause()
+                timer.invalidate()
+            }
+            
             currentStep = currentStep - 1
+            
+            print("\(currentStep) of \(steps.count - 1)")
             
             if currentStep == 0{
                 firstStep = true
                 prevStepButton.hidden = true
             }else{
                 prevStepButton.hidden = false
+                prevStepButton.enabled = true
             }
             
             if currentStep == steps.count - 1{
@@ -153,6 +163,14 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             
             audioFile = "\(steps[currentStep + 1].valueForKey("step_audio")!)"
             
+            if playing{
+                playing = false
+                playButton.setImage(UIImage(named: "playAudio"), forState: UIControlState.Normal)
+                player.pause()
+                timer.invalidate()
+            }
+
+            
             loadPlayer()
             
             currentStep = currentStep + 1
@@ -164,6 +182,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
                 firstStep = true
             }else{
                 prevStepButton.hidden = false
+                prevStepButton.enabled = true
             }
             
             
@@ -213,7 +232,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
         // Do any additional setup after loading the view.
         print(taskinfo)
         stepImage.image = image
-        stepDescription.text = "Run the plate under hot water water hot under plate run Run the plate under hot water"
+        self.stepDescription.text = taskinfo
         
         
       
@@ -241,10 +260,41 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidLoad()
+        //check if last step and if so change arrow to check mark
+        
+        loadPlayer()
+        
+        if currentStep == 0{
+            firstStep = true
+            prevStepButton.hidden = true
+        }
+        
+        
+        if currentStep == steps.count - 1{
+            lastStep = true
+        }
+        
+        
         if (firstStep == true)
         {
             prevStepButton.hidden = true
+            
+            
         }
+        
+        if lastStep == true
+        {
+            nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
+            
+        }
+        
+        
+        // Do any additional setup after loading the view.
+        print(taskinfo)
+        stepImage.image = image
+        self.stepDescription.text = taskinfo
+        
     }
 
     func updateScrubSlider() {
@@ -293,6 +343,15 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
 

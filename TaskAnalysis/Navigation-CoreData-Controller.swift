@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
- let getStepsData = getStepData()
+let getStepsData = getStepData()
 let getTasksData =  getTaskData()
 let getLocationDatas = getLocationData()
 class Navigation_CoreData_Controller: UINavigationController {

@@ -80,7 +80,7 @@ func parseJSON(data: NSMutableData) {
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
             let context = appDel.managedObjectContext
             let stepsEntity = NSEntityDescription.entityForName("StepsTable", inManagedObjectContext: context)
-            jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSMutableArray
+            jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments).mutableCopy() as! NSMutableArray
             
             NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "stepData")
             
