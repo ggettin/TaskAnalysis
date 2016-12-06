@@ -26,7 +26,7 @@
 		1FC5686F1DEF5724001BB987 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC5686E1DEF5724001BB987 /* StepsModel.swift */; };
 		1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */; };
 		1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568721DF125B1001BB987 /* GetLocationTable.swift */; };
-		1FD717281DF1764C00A4CA28 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD717271DF1764C00A4CA28 /* LoadingView.swift */; };
+		1FD7172C1DF6289B00A4CA28 /* GetStudTaskLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */; };
 		3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7661DD394D500A920DC /* AppDelegate.swift */; };
 		3729C7691DD394D500A920DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7681DD394D500A920DC /* ViewController.swift */; };
 		3729C76C1DD394D500A920DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729C76A1DD394D500A920DC /* Main.storyboard */; };
@@ -64,7 +64,7 @@
 		1FC5686E1DEF5724001BB987 /* StepsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		1FC568701DF0F9D4001BB987 /* GetTaskTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskTableData.swift; sourceTree = "<group>"; };
 		1FC568721DF125B1001BB987 /* GetLocationTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationTable.swift; sourceTree = "<group>"; };
-		1FD717271DF1764C00A4CA28 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStudTaskLocalData.swift; sourceTree = "<group>"; };
 		3729C7631DD394D500A920DC /* TaskAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3729C7661DD394D500A920DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3729C7681DD394D500A920DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,9 +99,9 @@
 		1FC5686C1DEF47E0001BB987 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				37A17B141DDA1E5900F3FF04 /* PicturesTab.swift */,
-				37A17B161DDA1E6B00F3FF04 /* VideoTab.swift */,
 				3729C7681DD394D500A920DC /* ViewController.swift */,
+				37A17B161DDA1E6B00F3FF04 /* VideoTab.swift */,
+				37A17B141DDA1E5900F3FF04 /* PicturesTab.swift */,
 				374FE9E41DDA542F000312C4 /* PictureAudioView.swift */,
 				374FE9E21DDA3C7B000312C4 /* StepCell.swift */,
 				382BD0721DDDFA9000986339 /* MapViewController.swift */,
@@ -110,7 +110,6 @@
 				382D64241DF0E2B900124531 /* phoneNumController.swift */,
 				1FC568621DEE80F5001BB987 /* AllTasksController.swift */,
 				1FC568661DEE8587001BB987 /* AllTasksCell.swift */,
-				1FD717271DF1764C00A4CA28 /* LoadingView.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -134,6 +133,8 @@
 				1FC5684E1DECC46E001BB987 /* StepsCoreData.swift */,
 				1FC5684C1DECC463001BB987 /* StepsTable.swift */,
 				1FC5686E1DEF5724001BB987 /* StepsModel.swift */,
+				1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */,
+				3729C7641DD394D500A920DC /* Products */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -142,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				3729C7651DD394D500A920DC /* TaskAnalysis */,
-				3729C7641DD394D500A920DC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +152,7 @@
 				3729C7631DD394D500A920DC /* TaskAnalysis.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		3729C7651DD394D500A920DC /* TaskAnalysis */ = {
@@ -204,6 +205,7 @@
 				TargetAttributes = {
 					3729C7621DD394D500A920DC = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 93CS88QLG4;
 					};
 				};
 			};
@@ -246,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FC568691DEF2985001BB987 /* Navigation-CoreData-Controller.swift in Sources */,
+				1FD7172C1DF6289B00A4CA28 /* GetStudTaskLocalData.swift in Sources */,
 				1FC5684B1DECC454001BB987 /* LoginCoreData.swift in Sources */,
 				1FC568531DECC48D001BB987 /* StudentTaskLocalCoreData.swift in Sources */,
 				1FC568491DECC446001BB987 /* LoginTable.swift in Sources */,
@@ -268,7 +271,6 @@
 				3729C7691DD394D500A920DC /* ViewController.swift in Sources */,
 				1FC568711DF0F9D4001BB987 /* GetTaskTableData.swift in Sources */,
 				1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */,
-				1FD717281DF1764C00A4CA28 /* LoadingView.swift in Sources */,
 				1FC568571DECC4C0001BB987 /* TaskStepTable.swift in Sources */,
 				37A17B171DDA1E6B00F3FF04 /* VideoTab.swift in Sources */,
 				3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */,
@@ -387,10 +389,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TaskAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greggettings.TaskAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -398,10 +403,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TaskAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greggettings.TaskAnalysis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -91,7 +91,7 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
                 }
                 
             }else{
-                print("Error NIL")
+                print("Error NIL1111")
             }
                  cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
 
@@ -150,6 +150,15 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
 

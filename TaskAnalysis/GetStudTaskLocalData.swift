@@ -1,5 +1,5 @@
 //
-//  GetTaskTableData.swift
+//  GetStudTaskLocalData.swift
 //  TaskAnalysis
 //
 //  Created by Jordan Marro on 12/1/16.
@@ -9,12 +9,12 @@ import Foundation
 import CoreData
 import UIKit
 
-var tasksCompleted = false
-protocol getTaskProtocol: class {
+
+protocol getStudTaskLocalProtocol: class {
     func itemsDownloaded(items: NSArray)
 }
 
-class getTaskData: NSObject, NSURLSessionDataDelegate {
+class getStudTaskLocalData: NSObject, NSURLSessionDataDelegate {
     
     //properties
     
@@ -22,7 +22,7 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
     
     var data : NSMutableData = NSMutableData()
     
-    let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/TaskTable.php"
+    let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/Student-Task-Local.php"
     
     
     func downloadItems() {
@@ -50,7 +50,7 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
             print("Failed to download data")
         }else {
             print("Data downloaded")
-            parseJSONTask(data)
+            parseJSONSTL(data)
         }
         
     }
@@ -63,12 +63,12 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
  }
  */
 
-func parseJSONTask(data: NSMutableData) {
+func parseJSONSTL(data: NSMutableData) {
     
     var jsonResult: NSMutableArray = NSMutableArray()
     
     do{
-        jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments).mutableCopy() as! NSMutableArray
+        jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSMutableArray
         
     } catch let error as NSError {
         print(error)
@@ -76,10 +76,10 @@ func parseJSONTask(data: NSMutableData) {
     }
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     let context = appDel.managedObjectContext
-    let tasksEntity = NSEntityDescription.entityForName("TaskTable", inManagedObjectContext: context)
+    let STLEntity = NSEntityDescription.entityForName("StudenTaskLocalTable", inManagedObjectContext: context)
     
     var jsonElement: NSDictionary = NSDictionary()
-    let taskData: NSMutableArray = NSMutableArray()
+    let stlData: NSMutableArray = NSMutableArray()
     
     print(jsonResult)
     
@@ -89,36 +89,20 @@ func parseJSONTask(data: NSMutableData) {
         
         //jsonElement = jsonResult[i] as! NSDictionary
         
-        let taskTable = TaskTable(entity: tasksEntity!, insertIntoManagedObjectContext: context)
+        let STLTable = StudentTaskLocalTable(entity: STLEntity!, insertIntoManagedObjectContext: context)
         
         //the following insures none of the JsonElement values are nil through optional binding
-        if let task_id = row["task_id"] as? String,
-            let task_title = row["task_title"] as? String,
-            let task_image = row["task_image"] as? String,
-            let task_video = row["task_video"] as? String,
-            let location_id = row["location_id"] as? String,
-            let delete_id = row["delete_id"] as? String,
-            let timestamp = row["timestamp"] as? String
+        if  let stl_id = row["stl_id"] as? String,
+            let task_id = row["task_id"] as? String,
+            let student_id = row["student_id"] as? String,
+             let location_id = row["location_id"] as? String
         {
-           /*
-            taskTable.task_id = Int(task_id)
-            taskTable.task_title = task_title
-            taskTable.task_video = task_video
-            taskTable.delete_id = Int(delete_id)
-            taskTable.timestamp = timestamp
-            taskTable.location_id = Int(location_id)
-            taskTable.task_image = task_image
-            taskTable.completed = 0
-             */
             
-            taskTable.setValue(Int(task_id), forKey: "task_id")
-            taskTable.setValue(task_title, forKey: "task_title")
-            taskTable.setValue(task_image, forKey: "task_image")
-            taskTable.setValue(task_video, forKey: "task_video")
-            taskTable.setValue(Int(location_id), forKey: "location_id")
-            taskTable.setValue(Int(delete_id), forKey: "delete_id")
-            taskTable.setValue(timestamp, forKey: "timestamp")
-            taskTable.setValue(0, forKey: "completed")
+            STLTable.setValue(Int(stl_id), forKey: "stl_id")
+            STLTable.setValue(Int(task_id), forKey: "task_id")
+            STLTable.setValue(location_id, forKey: "location_id")
+            STLTable.setValue(student_id, forKey: "student_id")
+
             
         }
         
@@ -132,11 +116,9 @@ func parseJSONTask(data: NSMutableData) {
             
         }
         
-        taskData.addObject(taskTable)
+        stlData.addObject(STLTable)
         print("Saving Tasks")
-        print(taskData)
-        tasksCompleted = true
-        print("complete")
+        print(stlData)
     }
     
     dispatch_async(dispatch_get_main_queue(), { () -> Void in

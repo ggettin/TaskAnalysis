@@ -37,7 +37,7 @@ class VideoTab: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        print("Hello")
         
         //location of video to be played (local for now)
         //let fileURL:NSURL = NSURL(string: "https://people.cs.clemson.edu/~ggettin/4820/SampleFiles/test.m4v")!
@@ -84,6 +84,7 @@ class VideoTab: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     

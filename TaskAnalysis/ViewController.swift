@@ -22,6 +22,9 @@ var urlDictionary = [String: NSURL]()
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {89}
+
+    
     @IBAction func AllTasksButton(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let ThisController = storyboard.instantiateViewControllerWithIdentifier("AllTasksView") as! AllTasksController
@@ -84,7 +87,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             return tasks.count
         }
         catch{
-            
+            print("CollectionView Error")
         }
         return 0
 
@@ -96,9 +99,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
         
-       /* cell.taskName.text = self.taskTitles[indexPath.row]
-        cell.taskImage.image = self.taskImages[indexPath.row]
- */
+        /* cell.taskName.text = self.taskTitles[indexPath.row]
+         cell.taskImage.image = self.taskImages[indexPath.row]
+         */
         
         cell.completionImage.image = UIImage(named: "completed")
         cell.completionImage.hidden = true
@@ -132,24 +135,25 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                 }else{
                     print("Data Nil")
                 }
-               
+                
             }else{
                 print("Error NIL")
             }
             
-
-    
+            
+            
             taskTitles.append(cell.taskName.text!)
             
             cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
             
         }
         catch{
-            
+            print("Helko")
         }
         
         
         return cell
+            
     }
     
     
@@ -183,16 +187,44 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             
         }
     }
+
+
+    func loader()
+        {
+            //Get steps Data
+            // let getStepsData = getStepData()
+           // getStepsData.downloadItems()
+            // let getTasksData =  getTaskData()
+           
+                getLocationDatas.downloadItems()
+            
+            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
+            dispatch_after(time, dispatch_get_main_queue()) {
+              getTasksData.downloadItems()
+            }
+            
+            let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 8 * Int64(NSEC_PER_SEC))
+            dispatch_after(time2, dispatch_get_main_queue()) {
+                // Put your code which should be executed with a delay here
+                 getStepsData.downloadItems()
+
+            }
+            
+            // let getLocationDatas = getLocationData()
+        
+
+            print("helloooooooo")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
-        if(viewcontrollerloadedalready == false){
-        Controller.loader()
-        }
+    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
+     
+        loader()
         
+
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -360,6 +392,14 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
 
 

@@ -68,7 +68,7 @@ func parseJSONLocal(data: NSMutableData) {
     var jsonResult: NSMutableArray = NSMutableArray()
     
     do{
-        jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSMutableArray
+        jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments).mutableCopy() as! NSMutableArray
         
     } catch let error as NSError {
         print(error)
@@ -99,12 +99,21 @@ func parseJSONLocal(data: NSMutableData) {
             let delete_id = row["delete_id"] as? String,
             let timestamp = row["timestamp"] as? String
         {
-            locationTable.location_id = Int(location_id)
+          /*  locationTable.location_id = Int(location_id)
             locationTable.location_name = location_name
             locationTable.location_address = location_address
             locationTable.location_photo = location_photo
             locationTable.delete_id = Int(delete_id)
             locationTable.timestamp = String(timestamp)
+          */
+            
+            
+            locationTable.setValue(Int(location_id), forKey: "location_id")
+            locationTable.setValue(location_name, forKey: "location_name")
+            locationTable.setValue(location_photo, forKey: "location_photo")
+            locationTable.setValue(location_address, forKey: "location_address")
+            locationTable.setValue(Int(delete_id), forKey: "delete_id")
+            locationTable.setValue(timestamp, forKey: "timestamp")
         }
         
         do{
