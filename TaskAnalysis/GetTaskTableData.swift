@@ -71,7 +71,7 @@ func parseJSONTask(data: NSMutableData, completion: (result: String) -> Void) {
     
     do{
         jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments).mutableCopy() as! NSMutableArray
-        
+        // [String: AnyObject]
     } catch let error as NSError {
         print(error)
         
@@ -113,7 +113,7 @@ func parseJSONTask(data: NSMutableData, completion: (result: String) -> Void) {
             taskTable.completed = 0
              */
             
-       
+            if(shouldAddTask(Int(task_id)!, delete_id: Int(delete_id)!, timestamp: timestamp)){
             taskTable.setValue(Int(task_id), forKey: "task_id")
             taskTable.setValue(task_title, forKey: "task_title")
             taskTable.setValue(task_image, forKey: "task_image")
@@ -122,19 +122,20 @@ func parseJSONTask(data: NSMutableData, completion: (result: String) -> Void) {
             taskTable.setValue(Int(delete_id), forKey: "delete_id")
             taskTable.setValue(timestamp, forKey: "timestamp")
             taskTable.setValue(0, forKey: "completed")
+                do{
+                    
+                    try context.save()
+                    
+                } catch let error as NSError{
+                    
+                    print(error)
+                    
+                }
             
+            }
             
         }
         
-        do{
-            
-            try context.save()
-            
-        } catch let error as NSError{
-            
-            print(error)
-            
-        }
         
         taskData.addObject(taskTable)
         print("Saving Tasks")
@@ -175,3 +176,29 @@ func deleteAllData(entity: String)
         print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
     }
 }
+
+
+func shouldAddTask(id: Int, delete_id: Int, timestamp: String) -> Bool{
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let managedContext = appDelegate.managedObjectContext
+    let fetchRequest = NSFetchRequest(entityName: "TaskTable")
+    fetchRequest.returnsObjectsAsFaults = false
+    
+    var newTask = NSPredicate(format: "task_id = %d", id)
+    fetchRequest.predicate = newTask
+    
+    do{
+        var newTasks = try managedContext.executeFetchRequest(fetchRequest) as! [AnyObject]
+        if(newTasks.count == 0){
+            return true
+        }
+    }catch{
+        print("Could not Update Core Data")
+    }
+    return false
+        
+}
+    
+
+

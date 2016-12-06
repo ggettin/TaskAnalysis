@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yrQ-jC-xYC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2553a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yrQ-jC-xYC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -247,7 +247,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="07233FA4-3DB8-4A01-B52E-8107EAB842C9" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="4FAB27D0-C5B7-4F4A-A3D4-2E8CE482845F" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -673,7 +673,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="07233FA4-3DB8-4A01-B52E-8107EAB842C9" width="30" height="30">
+        <image name="4FAB27D0-C5B7-4F4A-A3D4-2E8CE482845F" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -814,8 +814,8 @@ AAAAAAActw
         <image name="video" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eEu-TQ-4nJ"/>
-        <segue reference="U1q-OH-mXH"/>
         <segue reference="Bj4-PK-55B"/>
+        <segue reference="flc-wu-hLe"/>
+        <segue reference="eEu-TQ-4nJ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -127,3 +127,25 @@ func parseJSONSTL(data: NSMutableData) {
         
     })
 }
+func shouldAddStudTaskLocal(id: Int, delete_id: Int, timestamp: String) -> Bool{
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let managedContext = appDelegate.managedObjectContext
+    let fetchRequest = NSFetchRequest(entityName: "TaskTable")
+    fetchRequest.returnsObjectsAsFaults = false
+    
+    var newTask = NSPredicate(format: "task_id = %d", id)
+    fetchRequest.predicate = newTask
+    
+    do{
+        var newTasks = try managedContext.executeFetchRequest(fetchRequest) as! [AnyObject]
+        if(newTasks.count == 0){
+            return true
+        }
+    }catch{
+        print("Could not Update Core Data")
+    }
+    return false
+    
+}
+
