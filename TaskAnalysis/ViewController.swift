@@ -10,6 +10,12 @@ import UIKit
 import CoreLocation
 import CoreData
 
+let getStepsData = getStepData()
+let getTasksData =  getTaskData()
+let getLocationDatas = getLocationData()
+let getTaskStepsData = getTaskStepData()
+let getStudentTaskLocationData = getStudTaskLocalData()
+
 var viewcontrollerloadedalready = false
 //User current location
 var TaskLocation: String = "test"
@@ -188,29 +194,40 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
     func loader()
         {
-            //Get steps Data
-            // let getStepsData = getStepData()
-           // getStepsData.downloadItems()
-            // let getTasksData =  getTaskData()
-           
-                getLocationDatas.downloadItems()
+           /* if(viewcontrollerloadedalready == false){
+            deleteAllData("TaskTable")
+            deleteAllData("StepsTable")
+            deleteAllData("LocationsTable")
+            */
+//            getLocationDatas.downloadItems("commands") {
+//                (result: String) in
+//                print("got back: \(result)")
+//                }
+//                
+              getTasksData.downloadItems()
             
+//            getStepsData.downloadItems("commands") {
+//                (result: String) in
+//                print("got back: \(result)")
+//                }
+        
             let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
             dispatch_after(time, dispatch_get_main_queue()) {
-              getTasksData.downloadItems()
+                //Put your code which should be executed with a delay here
+                getTasksData.downloadItems()
             }
-            
-            let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 8 * Int64(NSEC_PER_SEC))
+
+
+      let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 8 * Int64(NSEC_PER_SEC))
             dispatch_after(time2, dispatch_get_main_queue()) {
-                // Put your code which should be executed with a delay here
-                 getStepsData.downloadItems()
-
+           //Put your code which should be executed with a delay here
+                getStepsData.downloadItems()
             }
-            
-            // let getLocationDatas = getLocationData()
-        
 
-            print("helloooooooo")
+            
+            
+
+            print("All Data Downloaded!")
         }
         
     override func viewDidLoad() {
@@ -220,8 +237,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
      
         loader()
-        
 
+        
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -256,6 +273,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         viewcontrollerloadedalready = true
 
+        collectionView.reloadData()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -278,6 +296,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         }
 
         setUpLocations()
+        
         
         self.collectionView.reloadData()
     }
@@ -390,6 +409,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 
 
 }

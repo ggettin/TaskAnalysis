@@ -27,7 +27,7 @@ class getStepData: NSObject, NSURLSessionDataDelegate {
     let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/StepTable.php"
     
     
-    func downloadItems() {
+    func downloadItems(){//(input: String, completion: (result: String) -> Void) {
         
         let url: NSURL = NSURL(string: urlPath)!
         var session: NSURLSession!
@@ -40,6 +40,7 @@ class getStepData: NSObject, NSURLSessionDataDelegate {
         
         task.resume()
         
+       //completion(result: "Complete")
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
@@ -80,7 +81,7 @@ func parseJSON(data: NSMutableData) {
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
             let context = appDel.managedObjectContext
             let stepsEntity = NSEntityDescription.entityForName("StepsTable", inManagedObjectContext: context)
-            jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSMutableArray
+            jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments).mutableCopy() as! NSMutableArray
             
             NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "stepData")
             
@@ -124,8 +125,7 @@ func parseJSON(data: NSMutableData) {
                     stepssCount = stepssCount + 1
                     stepData.addObject(stepsTable)
                     */
-                    
-                    
+                   
                     stepsTable.setValue(Int(step_id), forKey: "step_id")
                     stepsTable.setValue(step_info, forKey: "step_info")
                     stepsTable.setValue(step_photo, forKey: "step_photo")
@@ -135,8 +135,7 @@ func parseJSON(data: NSMutableData) {
                     stepsTable.setValue(Int(step_number), forKey: "step_number")
                     stepssCount = stepssCount + 1
                     stepData.addObject(stepsTable)
-                    
-                    
+             
                 }
             do{
                     

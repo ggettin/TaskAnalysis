@@ -25,7 +25,7 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
     let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/TaskTable.php"
     
     
-    func downloadItems() {
+    func downloadItems()  {
         
         let url: NSURL = NSURL(string: urlPath)!
         var session: NSURLSession!
@@ -37,7 +37,6 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
         let task = session.dataTaskWithURL(url)
         
         task.resume()
-        
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
@@ -50,7 +49,10 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
             print("Failed to download data")
         }else {
             print("Data downloaded")
-            parseJSONTask(data)
+            parseJSONTask(data){
+                (result: String) in
+                print("got back: \(result)")
+        }
         }
         
     }
@@ -63,7 +65,7 @@ class getTaskData: NSObject, NSURLSessionDataDelegate {
  }
  */
 
-func parseJSONTask(data: NSMutableData) {
+func parseJSONTask(data: NSMutableData, completion: (result: String) -> Void) {
     
     var jsonResult: NSMutableArray = NSMutableArray()
     
@@ -111,6 +113,7 @@ func parseJSONTask(data: NSMutableData) {
             taskTable.completed = 0
              */
             
+       
             taskTable.setValue(Int(task_id), forKey: "task_id")
             taskTable.setValue(task_title, forKey: "task_title")
             taskTable.setValue(task_image, forKey: "task_image")
@@ -119,6 +122,7 @@ func parseJSONTask(data: NSMutableData) {
             taskTable.setValue(Int(delete_id), forKey: "delete_id")
             taskTable.setValue(timestamp, forKey: "timestamp")
             taskTable.setValue(0, forKey: "completed")
+            
             
         }
         
@@ -137,6 +141,7 @@ func parseJSONTask(data: NSMutableData) {
         print(taskData)
         tasksCompleted = true
         print("complete")
+        completion(result: "C0mplete!!!!")
     }
     
     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -144,4 +149,29 @@ func parseJSONTask(data: NSMutableData) {
         // self.delegate.itemsDownloaded(stepData)
         
     })
+}
+
+
+func deleteAllData(entity: String)
+{
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let managedContext = appDelegate.managedObjectContext
+    let fetchRequest = NSFetchRequest(entityName: entity)
+    fetchRequest.returnsObjectsAsFaults = false
+    
+    
+    do
+    {
+        let results = try managedContext.executeFetchRequest(fetchRequest)
+        if(results.count != 0){
+        for managedObject in results
+        {
+            let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+            managedContext.deleteObject(managedObjectData)
+        }
+    }
+    } catch let error as NSError {
+        print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+    }
 }
