@@ -68,7 +68,7 @@ func parseJSONLocal(data: NSMutableData) {
     var jsonResult: NSMutableArray = NSMutableArray()
     
     do{
-        jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSMutableArray
+        jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments).mutableCopy() as! NSMutableArray
         
     } catch let error as NSError {
         print(error)

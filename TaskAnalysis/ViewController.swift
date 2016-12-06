@@ -28,6 +28,9 @@ var urlDictionary = [String: NSURL]()
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {89}
+
+    
     @IBAction func AllTasksButton(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let ThisController = storyboard.instantiateViewControllerWithIdentifier("AllTasksView") as! AllTasksController
@@ -100,11 +103,11 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     // creates collection view cell for location
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-   let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CustomCollectionViewCell
         
-       /* cell.taskName.text = self.taskTitles[indexPath.row]
-        cell.taskImage.image = self.taskImages[indexPath.row]
- */
+        /* cell.taskName.text = self.taskTitles[indexPath.row]
+         cell.taskImage.image = self.taskImages[indexPath.row]
+         */
         
         cell.completionImage.image = UIImage(named: "completed")
         cell.completionImage.hidden = true
@@ -138,13 +141,13 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                 }else{
                     print("Data Nil")
                 }
-               
+                
             }else{
                 print("Error NIL")
             }
             
-
-    
+            
+            
             taskTitles.append(cell.taskName.text!)
             
             cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)

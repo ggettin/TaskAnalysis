@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-var stepsCount : Int = 0
 
 
 class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -23,13 +22,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 
     func tableView(tableView: UITableView, numberOfRowsInSection svarion: Int) -> Int {
         
-        do{
-            return steps.count
-        }catch{
-            return 0
-        }
-        
-        
+            return steps.count        
     }
     
     
@@ -82,7 +75,8 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
        
         let info = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepDescription.text
         vc.taskinfo = info!
-        currentStep = indexPath.row
+        
+        vc.currentStep = indexPath.row
         vc.steps = steps
         
         let image = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepImage.image
@@ -92,19 +86,8 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         vc.audioFile = (tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepAudio
         print((tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepCount.text)
-        print(stepsCount)
         print(indexPath.row)
         
-        if(indexPath.row ==  stepsCount-1){
-            
-            vc.lastStep = true
-            
-        }
-        
-        if(indexPath.row == 0)
-        {
-            vc.firstStep = true
-        }
         
         
 //        self.presentViewController(vc, animated: true, completion: nil)
@@ -133,7 +116,6 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
          stepRequest.returnsObjectsAsFaults = false
          do{
          steps = try context.executeFetchRequest(stepRequest) as! [StepsTable]
-         stepsCount = steps.count
          }
          catch{
          }
@@ -152,6 +134,15 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
 
