@@ -97,14 +97,14 @@ func parseJSONSTL(data: NSMutableData) {
             let student_id = row["student_id"] as? String,
              let location_id = row["location_id"] as? String
         {
-            
+            if(shouldAddStudTaskLocal(Int(stl_id)!)){
             STLTable.setValue(Int(stl_id), forKey: "stl_id")
             STLTable.setValue(Int(task_id), forKey: "task_id")
             STLTable.setValue(Int(location_id), forKey: "student_location_id")
             STLTable.setValue(Int(student_id), forKey: "student_id")
 
             
-        }
+        
         
         do{
             
@@ -114,27 +114,33 @@ func parseJSONSTL(data: NSMutableData) {
             
             print(error)
             
+                }
         }
-        
+    }
+    
+    
         stlData.addObject(STLTable)
         print("Saving STL")
         print(stlData)
-    }
     
+    
+}
+
+
     dispatch_async(dispatch_get_main_queue(), { () -> Void in
         
         // self.delegate.itemsDownloaded(stepData)
         
     })
 }
-func shouldAddStudTaskLocal(id: Int, delete_id: Int, timestamp: String) -> Bool{
+func shouldAddStudTaskLocal(id: Int) -> Bool{
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
-    let fetchRequest = NSFetchRequest(entityName: "TaskTable")
+    let fetchRequest = NSFetchRequest(entityName: "StudentTaskLocalTable")
     fetchRequest.returnsObjectsAsFaults = false
     
-    var newTask = NSPredicate(format: "task_id = %d", id)
+    var newTask = NSPredicate(format: "stl_id = %d", id)
     fetchRequest.predicate = newTask
     
     do{

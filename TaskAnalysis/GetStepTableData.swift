@@ -125,7 +125,7 @@ func parseJSON(data: NSMutableData) {
                     stepssCount = stepssCount + 1
                     stepData.addObject(stepsTable)
                     */
-                   
+                    if(shouldAddStep(Int(step_id)!, delete_id: Int(delete_id)!, timestamp: timestamp)){
                     stepsTable.setValue(Int(step_id), forKey: "step_id")
                     stepsTable.setValue(step_info, forKey: "step_info")
                     stepsTable.setValue(step_photo, forKey: "step_photo")
@@ -147,6 +147,7 @@ func parseJSON(data: NSMutableData) {
                     
                 }
             }
+        }
             
             print("Saving steps table to CoreData")
             print(stepData)
@@ -167,10 +168,10 @@ func shouldAddStep(id: Int, delete_id: Int, timestamp: String) -> Bool{
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
-    let fetchRequest = NSFetchRequest(entityName: "TaskTable")
+    let fetchRequest = NSFetchRequest(entityName: "StepsTable")
     fetchRequest.returnsObjectsAsFaults = false
     
-    var newTask = NSPredicate(format: "task_id = %d", id)
+    var newTask = NSPredicate(format: "step_id = %d", id)
     fetchRequest.predicate = newTask
     
     do{

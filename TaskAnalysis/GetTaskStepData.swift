@@ -22,7 +22,7 @@ class getTaskStepData: NSObject, NSURLSessionDataDelegate {
     
     var data : NSMutableData = NSMutableData()
     
-    let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/Student-Task-Local.php"
+    let urlPath: String = "https://people.cs.clemson.edu/~jtmarro/TeamProject/PHPFiles/TaskStepTable.php"
     
     
     func downloadItems() {
@@ -92,14 +92,16 @@ func parseJSONST(data: NSMutableData) {
         let STTable = TaskStepTable(entity: STTEntity!, insertIntoManagedObjectContext: context)
         
         //the following insures none of the JsonElement values are nil through optional binding
-        if  let stl_id = row["stl_id"] as? String,
-            let task_id = row["task_id"] as? String
+        if  let st_id = row["st_id"] as? String,
+            let task_id = row["task_id"] as? String,
+            let step_id = row["step_id"] as? String
         {
-            
-            STTable.setValue(Int(stl_id), forKey: "step_id")
+            if(shouldAddTaskStep(Int(st_id)!)){
+            STTable.setValue(Int(st_id), forKey: "st_id")
             STTable.setValue(Int(task_id), forKey: "task_id")
+            STTable.setValue(Int(step_id), forKey: "step_id")
             
-        }
+        
         
         do{
             
@@ -110,7 +112,9 @@ func parseJSONST(data: NSMutableData) {
             print(error)
             
         }
-        
+        }
+    }
+    
         sttData.addObject(STTable)
         print(sttData)
     }
@@ -122,7 +126,7 @@ func parseJSONST(data: NSMutableData) {
     })
 }
 
-func shouldAddTaskStep(id: Int, delete_id: Int, timestamp: String) -> Bool{
+func shouldAddTaskStep(id: Int) -> Bool{
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext

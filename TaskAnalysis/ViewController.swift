@@ -16,7 +16,7 @@ let getLocationDatas = getLocationData()
 let getTaskStepsData = getTaskStepData()
 let getStudentTaskLocationData = getStudTaskLocalData()
 
-var userId: Int?
+var userId = 0
 var viewcontrollerloadedalready = false
 //User current location
 var TaskLocation: String = "test"
@@ -191,7 +191,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         let userTask = NSFetchRequest(entityName: "StudentTaskLocalTable")
         userTask.returnsObjectsAsFaults = false
         //MARK: dontforget to change id
-        let userTasks = NSPredicate(format: "student_id = %d", 8)
+        let userTasks = NSPredicate(format: "student_id = %d", userId)
         userTask.predicate = userTasks
         do{
             let userTaskArray = try context.executeFetchRequest(userTask)
@@ -304,16 +304,26 @@ collectionView.reloadData()
 //                (result: String) in
 //                print("got back: \(result)")
 //                }
-        getStudentTaskLocationData.downloadItems()
+        
+            getTaskStepsData.downloadItems()
             
-            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
+            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC))
             dispatch_after(time, dispatch_get_main_queue()) {
+                getStudentTaskLocationData.downloadItems()
+            }
+            
+            let time3 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 2 * Int64(NSEC_PER_SEC))
+            dispatch_after(time3, dispatch_get_main_queue()) {
                 //Put your code which should be executed with a delay here
                 getTasksData.downloadItems()
             }
+            
+            let time4 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 3 * Int64(NSEC_PER_SEC))
+            dispatch_after(time4, dispatch_get_main_queue()) {
+                getLocationDatas.downloadItems()
+            }
 
-
-      let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 8 * Int64(NSEC_PER_SEC))
+      let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
             dispatch_after(time2, dispatch_get_main_queue()) {
            //Put your code which should be executed with a delay here
                 getStepsData.downloadItems()
@@ -390,7 +400,7 @@ collectionView.reloadData()
             locationManager.startUpdatingLocation()
         }
 
-        setUpLocations()
+      //  setUpLocations()
         
         read()
         self.collectionView.reloadData()
@@ -431,9 +441,9 @@ collectionView.reloadData()
                     let url = NSURL(string: "\(result.valueForKey("location_photo")!)")
                     
                     //populate the dictionary with url so that way pics can be loaded
-                    urlDictionary[locationName] = url
+                   urlDictionary[locationName] = url
                     
-                    setupData(locationName, radius: locationRadius, Address: locationAddress)
+                   setupData(locationName, radius: locationRadius, Address: locationAddress)
 
                 }
             

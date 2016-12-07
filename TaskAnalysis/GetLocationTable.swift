@@ -107,6 +107,7 @@ func parseJSONLocal(data: NSMutableData) {
             locationTable.timestamp = String(timestamp)
           */
             
+            if(shouldAddLocation(Int(location_id)!, delete_id: Int(delete_id)!, timestamp: timestamp)){
             
             locationTable.setValue(Int(location_id), forKey: "location_id")
             locationTable.setValue(location_name, forKey: "location_name")
@@ -114,7 +115,9 @@ func parseJSONLocal(data: NSMutableData) {
             locationTable.setValue(location_address, forKey: "location_address")
             locationTable.setValue(Int(delete_id), forKey: "delete_id")
             locationTable.setValue(timestamp, forKey: "timestamp")
-        }
+                
+            
+            
         
         do{
             
@@ -124,11 +127,15 @@ func parseJSONLocal(data: NSMutableData) {
             
             print(error)
             
+            }
+            }
+    
         }
-        
+    }
+
       //  locationData.addObject(locationTable)
         print(locationData)
-    }
+    
     
     dispatch_async(dispatch_get_main_queue(), { () -> Void in
         
@@ -142,10 +149,10 @@ func shouldAddLocation(id: Int, delete_id: Int, timestamp: String) -> Bool{
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
-    let fetchRequest = NSFetchRequest(entityName: "TaskTable")
+    let fetchRequest = NSFetchRequest(entityName: "LocationsTable")
     fetchRequest.returnsObjectsAsFaults = false
     
-    var newTask = NSPredicate(format: "task_id = %d", id)
+    var newTask = NSPredicate(format: "location_id = %d", id)
     fetchRequest.predicate = newTask
     
     do{

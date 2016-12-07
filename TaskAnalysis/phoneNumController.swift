@@ -28,6 +28,13 @@ class phoneNumController: UIViewController {
         else{
         //check database for phone num if valid pull data
         //if phone valid present next segue and save phone num
+            if(phoneNum == "5555555555"){
+                userId = 5
+            }else if(phoneNum == "2222222222"){
+                userId = 8
+            }else if(phoneNum == "3333333333"){
+                userId = 7
+            }
         NSUserDefaults.standardUserDefaults().setObject(phoneNum, forKey: "phoneNum")
         //else display error try again
         //showAlert("Phone number does not exist")
