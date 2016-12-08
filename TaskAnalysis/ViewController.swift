@@ -19,13 +19,17 @@ let getStudentTaskLocationData = getStudTaskLocalData()
 var userId = 0
 var viewcontrollerloadedalready = false
 //User current location
-var TaskLocation: String = "test"
+var TaskLocation: String = "All"
+var taskText: String = "All"
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
     
 //dictionary for locationname/url
 var urlDictionary = [String: NSURL]()
 var tasksData = [AnyObject]()
+
+//dictionary for locationname/locationID
+var idDictionary = [String: String]()
     
 let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -250,7 +254,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 //                }
 //            }
         
-collectionView.reloadData()
+        collectionView.reloadData()
     }
     
     //Segues to next view when cell is selected
@@ -400,7 +404,7 @@ collectionView.reloadData()
             locationManager.startUpdatingLocation()
         }
 
-      //  setUpLocations()
+        setUpLocations()
         
         read()
         self.collectionView.reloadData()
@@ -429,8 +433,9 @@ collectionView.reloadData()
             
                 for result:AnyObject in results{
                     print("printing results")
-                    let locationID:Double = result.valueForKey("location_id") as! Double!
+                    let locationInt:Int = result.valueForKey("location_id") as! Int!
                     print(result.valueForKey("location_id")!)
+                    let locationID = String(locationInt)
                     let locationName:String = result.valueForKey("location_name") as! String!
                     print(result.valueForKey("location_name")!)
                     let locationAddress:String = result.valueForKey("location_address") as! String!
@@ -440,10 +445,14 @@ collectionView.reloadData()
                     
                     let url = NSURL(string: "\(result.valueForKey("location_photo")!)")
                     
-                    //populate the dictionary with url so that way pics can be loaded
-                   urlDictionary[locationName] = url
+                   //populate the dictionary with url so that way pics can be loaded
+                   urlDictionary[locationID] = url
                     
-                   setupData(locationName, radius: locationRadius, Address: locationAddress)
+                   //populate the dictionary with locationID
+                    idDictionary[locationID] = locationName
+                
+                  
+                    setupData(locationID, radius: locationRadius, Address: locationAddress)
 
                 }
             
@@ -488,21 +497,23 @@ collectionView.reloadData()
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         //get the current location of the 
         TaskLocation = region.identifier
-        currentLocation.text = TaskLocation
+        taskText = idDictionary[TaskLocation]!
+        currentLocation.text = taskText
         
         //fetch the url from dictionary and convert to media
         let url = urlDictionary[TaskLocation]
         let data = NSData(contentsOfURL: url!)
         locationImage.image = UIImage(data: data!)
         
-
+        print(taskText)
         print(TaskLocation)
     }
     
     //user exit region this will set the users current task location to null
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        TaskLocation = "none"
-        currentLocation.text = TaskLocation
+        TaskLocation = "All"
+        taskText = "All"
+        currentLocation.text = taskText
         print(TaskLocation)
         //showAlert("exit \(region.identifier)")
         
