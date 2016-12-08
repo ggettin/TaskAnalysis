@@ -205,9 +205,27 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                     let specificTasks = NSPredicate(format: "task_id = \(utask.valueForKey("task_id") as! Int)")
                     taskRequest.returnsObjectsAsFaults = false
                     do{
-                        taskRequest.predicate = specificTasks
+                       
+                        if TaskLocation != "All"
+                        {
+                            let locationTasks = NSPredicate(format: "location_id", "\(TaskLocation as! Int)")
+                            
+                            let compoundPredicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [specificTasks, locationTasks])
+                        
+                            taskRequest.predicate = compoundPredicate
+                            
+                        }
+                            
+                        else
+                        {
+                            taskRequest.predicate = specificTasks
+
+                        }
+                        
                         let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
                         tasksData.append(tasks[0])
+                        
+                     
                         //count+=1
                         
                         
@@ -382,7 +400,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         viewcontrollerloadedalready = true
         //read()
-        collectionView.reloadData()
+        self.collectionView.reloadData()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -478,6 +496,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                     if placemarks.count != 0 {
                         let coordinates = placemarks.first!.location
                         let coordinate = coordinates?.coordinate
+                        
+                        print("coordinates: \(coordinate)")
                         
                         //setup region this will read an object with a saved coordinate and name
                         let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: coordinate!.latitude,
