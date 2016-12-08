@@ -347,6 +347,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             
 
             print("All Data Downloaded!")
+            
         }
         
     override func viewDidLoad() {
@@ -417,7 +418,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             locationManager.startUpdatingLocation()
         }
 
-       //setUpLocations()
+     //  setUpLocations()
         read()
         viewDidLoad()
          //setUpLocations()
