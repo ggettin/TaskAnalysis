@@ -24,11 +24,13 @@ var viewcontrollerloadedalready = false
 var TaskLocation: String = "All"
 var taskText: String = "All"
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
-    
 //dictionary for locationname/url
 var urlDictionary = [String: NSURL]()
 var tasksData = [AnyObject]()
+
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
+    
+
 
 //dictionary for locationname/locationID
 var idDictionary = [String: String]()
@@ -277,7 +279,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                     }
 //                }
 //            }
-        
+        setUpLocations()
         collectionView.reloadData()
     }
     
@@ -353,8 +355,11 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             let time4 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 3 * Int64(NSEC_PER_SEC))
             dispatch_after(time4, dispatch_get_main_queue()) {
                 getLocationDatas.downloadItems()
+                
             }
 
+            
+            
       let time2 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
             dispatch_after(time2, dispatch_get_main_queue()) {
            //Put your code which should be executed with a delay here
@@ -363,7 +368,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
            // NSNotificationCenter.defaultCenter().postNotificationName("retrievedAllDataFromPHPScript", object: nil, userInfo: nil)
             
-
+            
+       // NSNotificationCenter.defaultCenter().postNotificationName("retrievedAllDataFromPHPScript", object: nil, userInfo: nil)
+            
             print("All Data Downloaded!")
         }
         
@@ -410,7 +417,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.read), name: "retrievedAllDataFromPHPScript", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.setUpLocations), name: "retrievedAllDataFromPHPScript", object: nil)
+       
         
         self.collectionView.reloadData()
     }
@@ -421,8 +428,11 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidAppear(animated: Bool) {
         
-
-        currentLocation.text = TaskLocation
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(getStepsData.downloadItems), name: "retrievedAllDataFromPHPScript", object: nil)
+  
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.locationsDone), name: "retrievedAllDataFromPHPScript", object: nil)
+     
+        currentLocation.text = taskText
         
         // status is not determined
         if CLLocationManager.authorizationStatus() == .NotDetermined {
@@ -439,14 +449,17 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 
         
         read()
-
+        
         self.collectionView.reloadData()
         
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "retrievedAllDataFromPHPScript", object: nil)
+    func locationsDone()
+    {
+          print("LOCATIONS DOWNLOADING")
+          setUpLocations()
     }
+
     
     //function for easy resuse of alert boxes
     func showAlert(title: String) {
@@ -537,7 +550,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         //get the current location of the 
         TaskLocation = region.identifier
-        taskText = idDictionary[TaskLocation]!
+        
+        taskText = String(idDictionary[TaskLocation]!)
         currentLocation.text = taskText
         
         //fetch the url from dictionary and convert to media
@@ -545,6 +559,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         let data = NSData(contentsOfURL: url!)
         locationImage.image = UIImage(data: data!)
         
+        self.collectionView.reloadData()
         print(taskText)
         print(TaskLocation)
     }
@@ -555,6 +570,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         taskText = "All"
         currentLocation.text = taskText
         print(TaskLocation)
+        
+        self.collectionView.reloadData()
+
         //showAlert("exit \(region.identifier)")
         
         

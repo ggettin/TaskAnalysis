@@ -131,6 +131,8 @@ func parseJSONLocal(data: NSMutableData) {
             }
     
         }
+        
+
     }
 
       //  locationData.addObject(locationTable)
@@ -142,6 +144,7 @@ func parseJSONLocal(data: NSMutableData) {
         // self.delegate.itemsDownloaded(stepData)
         
     })
+
 }
 
 
