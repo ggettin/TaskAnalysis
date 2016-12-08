@@ -152,11 +152,11 @@ func parseJSON(data: NSMutableData) {
             print("Saving steps table to CoreData")
             print(stepData)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                
                 // self.delegate.itemsDownloaded(stepData)
-                
+                 NSNotificationCenter.defaultCenter().postNotificationName("retrievedAllDataFromPHPScript", object: nil, userInfo: nil)
             })
         }
+        
     } catch let error as NSError {
         print(error)
         
@@ -171,12 +171,12 @@ func shouldAddStep(id: Int, delete_id: Int, timestamp: String) -> Bool{
     let fetchRequest = NSFetchRequest(entityName: "StepsTable")
     fetchRequest.returnsObjectsAsFaults = false
     
-    var newTask = NSPredicate(format: "step_id = %d", id)
-    fetchRequest.predicate = newTask
+    var newStep = NSPredicate(format: "step_id = %d", id)
+    fetchRequest.predicate = newStep
     
     do{
-        var newTasks = try managedContext.executeFetchRequest(fetchRequest) as! [AnyObject]
-        if(newTasks.count == 0){
+        var newSteps = try managedContext.executeFetchRequest(fetchRequest) as! [AnyObject]
+        if(newSteps.count == 0){
             return true
         }
     }catch{

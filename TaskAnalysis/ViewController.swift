@@ -17,6 +17,8 @@ let getTaskStepsData = getTaskStepData()
 let getStudentTaskLocationData = getStudTaskLocalData()
 
 var userId = 0
+var realTaskId = 0
+
 var viewcontrollerloadedalready = false
 //User current location
 var TaskLocation: String = "All"
@@ -51,6 +53,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             UIAlertAction in
             //NSLog("OK Pressed")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
+             NSUserDefaults.standardUserDefaults().removeObjectForKey("userId")
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
             self.navigationController?.pushViewController(phoneController, animated: true)
@@ -134,7 +138,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
                     cell.taskVideo = String(tasksData[indexPath.row].valueForKey("task_video")!)
         
-
+        cell.taskIdentifier = Int("\(tasksData[indexPath.row].valueForKey("task_id")!)")!
         
         //MARK: CORE DATA
        // let context = appDele.managedObjectContext
@@ -187,8 +191,9 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         return cell
             
     }
+    
     func read(){
-        
+          userId = NSUserDefaults.standardUserDefaults().objectForKey("userId") as! Int
         var count = 0
         tasksData = [TaskTable]()
         let context = appDele.managedObjectContext
@@ -278,13 +283,17 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     //Segues to next view when cell is selected
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+         realTaskId = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskIdentifier
         
         self.performSegueWithIdentifier("showSteps", sender: indexPath)
         
+        
         let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
         
+        taskId = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskIdentifier
         taskVideoss = video
        
+        
         
         
         
@@ -352,7 +361,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                 getStepsData.downloadItems()
             }
 
-            
+           // NSNotificationCenter.defaultCenter().postNotificationName("retrievedAllDataFromPHPScript", object: nil, userInfo: nil)
             
 
             print("All Data Downloaded!")
@@ -405,6 +414,10 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         self.collectionView.reloadData()
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+         NSNotificationCenter.defaultCenter().removeObserver(self, name: "retrievedAllDataFromPHPScript", object: nil)
+    }
 
     override func viewDidAppear(animated: Bool) {
         
@@ -428,6 +441,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         read()
 
         self.collectionView.reloadData()
+        
     }
     
     override func viewDidDisappear(animated: Bool) {

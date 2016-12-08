@@ -11,6 +11,7 @@ import CoreData
 
 extension TaskStepTable {
     
+    @NSManaged var st_id: NSNumber?
     @NSManaged var step_id: NSNumber?
     @NSManaged var task_id: NSNumber?
     

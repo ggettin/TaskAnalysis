@@ -100,7 +100,7 @@ func parseJSONSTL(data: NSMutableData) {
             if(shouldAddStudTaskLocal(Int(stl_id)!)){
             STLTable.setValue(Int(stl_id), forKey: "stl_id")
             STLTable.setValue(Int(task_id), forKey: "task_id")
-            STLTable.setValue(Int(location_id), forKey: "student_location_id")
+            STLTable.setValue(Int(location_id), forKey: "location_id")
             STLTable.setValue(Int(student_id), forKey: "student_id")
 
             
