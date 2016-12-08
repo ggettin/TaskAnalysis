@@ -208,7 +208,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                        
                         if TaskLocation != "All"
                         {
-                            let locationTasks = NSPredicate(format: "location_id", "\(TaskLocation as! Int)")
+                            let location = Int(TaskLocation)
+                            let locationTasks = NSPredicate(format: "location_id", location!)
                             
                             let compoundPredicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [specificTasks, locationTasks])
                         
@@ -359,12 +360,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
-     
         loader()
-
+   
         
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
@@ -400,13 +397,18 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
         viewcontrollerloadedalready = true
         //read()
+        //setUpLocations()
+        
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.read), name: "retrievedAllDataFromPHPScript", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.setUpLocations), name: "retrievedAllDataFromPHPScript", object: nil)
+        
         self.collectionView.reloadData()
     }
 
     override func viewDidAppear(animated: Bool) {
         
-  
-        
+
         currentLocation.text = TaskLocation
         
         // status is not determined
@@ -422,10 +424,14 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             locationManager.startUpdatingLocation()
         }
 
-        setUpLocations()
         
         read()
+
         self.collectionView.reloadData()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "retrievedAllDataFromPHPScript", object: nil)
     }
     
     //function for easy resuse of alert boxes

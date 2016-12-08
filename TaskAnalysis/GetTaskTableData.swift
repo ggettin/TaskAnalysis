@@ -143,6 +143,7 @@ func parseJSONTask(data: NSMutableData, completion: (result: String) -> Void) {
         tasksCompleted = true
         print("complete")
         completion(result: "C0mplete!!!!")
+        
     }
     
     dispatch_async(dispatch_get_main_queue(), { () -> Void in
