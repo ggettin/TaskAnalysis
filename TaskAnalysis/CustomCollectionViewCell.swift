@@ -16,6 +16,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var completionImage: UIImageView!
     
+    var taskIdentifier = 0
+    
     var taskVideo = ""
     
     override func layoutSubviews() {

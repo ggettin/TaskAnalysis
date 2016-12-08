@@ -30,10 +30,13 @@ class phoneNumController: UIViewController {
         //if phone valid present next segue and save phone num
             if(phoneNum == "5555555555"){
                 userId = 5
+                NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "userId")
             }else if(phoneNum == "2222222222"){
                 userId = 8
+                 NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "userId")
             }else if(phoneNum == "3333333333"){
                 userId = 7
+                 NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "userId")
             }
         NSUserDefaults.standardUserDefaults().setObject(phoneNum, forKey: "phoneNum")
         //else display error try again

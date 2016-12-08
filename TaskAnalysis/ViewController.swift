@@ -17,6 +17,7 @@ let getTaskStepsData = getTaskStepData()
 let getStudentTaskLocationData = getStudTaskLocalData()
 
 var userId = 0
+
 var viewcontrollerloadedalready = false
 //User current location
 var TaskLocation: String = "test"
@@ -47,6 +48,8 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             UIAlertAction in
             //NSLog("OK Pressed")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("phoneNum")
+             NSUserDefaults.standardUserDefaults().removeObjectForKey("userId")
+            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let phoneController = storyboard.instantiateViewControllerWithIdentifier("login") as! phoneNumController
             self.navigationController?.pushViewController(phoneController, animated: true)
@@ -130,7 +133,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         
                     cell.taskVideo = String(tasksData[indexPath.row].valueForKey("task_video")!)
         
-
+        cell.taskIdentifier = Int("\(tasksData[indexPath.row].valueForKey("task_id")!)")!
         
         //MARK: CORE DATA
        // let context = appDele.managedObjectContext
@@ -184,7 +187,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             
     }
     func read(){
-        
+          userId = NSUserDefaults.standardUserDefaults().objectForKey("userId") as! Int
         var count = 0
         tasksData = [TaskTable]()
         let context = appDele.managedObjectContext
@@ -204,6 +207,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                         taskRequest.predicate = specificTasks
                         let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
                         tasksData.append(tasks[0])
+                        
                         //count+=1
                         
                         
@@ -260,6 +264,7 @@ collectionView.reloadData()
         
         let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
         
+        taskId = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskIdentifier
         taskVideoss = video
        
         
@@ -384,7 +389,6 @@ collectionView.reloadData()
     override func viewDidAppear(animated: Bool) {
         
   
-        
         currentLocation.text = TaskLocation
         
         // status is not determined
