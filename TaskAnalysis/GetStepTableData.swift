@@ -153,7 +153,7 @@ func parseJSON(data: NSMutableData) {
             print(stepData)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 // self.delegate.itemsDownloaded(stepData)
-                 NSNotificationCenter.defaultCenter().postNotificationName("retrievedAllDataFromPHPScript", object: nil, userInfo: nil)
+                 
             })
         }
         
