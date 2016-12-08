@@ -22,7 +22,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection svarion: Int) -> Int {
-        
+            print(stepsData.count)
             return stepsData.count
     }
     
@@ -45,6 +45,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 //        stepRequest.sortDescriptors = [NSSortDescriptor(key: "step_number", ascending: true)]
 //        do{
 //            steps = try context.executeFetchRequest(stepRequest)
+        
             cell.stepCount.text = "\(stepsData[indexPath.row].valueForKey("step_number")!)" //change to just indexPathrow after fixing the updating and adding
             
             cell.stepDescription.text = "\(stepsData[indexPath.row].valueForKey("step_info")!)"
@@ -106,12 +107,15 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 //    
     override func viewDidAppear(animated: Bool) {
         self.navigationItem.title = TaskName
-        //read()
+        readSteps()
         self.tableView.reloadData()
     }
 
     override func viewDidLoad() {
+             readSteps()
         super.viewDidLoad()
+        print("Viewdidload Pictures tab: Now reading steps:")
+   
        // getStepsData.downloadItems()
 //         let context = appDel.managedObjectContext
 //         let stepRequest = NSFetchRequest(entityName: "StepsTable")
@@ -148,56 +152,109 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     
-    func read(){
-        
+    
+    func readSteps(){
+       // userId = NSUserDefaults.standardUserDefaults().objectForKey("userId") as! Int
         var count = 0
-       stepsData = [StepsTable]()
+        stepsData = [StepsTable]()
         let context = appDele.managedObjectContext
         let userTask = NSFetchRequest(entityName: "TaskStepTable")
         userTask.returnsObjectsAsFaults = false
         //MARK: dontforget to change id
-        let userTasks = NSPredicate(format: "task_id = %d", taskId)
+        let userTasks = NSPredicate(format: "task_id = %d", realTaskId)
         userTask.predicate = userTasks
         do{
             let userTaskArray = try context.executeFetchRequest(userTask)
             if(userTaskArray.count > 0){
                 for utask in userTaskArray{
-                    let taskRequest = NSFetchRequest(entityName: "TaskStepsTable")
+                    let taskRequest = NSFetchRequest(entityName: "StepsTable")
+                    taskRequest.sortDescriptors = [NSSortDescriptor(key: "step_number", ascending: true)]
                     let specificTasks = NSPredicate(format: "step_id = \(utask.valueForKey("step_id") as! Int)")
+                    print("Pictures tab Read call Specific Tasks:")
+                    print(specificTasks)
+                    
                     taskRequest.returnsObjectsAsFaults = false
-                let userStepArray = try context.executeFetchRequest(taskRequest)
-                    taskRequest.predicate = specificTasks
                     do{
-                        //for loop
-                        for ustep in userStepArray{
-                            let stepRequest = NSFetchRequest(entityName: "StepsTable")
-                            let specificSteps = NSPredicate(format: "step_id = \(ustep.valueForKey("step_id") as! Int)")
-                            stepRequest.returnsObjectsAsFaults = false
-                        
-                        do{
-                        let steps: [AnyObject] = try context.executeFetchRequest(stepRequest)
-                        stepsData.append(steps[0])
-                        }
-                        
-                    }
+                        taskRequest.predicate = specificTasks
+                        let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
+                        stepsData.append(tasks[0])
+                    
                     }catch{
-                        
-                    }
-                
-                
-                
+                    
+                }
+                    
                 }
             }else{
                 print("Error NIL")
             }
-
+            
+            
+            
+            //                        taskTitles.append(cell.taskName.text!)
+            //                        
+            //                        cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
             
         }
         catch{
             print("Helko")
         }
+        //                }
+        //            }
         
+        tableView.reloadData()
     }
+
+    
+//    func read(){
+//        
+//        var count = 0
+//       stepsData = [StepsTable]()
+//        let context = appDele.managedObjectContext
+//        let userTask = NSFetchRequest(entityName: "TaskStepTable")
+//        userTask.returnsObjectsAsFaults = false
+//        //MARK: dontforget to change id
+//        let userTasks = NSPredicate(format: "task_id = %d", taskId)
+//        userTask.predicate = userTasks
+//        do{
+//            let userTaskArray = try context.executeFetchRequest(userTask)
+//            if(userTaskArray.count > 0){
+//                for utask in userTaskArray{
+//                    let taskRequest = NSFetchRequest(entityName: "TaskStepsTable")
+//                    let specificTasks = NSPredicate(format: "step_id = \(utask.valueForKey("step_id") as! Int)")
+//                    taskRequest.returnsObjectsAsFaults = false
+//                let userStepArray = try context.executeFetchRequest(taskRequest)
+//                    taskRequest.predicate = specificTasks
+//                    do{
+//                        //for loop
+//                        for ustep in userStepArray{
+//                            let stepRequest = NSFetchRequest(entityName: "StepsTable")
+//                            let specificSteps = NSPredicate(format: "step_id = \(ustep.valueForKey("step_id") as! Int)")
+//                            stepRequest.returnsObjectsAsFaults = false
+//                        
+//                        do{
+//                        let steps: [AnyObject] = try context.executeFetchRequest(stepRequest)
+//                        stepsData.append(steps[0])
+//                        }
+//                        
+//                    }
+//                    }catch{
+//                        
+//                    }
+//                
+//                
+//                
+//                }
+//            }else{
+//                print("Error NIL")
+//            }
+//
+//            
+//        }
+//        catch{
+//            print("Helko")
+//        }
+//        tableView.reloadData()
+//    }
 
     
 

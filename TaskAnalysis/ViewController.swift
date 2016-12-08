@@ -17,6 +17,7 @@ let getTaskStepsData = getTaskStepData()
 let getStudentTaskLocationData = getStudTaskLocalData()
 
 var userId = 0
+var realTaskId = 0
 
 var viewcontrollerloadedalready = false
 //User current location
@@ -190,6 +191,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         return cell
             
     }
+    
     func read(){
           userId = NSUserDefaults.standardUserDefaults().objectForKey("userId") as! Int
         var count = 0
@@ -263,14 +265,17 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
     
     //Segues to next view when cell is selected
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+         realTaskId = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskIdentifier
         
         self.performSegueWithIdentifier("showSteps", sender: indexPath)
+        
         
         let video = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskVideo
         
         taskId = (collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell).taskIdentifier
         taskVideoss = video
        
+        
         
         
         
@@ -338,7 +343,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                 getStepsData.downloadItems()
             }
 
-            
+           // NSNotificationCenter.defaultCenter().postNotificationName("retrievedAllDataFromPHPScript", object: nil, userInfo: nil)
             
 
             print("All Data Downloaded!")
@@ -351,7 +356,6 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //let Controller = storyboard.instantiateViewControllerWithIdentifier("nav") as! Navigation_CoreData_Controller
      
         loader()
-
         
         if NSUserDefaults.standardUserDefaults().objectForKey("phoneNum") == nil {
             
@@ -389,9 +393,14 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
         //read()
         collectionView.reloadData()
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+         NSNotificationCenter.defaultCenter().removeObserver(self, name: "retrievedAllDataFromPHPScript", object: nil)
+    }
 
     override func viewDidAppear(animated: Bool) {
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(getStepsData.downloadItems), name: "retrievedAllDataFromPHPScript", object: nil)
   
         currentLocation.text = TaskLocation
         
@@ -408,10 +417,12 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             locationManager.startUpdatingLocation()
         }
 
-        setUpLocations()
-        
+       //setUpLocations()
         read()
+        viewDidLoad()
+         //setUpLocations()
         self.collectionView.reloadData()
+        
     }
     
     //function for easy resuse of alert boxes

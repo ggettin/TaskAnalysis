@@ -92,7 +92,7 @@ func parseJSONST(data: NSMutableData) {
         let STTable = TaskStepTable(entity: STTEntity!, insertIntoManagedObjectContext: context)
         
         //the following insures none of the JsonElement values are nil through optional binding
-        if  let st_id = row["st_id"] as? String,
+        if  let st_id = row["step_task_id"] as? String,
             let task_id = row["task_id"] as? String,
             let step_id = row["step_id"] as? String
         {
@@ -133,7 +133,7 @@ func shouldAddTaskStep(id: Int) -> Bool{
     let fetchRequest = NSFetchRequest(entityName: "TaskStepTable")
     fetchRequest.returnsObjectsAsFaults = false
     
-    var newTask = NSPredicate(format: "_id = %d", id)
+    var newTask = NSPredicate(format: "st_id = %d", id)
     fetchRequest.predicate = newTask
     
     do{
