@@ -108,7 +108,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
   
     @IBAction func previousStep(sender: AnyObject) {
         if (firstStep != true){
-            stepDescription.text = steps[currentStep - 1].valueForKey("step_info")! as! String
+            stepDescription.text = steps[currentStep - 1].valueForKey("step_info")! as? String
             let url = NSURL(string: "\(steps[currentStep - 1].valueForKey("step_photo")!)")
             
             let data = NSData(contentsOfURL: url!)
@@ -133,6 +133,7 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
                 firstStep = true
                 prevStepButton.hidden = true
             }else{
+                firstStep = false
                 prevStepButton.hidden = false
                 prevStepButton.enabled = true
             }
@@ -140,9 +141,11 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             if currentStep == steps.count - 1{
                 lastStep = true
                 nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
+            }else{
+                lastStep = false
+                nextStepButton.setImage(UIImage(named: "rightArrow"), forState: UIControlState.Normal)
             }
-
-            
+        
         }
         
         
@@ -180,7 +183,10 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             
             if currentStep == 0{
                 firstStep = true
+                prevStepButton.hidden = true
+                
             }else{
+                firstStep = false
                 prevStepButton.hidden = false
                 prevStepButton.enabled = true
             }
@@ -189,6 +195,9 @@ class PictureAudioView: UIViewController, UITabBarDelegate {
             if currentStep == steps.count - 1 {
                 lastStep = true
                 nextStepButton.setImage(UIImage(named: "completed"), forState: UIControlState.Normal)
+            }else{
+                lastStep = false
+                nextStepButton.setImage(UIImage(named: "rightArrow"), forState: UIControlState.Normal)
             }
 
         }else{
