@@ -34,22 +34,23 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
     
     //hardcoded task images for now
     let taskImages = [UIImage(named: "sweeping"), UIImage(named: "laundry"), UIImage(named: "foldNapkins"), UIImage(named: "cleanDishes"), UIImage(named: "cookPasta")]
-    
-    
+   
+    var tasksData = [AnyObject]()
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection svarion: Int) -> Int {
-        
-        let context = appDel.managedObjectContext
-        let taskRequest = NSFetchRequest(entityName: "TaskTable")
-        taskRequest.returnsObjectsAsFaults = false
-        do{
-            let tasks: [TaskTable] = try context.executeFetchRequest(taskRequest) as! [TaskTable]
-            return tasks.count
-        }
-        catch{
-            
-        }
-        return 0
+        read()
+//        let context = appDel.managedObjectContext
+//        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+//        taskRequest.returnsObjectsAsFaults = false
+//        do{
+//            let tasks: [TaskTable] = try context.executeFetchRequest(taskRequest) as! [TaskTable]
+//            return tasks.count
+//        }
+//        catch{
+//            
+//        }
+        return tasksData.count
         
         //return self.taskTitles.count
     }
@@ -57,7 +58,7 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
     
     // creates cell for tasks table
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+        read()
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! AllTasksCell
         
         //cell data is hardcoded for now
@@ -66,13 +67,13 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
         //        cell.stepDescription.text = "Rinse the dish in hot water the dish in hot water Rinse the dish in hot water"
         
         
-        //MARK: CORE DATA
-        let context = appDel.managedObjectContext
-        let taskRequest = NSFetchRequest(entityName: "TaskTable")
-        taskRequest.returnsObjectsAsFaults = false
-        taskRequest.sortDescriptors = [NSSortDescriptor(key: "task_id", ascending: true)]
-        do{
-            let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
+//        //MARK: CORE DATA
+//        let context = appDel.managedObjectContext
+//        let taskRequest = NSFetchRequest(entityName: "TaskTable")
+//        taskRequest.returnsObjectsAsFaults = false
+//        taskRequest.sortDescriptors = [NSSortDescriptor(key: "task_id", ascending: true)]
+//        do{
+//            let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
             //cell.TaskLabel.text = "\(tasks[indexPath.row].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
 
             
@@ -96,11 +97,30 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
                  //cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
 
             
-        }
-        catch{
+//        }
+//        catch{
+//            
+//        }
+//        
+        cell.TaskLabel.text = "\(tasksData[indexPath.row].valueForKey("task_title")!)"
+        if(NSURL(string: "\(tasksData[indexPath.row].valueForKey("task_image")!)") != nil){
             
+            let url = NSURL(string: "\(tasksData[indexPath.row].valueForKey("task_image")!)")
+            if(NSData(contentsOfURL: url!) != nil){
+                let data = NSData(contentsOfURL: url!)
+                cell.TaskImage.image = UIImage(data: data!)
+            }else{
+                print("Data Nil")
+            }
+            
+        }else{
+            print("Error NIL")
         }
         
+        cell.taskVideo = String(tasksData[indexPath.row].valueForKey("task_video")!)
+        
+        //cell.taskIdentifier = Int("\(tasksData[indexPath.row].valueForKey("task_id")!)")!
+
         
         
         return cell
@@ -160,6 +180,80 @@ class AllTasksController: UIViewController, UITableViewDelegate, UITableViewData
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
+    
+    
+    func read(){
+        userId = NSUserDefaults.standardUserDefaults().objectForKey("userId") as! Int
+        var count = 0
+        tasksData = [TaskTable]()
+        let context = appDel.managedObjectContext
+        let userTask = NSFetchRequest(entityName: "StudentTaskLocalTable")
+        userTask.returnsObjectsAsFaults = false
+        //MARK: dontforget to change id
+        let userTasks = NSPredicate(format: "student_id = %d", userId)
+        userTask.predicate = userTasks
+        do{
+            let userTaskArray = try context.executeFetchRequest(userTask)
+            if(userTaskArray.count > 0){
+                for utask in userTaskArray{
+                    let taskRequest = NSFetchRequest(entityName: "TaskTable")
+                    let specificTasks = NSPredicate(format: "task_id = \(utask.valueForKey("task_id") as! Int)")
+                    taskRequest.returnsObjectsAsFaults = false
+                    do{
+                        taskRequest.predicate = specificTasks
+                        let tasks: [AnyObject] = try context.executeFetchRequest(taskRequest)
+                        tasksData.append(tasks[0])
+                        
+                        //count+=1
+                        
+                        
+                        //                        cell.taskName.text = "\(tasks[count].valueForKey("task_title")!)" //change to just indexPathrow after fixing the updating and adding
+                        
+                        
+                        //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
+                        
+                        //                        //for check marks do not show if cell is not compeleted add var to coredata to represent complete . If complete reset next day
+                        //                        let completed = tasks[indexPath.row].valueForKey("completed") as! NSNumber
+                        //
+                        //                        if (completed == 1)
+                        //                        {
+                        //                            cell.completionImage.hidden = false
+                        //
+                        //                        }
+                        //
+                        //                        if(NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)") != nil){
+                        //
+                        //                            let url = NSURL(string: "\(tasks[indexPath.row].valueForKey("task_image")!)")
+                        //                            if(NSData(contentsOfURL: url!) != nil){
+                        //                                let data = NSData(contentsOfURL: url!)
+                        //                                cell.taskImage.image = UIImage(data: data!)
+                        //                            }else{
+                        //                                print("Data Nil")
+                        //                            }
+                    }catch{
+                        
+                    }
+                    
+                }
+            }else{
+                print("Error NIL")
+            }
+            
+            
+            
+            //                        taskTitles.append(cell.taskName.text!)
+            //                        
+            //                        cell.taskVideo = String(tasks[indexPath.row].valueForKey("task_video")!)
+            
+        }
+        catch{
+            print("Helko")
+        }
+        //                }
+        //            }
+
+    }
+
     
 
 }

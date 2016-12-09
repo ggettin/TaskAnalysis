@@ -12,11 +12,11 @@
         <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="LoginTable" syncable="YES">
-        <attribute name="delete_id" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="delete_id" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="student_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="student_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="student_phone_number" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StepsTable" syncable="YES">
         <attribute name="delete_id" optional="YES" attributeType="Integer 16" syncable="YES"/>
@@ -50,7 +50,7 @@
     </entity>
     <elements>
         <element name="LocationsTable" positionX="-101" positionY="-9" width="128" height="180"/>
-        <element name="LoginTable" positionX="-90" positionY="278" width="128" height="118"/>
+        <element name="LoginTable" positionX="-90" positionY="278" width="128" height="120"/>
         <element name="StepsTable" positionX="252" positionY="-15" width="128" height="150"/>
         <element name="StudentTaskLocalTable" positionX="214" positionY="314" width="128" height="105"/>
         <element name="TaskStepTable" positionX="153" positionY="227" width="128" height="90"/>

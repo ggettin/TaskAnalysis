@@ -28,6 +28,7 @@
 		1FC568731DF125B1001BB987 /* GetLocationTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC568721DF125B1001BB987 /* GetLocationTable.swift */; };
 		1FD7172C1DF6289B00A4CA28 /* GetStudTaskLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */; };
 		1FD7172E1DF63E8400A4CA28 /* GetTaskStepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD7172D1DF63E8400A4CA28 /* GetTaskStepData.swift */; };
+		1FE93C661DFA262000537F89 /* GetLoginTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE93C651DFA262000537F89 /* GetLoginTable.swift */; };
 		3729C7671DD394D500A920DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7661DD394D500A920DC /* AppDelegate.swift */; };
 		3729C7691DD394D500A920DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3729C7681DD394D500A920DC /* ViewController.swift */; };
 		3729C76C1DD394D500A920DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3729C76A1DD394D500A920DC /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		1FC568721DF125B1001BB987 /* GetLocationTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocationTable.swift; sourceTree = "<group>"; };
 		1FD7172B1DF6289B00A4CA28 /* GetStudTaskLocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStudTaskLocalData.swift; sourceTree = "<group>"; };
 		1FD7172D1DF63E8400A4CA28 /* GetTaskStepData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaskStepData.swift; sourceTree = "<group>"; };
+		1FE93C651DFA262000537F89 /* GetLoginTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLoginTable.swift; sourceTree = "<group>"; };
 		3729C7631DD394D500A920DC /* TaskAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3729C7661DD394D500A920DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3729C7681DD394D500A920DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				1FC568461DECC2FE001BB987 /* LocationCoreData.swift */,
+				1FE93C651DFA262000537F89 /* GetLoginTable.swift */,
 				1FC568481DECC446001BB987 /* LoginTable.swift */,
 				1FC5684A1DECC454001BB987 /* LoginCoreData.swift */,
 				1FC568441DECC2ED001BB987 /* LocationTable.swift */,
@@ -265,6 +268,7 @@
 				382D64251DF0E2BA00124531 /* phoneNumController.swift in Sources */,
 				1FC568631DEE80F5001BB987 /* AllTasksController.swift in Sources */,
 				374FE9E51DDA542F000312C4 /* PictureAudioView.swift in Sources */,
+				1FE93C661DFA262000537F89 /* GetLoginTable.swift in Sources */,
 				1FC5685B1DECC4E9001BB987 /* TaskTable.swift in Sources */,
 				1FC5686B1DEF43F6001BB987 /* GetStepTableData.swift in Sources */,
 				1FC568471DECC2FE001BB987 /* LocationCoreData.swift in Sources */,
