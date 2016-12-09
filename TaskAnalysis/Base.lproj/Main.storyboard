@@ -246,7 +246,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Your Tasks" id="usr-Nn-WZD">
-                                        <barButtonItem key="leftBarButtonItem" image="7867BBCC-E3D4-42A9-AADD-A281FD4C8779" id="PhS-XD-9ri"/>
+                                        <barButtonItem key="leftBarButtonItem" image="C91E503A-F8B5-4405-B652-5794F2F5E448" id="PhS-XD-9ri"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -672,7 +672,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7867BBCC-E3D4-42A9-AADD-A281FD4C8779" width="30" height="30">
+        <image name="C91E503A-F8B5-4405-B652-5794F2F5E448" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

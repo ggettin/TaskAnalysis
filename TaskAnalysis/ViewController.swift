@@ -448,7 +448,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
             locationManager.startUpdatingLocation()
         }
 
-     //  setUpLocations()
+        
         read()
         
         self.collectionView.reloadData()
