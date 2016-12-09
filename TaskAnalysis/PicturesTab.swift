@@ -47,9 +47,11 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
 //            steps = try context.executeFetchRequest(stepRequest)
         
             cell.stepCount.text = "\(stepsData[indexPath.row].valueForKey("step_number")!)" //change to just indexPathrow after fixing the updating and adding
-            
+        if("\(stepsData[indexPath.row].valueForKey("step_info")!)" != nil){
             cell.stepDescription.text = "\(stepsData[indexPath.row].valueForKey("step_info")!)"
-         
+        } else{
+            return cell
+        }
         
             //cell.stepImage.image = "\(steps[indexPath.row].step_photo)"
             
@@ -90,7 +92,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
         print((tableView.cellForRowAtIndexPath(indexPath) as! StepCell).stepCount.text)
         print(indexPath.row)
         
-        
+        //self.tableView.reloadData()
         
 //        self.presentViewController(vc, animated: true, completion: nil)
         navigationController?.pushViewController(vc, animated: true)
@@ -154,7 +156,7 @@ class PicturesTab: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     
     func readSteps(){
-       // userId = NSUserDefaults.standardUserDefaults().objectForKey("userId") as! Int
+        userId = NSUserDefaults.standardUserDefaults().objectForKey("userId") as! Int
         var count = 0
         stepsData = [StepsTable]()
         let context = appDele.managedObjectContext

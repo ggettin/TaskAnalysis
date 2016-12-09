@@ -15,6 +15,7 @@ let getTasksData =  getTaskData()
 let getLocationDatas = getLocationData()
 let getTaskStepsData = getTaskStepData()
 let getStudentTaskLocationData = getStudTaskLocalData()
+let getLoginDatas = getLoginTable()
 
 var userId = 0
 var realTaskId = 0
@@ -338,21 +339,28 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
 //                (result: String) in
 //                print("got back: \(result)")
 //                }
-        
-            getTaskStepsData.downloadItems()
             
-            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC))
+            getLoginDatas.downloadItems()
+            
+            
+            
+            let time5 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC))
+            dispatch_after(time5, dispatch_get_main_queue()) {
+                  getTaskStepsData.downloadItems()
+            }
+      
+            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 3 * Int64(NSEC_PER_SEC))
             dispatch_after(time, dispatch_get_main_queue()) {
                 getStudentTaskLocationData.downloadItems()
             }
             
-            let time3 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 2 * Int64(NSEC_PER_SEC))
+            let time3 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 5 * Int64(NSEC_PER_SEC))
             dispatch_after(time3, dispatch_get_main_queue()) {
                 //Put your code which should be executed with a delay here
                 getTasksData.downloadItems()
             }
             
-            let time4 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 3 * Int64(NSEC_PER_SEC))
+            let time4 = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW),  7 * Int64(NSEC_PER_SEC))
             dispatch_after(time4, dispatch_get_main_queue()) {
                 getLocationDatas.downloadItems()
                 

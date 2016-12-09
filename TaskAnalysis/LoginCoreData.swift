@@ -15,6 +15,6 @@ extension LoginTable {
     @NSManaged var student_id: NSNumber?
     @NSManaged var student_name: NSString?
     @NSManaged var student_phone_number: NSString?
-    @NSManaged var timestamp: NSDate
+    @NSManaged var timestamp: NSString?
 
 }

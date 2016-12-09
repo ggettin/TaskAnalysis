@@ -33,7 +33,7 @@ class phoneNumController: UIViewController {
         //if phone valid present next segue and save phone num
             read(phoneNum)
             userId = phoneUserId
-            
+            //userId = 7
             //            if(phoneNum == "5555555555"){
 //                userId = 5
             NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "userId")
@@ -103,20 +103,19 @@ class phoneNumController: UIViewController {
         let userLogin = NSFetchRequest(entityName: "LoginTable")
         userLogin.returnsObjectsAsFaults = false
         //MARK: dontforget to change id
-        let userTasks = NSPredicate(format: "student_phone_number = %s", phone)
+        let userTasks = NSPredicate(format: "student_phone_number = %@", phone)
         userLogin.predicate = userTasks
         do{
         let results = try context.executeFetchRequest(userLogin)
             for res in results {
                 print("USer ID is: %d", res.valueForKey("student_id") as! Int)
                 print(res.valueForKey("student_id"))
-                phoneUserId = res.valueForKey("student_id") as! Int
+                phoneUserId = Int(res.valueForKey("student_id") as! Int)
             }
             
         } catch{
-            
+            print("HELLLELLPP")
         }
-       
     }
     
     

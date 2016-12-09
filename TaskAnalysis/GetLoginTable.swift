@@ -76,7 +76,7 @@ func parseJSONUser(data: NSMutableData) {
     }
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     let context = appDel.managedObjectContext
-    let STTEntity = NSEntityDescription.entityForName("TaskStepTable", inManagedObjectContext: context)
+    let STTEntity = NSEntityDescription.entityForName("LoginTable", inManagedObjectContext: context)
     
     var jsonElement: NSDictionary = NSDictionary()
     let loginsData: NSMutableArray = NSMutableArray()
