@@ -21,8 +21,8 @@ var realTaskId = 0
 
 var viewcontrollerloadedalready = false
 //User current location
-var TaskLocation: String = "All"
-var taskText: String = "All"
+var TaskLocation: String = "Home"
+var taskText: String = "Home"
 
 //dictionary for locationname/url
 var urlDictionary = [String: NSURL]()
@@ -213,7 +213,7 @@ let appDele = UIApplication.sharedApplication().delegate as! AppDelegate
                     taskRequest.returnsObjectsAsFaults = false
                     do{
                        
-                        if TaskLocation != "All"
+                        if TaskLocation != "Home"
                         {
                             let location = Int(TaskLocation)
                             let locationTasks = NSPredicate(format: "location_id", location!)
